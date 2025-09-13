@@ -1,30 +1,17 @@
-# Create Users Table
+# Create Main Table
 aws dynamodb create-table \
-    --table-name optimate-users \
+    --table-name main-table \
     --attribute-definitions \
-        AttributeName=userId,AttributeType=S \
+        AttributeName=id,AttributeType=N \
     --key-schema \
-        AttributeName=userId,KeyType=HASH \
+        AttributeName=id,KeyType=HASH \
     --billing-mode PAY_PER_REQUEST
 
-# Create User Submissions Table (with composite key for user isolation)
+# Create Guidelines Table  
 aws dynamodb create-table \
-    --table-name optimate-user-submissions \
+    --table-name guidelines-table \
     --attribute-definitions \
-        AttributeName=userId,AttributeType=S \
-        AttributeName=submissionId,AttributeType=S \
+        AttributeName=id,AttributeType=N \
     --key-schema \
-        AttributeName=userId,KeyType=HASH \
-        AttributeName=submissionId,KeyType=RANGE \
-    --billing-mode PAY_PER_REQUEST
-
-# Create User Guidelines Table (with composite key for user isolation)  
-aws dynamodb create-table \
-    --table-name optimate-user-guidelines \
-    --attribute-definitions \
-        AttributeName=userId,AttributeType=S \
-        AttributeName=guidelineId,AttributeType=S \
-    --key-schema \
-        AttributeName=userId,KeyType=HASH \
-        AttributeName=guidelineId,KeyType=RANGE \
+        AttributeName=id,KeyType=HASH \
     --billing-mode PAY_PER_REQUEST

@@ -7,8 +7,8 @@ export default function HomePage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Redirect to login page as the entry point
-    router.push('/login')
+    // Redirect to sign up page as the entry point
+    router.push('/auth')
   }, [router])
 
   return (
@@ -20,7 +20,7 @@ export default function HomePage() {
           </svg>
         </div>
         <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">Welcome to Optimate!</h1>
-        <p className="text-gray-600">Taking you to login...</p>
+        <p className="text-gray-600">Taking you to sign up...</p>
         <div className="mt-4">
           <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
         </div>
