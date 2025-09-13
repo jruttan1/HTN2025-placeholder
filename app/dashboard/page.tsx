@@ -10,7 +10,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { X } from "lucide-react"
 // import { Toggle } from "@/components/ui/toggle"
-import SlidingToggle from "@/app/helper/toggle"
+import SlidingToggle from "@/helper/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
 const submissions = [
@@ -502,20 +502,21 @@ export default function Dashboard() {
 
             {/* Filters Section */}
 
-            <Card className="shadow-sm border-gray-200 bg-white">
-              <div className="flex items-center justify-between">
+            <Card className="shadow-sm border-gray-200 bg-white justify-center pb-12">
+              <div className="flex items-bottom justify-between">
                 <CardHeader className="pb-4">
                   <h3 className="text-lg font-semibold text-gray-900">
                     Filters
                   </h3>
                 </CardHeader>
-                <SlidingToggle
-                  pressed={advancedFilterToggled}
-                  onPressedChange={setAdvancedFilterToggled}
-                  onLabel="Advanced Filters"
-                  offLabel="Basic Filters"
-                  className="mr-4"
-                />
+                <div className="mr-3">
+                  <SlidingToggle
+                    value={advancedFilterToggled}
+                    onChange={setAdvancedFilterToggled}
+                    leftLabel="Basic"
+                    rightLabel="Advance"
+                  />
+                </div>
               </div>
               {advancedFilterToggled && (
                 <div>
