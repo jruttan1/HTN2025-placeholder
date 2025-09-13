@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useUser } from '@auth0/nextjs-auth0'
 import Link from "next/link"
 
 // Mock data for submissions (same as main page)
@@ -96,7 +97,16 @@ const submissions = [
 ]
 
 export default function SubmissionDetailPage({ params }: { params: { id: string } }) {
+  const { user, error, isLoading } = useUser();
   const submission = submissions.find((s) => s.id === Number.parseInt(params.id))
+
+  if (isLoading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="text-lg">Loading...</div>
+  </div>;
+  
+  if (error) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="text-red-600">Error: {error.message}</div>
+  </div>;
 
   if (!submission) {
     return (
@@ -176,9 +186,23 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                 </svg>
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
               </Button>
-              <Avatar className="h-9 w-9">
-                <AvatarFallback className="font-semibold bg-white text-blue-700">JD</AvatarFallback>
-              </Avatar>
+              <div className="flex items-center space-x-3">
+                <Avatar className="h-9 w-9">
+                  {user?.picture && <AvatarImage src={user.picture} alt={user.name || 'User'} />}
+                  <AvatarFallback className="font-semibold bg-white text-blue-700">
+                    {user?.name ? user.name.substring(0, 2).toUpperCase() : 'U'}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="hidden md:block">
+                  <p className="text-sm font-medium text-white">{user?.name}</p>
+                  <a 
+                    href="/api/auth/logout" 
+                    className="text-xs text-blue-100 hover:text-white transition-colors"
+                  >
+                    Logout
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
