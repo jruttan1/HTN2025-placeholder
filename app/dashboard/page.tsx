@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Slider } from "@/components/ui/slider"
 import Link from "next/link"
 import Image from "next/image"
 import { X } from "lucide-react"
@@ -136,6 +137,7 @@ export default function Dashboard() {
   const [hoveredRow, setHoveredRow] = useState<number | null>(null)
   const [selectedFilter, setSelectedFilter] = useState<string | null>(null)
   const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
+  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
 
   // Calculate summary metrics
   const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
@@ -158,6 +160,14 @@ export default function Dashboard() {
       } catch (error) {
         console.error('Error processing user data:', error)
       }
+    } else if (process.env.NODE_ENV === 'development') {
+      // Development mode: provide default user data
+      setUserData({
+        name: 'Dev User',
+        email: 'dev@optimate.com',
+        rulePreferences: 'Development mode - no specific preferences',
+        signedUpAt: new Date().toISOString()
+      })
     }
     setIsLoading(false)
   }, [])
@@ -186,7 +196,7 @@ export default function Dashboard() {
 
   const getSLAColor = (progress: number) => {
     if (progress >= 80) return "text-red-600"
-    if (progress >= 60) return "text-amber-600"
+    if (progress >= 60) return "text-blue-600"
     return "text-green-600"
   }
 
@@ -198,7 +208,7 @@ export default function Dashboard() {
 
   const getSLABarColor = (progress: number) => {
     if (progress >= 80) return "bg-red-500"
-    if (progress >= 60) return "bg-amber-500"
+    if (progress >= 60) return "bg-blue-500"
     return "bg-green-500"
   }
 
@@ -212,6 +222,14 @@ export default function Dashboard() {
   const handleAction = (submissionId: number, action: string) => {
     console.log(`${action} action for submission ${submissionId}`)
     // In a real app, this would trigger API calls
+  }
+
+  // Placeholder function for when risk level data is implemented
+  const handleRiskLevelFilter = (submissions: typeof submissions) => {
+    // TODO: When risk level data is added to submissions, filter based on riskLevelRange
+    // Example: return submissions.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
+    console.log(`Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`)
+    return submissions // Return unfiltered for now
   }
 
   const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
@@ -467,30 +485,53 @@ export default function Dashboard() {
                     </Select>
                   </div>
 
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <Select>
-                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                        <SelectValue placeholder="Premium Size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Sizes</SelectItem>
-                        <SelectItem value="small">Under $1M</SelectItem>
-                        <SelectItem value="medium">$1M - $5M</SelectItem>
-                        <SelectItem value="large">Over $5M</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Premium Size" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Sizes</SelectItem>
+                          <SelectItem value="small">Under $1M</SelectItem>
+                          <SelectItem value="medium">$1M - $5M</SelectItem>
+                          <SelectItem value="large">Over $5M</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <label className="text-sm font-medium text-gray-700">Risk Level</label>
+                      </div>
+                      <div className="px-1">
+                        <Slider
+                          value={riskLevelRange}
+                          onValueChange={setRiskLevelRange}
+                          max={100}
+                          min={0}
+                          step={5}
+                          className="w-full blue-slider"
+                        />
+                        <div className="flex justify-between mt-2 text-xs text-gray-500">
+                          <span>Low ({riskLevelRange[0]})</span>
+                          <span>High ({riskLevelRange[1]})</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
               </CardContent>
             </Card>
           </div>
 
           {/* Right Side - Top Priority */}
           <div className="lg:col-span-1">
-            <div className="space-y-4">
+            <div className="space-y-10">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-semibold text-gray-900">Top Priority</h2>
                 <div className="flex items-center space-x-2">
