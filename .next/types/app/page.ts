@@ -1,9 +1,20 @@
+<<<<<<< Updated upstream
 // File: /Users/jack/Desktop/HTN2025/app/page.tsx
+=======
+// File: C:\dev\HTN2025-placeholder\app\page.tsx
+>>>>>>> Stashed changes
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
 type TEntry = typeof import('../../../app/page.js')
 
+<<<<<<< Updated upstream
+=======
+type SegmentParams<T extends Object = any> = T extends Record<string, any>
+  ? { [K in keyof T]: T[K] extends string ? string | string[] | undefined : never }
+  : T
+
+>>>>>>> Stashed changes
 // Check that the entry is a valid entry
 checkFields<Diff<{
   default: Function
@@ -21,9 +32,17 @@ checkFields<Diff<{
   generateMetadata?: Function
   viewport?: any
   generateViewport?: Function
+<<<<<<< Updated upstream
   
 }, TEntry, ''>>()
 
+=======
+  experimental_ppr?: boolean
+  
+}, TEntry, ''>>()
+
+
+>>>>>>> Stashed changes
 // Check the prop type of the entry function
 checkFields<Diff<PageProps, FirstArg<TEntry['default']>, 'default'>>()
 
@@ -41,6 +60,7 @@ if ('generateViewport' in entry) {
 
 // Check the arguments and return type of the generateStaticParams function
 if ('generateStaticParams' in entry) {
+<<<<<<< Updated upstream
   checkFields<Diff<{ params: PageParams }, FirstArg<MaybeField<TEntry, 'generateStaticParams'>>, 'generateStaticParams'>>()
   checkFields<Diff<{ __tag__: 'generateStaticParams', __return_type__: any[] | Promise<any[]> }, { __tag__: 'generateStaticParams', __return_type__: ReturnType<MaybeField<TEntry, 'generateStaticParams'>> }>>()
 }
@@ -49,11 +69,24 @@ type PageParams = any
 export interface PageProps {
   params?: any
   searchParams?: any
+=======
+  checkFields<Diff<{ params: SegmentParams }, FirstArg<MaybeField<TEntry, 'generateStaticParams'>>, 'generateStaticParams'>>()
+  checkFields<Diff<{ __tag__: 'generateStaticParams', __return_type__: any[] | Promise<any[]> }, { __tag__: 'generateStaticParams', __return_type__: ReturnType<MaybeField<TEntry, 'generateStaticParams'>> }>>()
+}
+
+export interface PageProps {
+  params?: Promise<SegmentParams>
+  searchParams?: Promise<any>
+>>>>>>> Stashed changes
 }
 export interface LayoutProps {
   children?: React.ReactNode
 
+<<<<<<< Updated upstream
   params?: any
+=======
+  params?: Promise<SegmentParams>
+>>>>>>> Stashed changes
 }
 
 // =============

@@ -1,3 +1,10 @@
 {
+<<<<<<< Updated upstream
+=======
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...auth0]/route": "app/api/auth/[...auth0]/route.js",
+  "/login/page": "app/login/page.js",
+  "/submission/[id]/page": "app/submission/[id]/page.js",
+>>>>>>> Stashed changes
   "/page": "app/page.js"
 }
