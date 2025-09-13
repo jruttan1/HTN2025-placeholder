@@ -16,6 +16,7 @@ const submissions = [
     client: "TechCorp Industries",
     broker: "Marsh & McLennan",
     premium: "$2.5M",
+    premiumValue: 2500000,
     appetiteScore: 85,
     appetiteStatus: "good",
     slaTimer: "2h 15m",
@@ -24,6 +25,9 @@ const submissions = [
     company: "TechCorp Industries",
     product: "Cyber Liability",
     coverage: "$50M General Liability",
+    lineOfBusiness: "Cyber",
+    state: "CA",
+    businessType: "Renewal",
     whySurfaced: [
       "High appetite match for tech sector",
       "Premium size within target range",
@@ -37,6 +41,7 @@ const submissions = [
     client: "Global Manufacturing Co",
     broker: "Aon Risk Solutions",
     premium: "$1.8M",
+    premiumValue: 1800000,
     appetiteScore: 65,
     appetiteStatus: "missing",
     slaTimer: "4h 32m",
@@ -45,6 +50,9 @@ const submissions = [
     company: "Global Manufacturing Co",
     product: "Property Insurance",
     coverage: "$25M Property Coverage",
+    lineOfBusiness: "Property",
+    state: "TX",
+    businessType: "New",
     whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Renewal opportunity"],
     missingInfo: ["Environmental assessment", "Safety protocols", "Previous claims"],
     recommendation: "Request Info",
@@ -54,6 +62,7 @@ const submissions = [
     client: "StartupXYZ",
     broker: "Willis Towers Watson",
     premium: "$500K",
+    premiumValue: 500000,
     appetiteScore: 25,
     appetiteStatus: "poor",
     slaTimer: "1h 45m",
@@ -62,9 +71,54 @@ const submissions = [
     company: "StartupXYZ",
     product: "D&O Insurance",
     coverage: "$10M Directors & Officers",
+    lineOfBusiness: "D&O",
+    state: "NY",
+    businessType: "New",
     whySurfaced: ["New business opportunity", "Broker relationship priority", "Sector diversification"],
     missingInfo: ["Business plan", "Revenue projections"],
     recommendation: "Decline",
+  },
+  {
+    id: 4,
+    client: "Regional Bank Corp",
+    broker: "Gallagher",
+    premium: "$3.2M",
+    premiumValue: 3200000,
+    appetiteScore: 92,
+    appetiteStatus: "good",
+    slaTimer: "5h 30m",
+    slaProgress: 25,
+    status: "Under Review",
+    company: "Regional Bank Corp",
+    product: "Financial Lines",
+    coverage: "$100M Professional Liability",
+    lineOfBusiness: "Financial",
+    state: "FL",
+    businessType: "Renewal",
+    whySurfaced: ["Perfect appetite match", "Excellent loss history", "Long-term relationship"],
+    missingInfo: [],
+    recommendation: "Approve",
+  },
+  {
+    id: 5,
+    client: "HealthTech Solutions",
+    broker: "Marsh & McLennan",
+    premium: "$750K",
+    premiumValue: 750000,
+    appetiteScore: 78,
+    appetiteStatus: "good",
+    slaTimer: "3h 20m",
+    slaProgress: 60,
+    status: "Under Review",
+    company: "HealthTech Solutions",
+    product: "E&O Insurance",
+    coverage: "$20M E&O Coverage",
+    lineOfBusiness: "Tech E&O",
+    state: "WA",
+    businessType: "New",
+    whySurfaced: ["Growing tech sector", "Strong financials", "Good risk profile"],
+    missingInfo: ["Security audit"],
+    recommendation: "Approve",
   },
 ]
 
@@ -79,6 +133,15 @@ export default function Dashboard() {
   const [userData, setUserData] = useState<UserData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [showWelcome, setShowWelcome] = useState(false)
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null)
+  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
+
+  // Calculate summary metrics
+  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
+  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
+  const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
+  const top3Submissions = submissions.slice(0, 3)
 
   useEffect(() => {
     // Process pending user data from sign up
@@ -129,6 +192,59 @@ export default function Dashboard() {
     if (progress >= 80) return "text-red-600"
     if (progress >= 60) return "text-amber-600"
     return "text-green-600"
+  }
+
+  const getAppetiteRingColor = (score: number) => {
+    if (score >= 80) return "text-green-500"
+    if (score >= 50) return "text-amber-500"
+    return "text-red-500"
+  }
+
+  const getSLABarColor = (progress: number) => {
+    if (progress >= 80) return "bg-red-500"
+    if (progress >= 60) return "bg-amber-500"
+    return "bg-green-500"
+  }
+
+  const formatPremium = (value: number) => {
+    if (value >= 1000000) {
+      return `$${(value / 1000000).toFixed(1)}M`
+    }
+    return `$${(value / 1000).toFixed(0)}K`
+  }
+
+  const handleAction = (submissionId: number, action: string) => {
+    console.log(`${action} action for submission ${submissionId}`)
+    // In a real app, this would trigger API calls
+  }
+
+  const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
+    const sizeClass = size === 16 ? 'w-16 h-16' : size === 12 ? 'w-12 h-12' : 'w-14 h-14'
+    return (
+      <div className={`relative ${sizeClass}`}>
+        <svg className={`${sizeClass} transform -rotate-90`} viewBox="0 0 36 36">
+          <path
+            className="text-gray-200"
+            stroke="currentColor"
+            strokeWidth="3"
+            fill="none"
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+          <path
+            className={getAppetiteRingColor(score)}
+            stroke="currentColor"
+            strokeWidth="3"
+            strokeLinecap="round"
+            fill="none"
+            strokeDasharray={`${score}, 100`}
+            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-xs font-bold text-gray-900">{score}%</span>
+        </div>
+      </div>
+    )
   }
 
   if (isLoading) {
@@ -209,7 +325,7 @@ export default function Dashboard() {
         </div>
       </header>
 
-      <main className="p-8">
+      <main className="p-8 font-inter">
         {userData && showWelcome && (
           <Card className="mb-8 shadow-sm border-green-200 bg-green-50 relative">
             <CardContent className="p-6">
@@ -235,230 +351,382 @@ export default function Dashboard() {
             </CardContent>
           </Card>
         )}
-        
-        <Card className="mb-8 shadow-sm border-gray-200 bg-white">
-          <CardContent className="p-6">
-            <div className="flex items-center space-x-6">
-              <div className="text-sm font-medium text-gray-700 mr-2">Filter by:</div>
 
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        {/* Side by Side Layout: Summary Metrics + Top Submissions & Filters */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+          
+          {/* Left Side - Summary Metrics Only */}
+          <div className="lg:col-span-2">
+            {/* Summary Metrics Bar */}
+            <Card className="shadow-sm border-gray-200 bg-white">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-lg font-semibold text-gray-900">Pipeline Overview</h2>
+                  <div className="flex items-center space-x-4">
+                    <button
+                      onClick={() => setSelectedFilter('in-appetite')}
+                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                        selectedFilter === 'in-appetite'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <div className="text-center">
+                        <div className="text-xl font-bold">{inAppetite}</div>
+                        <div className="text-xs">In Appetite</div>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => setSelectedFilter('sla-risk')}
+                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                        selectedFilter === 'sla-risk'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <div className="text-center">
+                        <div className="text-xl font-bold">{atSlaRisk}</div>
+                        <div className="text-xs">At SLA Risk</div>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => setSelectedFilter('top-premium')}
+                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                        selectedFilter === 'top-premium'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <div className="text-center">
+                        <div className="text-xl font-bold">{formatPremium(totalPremiumTop10)}</div>
+                        <div className="text-xs">Total Premium</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Right Side - Top 3 Submissions & Filters */}
+          <div className="lg:col-span-1">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-semibold text-gray-900">Top Priority</h2>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => setCurrentTopSubmission(Math.max(0, currentTopSubmission - 1))}
+                    disabled={currentTopSubmission === 0}
+                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <span className="text-sm text-gray-500 min-w-[40px] text-center">
+                    {currentTopSubmission + 1} / {top3Submissions.length}
+                  </span>
+                  <button
+                    onClick={() => setCurrentTopSubmission(Math.min(top3Submissions.length - 1, currentTopSubmission + 1))}
+                    disabled={currentTopSubmission === top3Submissions.length - 1}
+                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  >
+                    <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              
+              {/* Current Top Submission */}
+              {(() => {
+                const submission = top3Submissions[currentTopSubmission]
+                const cardColors = [
+                  {
+                    accent: 'bg-indigo-600',
+                    text: 'text-gray-900',
+                    chip: 'bg-indigo-100 text-indigo-800'
+                  },
+                  {
+                    accent: 'bg-purple-600',
+                    text: 'text-gray-900',
+                    chip: 'bg-purple-100 text-purple-800'
+                  },
+                  {
+                    accent: 'bg-emerald-600',
+                    text: 'text-gray-900',
+                    chip: 'bg-emerald-100 text-emerald-800'
+                  }
+                ]
+                
+                const currentColor = cardColors[currentTopSubmission]
+                
+                return (
+                  <Card key={submission.id} className="shadow-lg bg-white cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-gray-200">
+                      <CardContent className="p-6">
+                      <div className="absolute top-4 right-4">
+                        <div className={`${currentColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}>
+                          {currentTopSubmission + 1}
+                        </div>
+                      </div>
+                      
+                      <div className="mb-6">
+                        <h3 className={`text-2xl font-bold mb-2 ${currentColor.text}`}>{submission.client}</h3>
+                        <p className={`text-3xl font-extrabold ${currentColor.text}`}>{submission.premium}</p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div className="text-center">
+                            <ProgressRing score={submission.appetiteScore} size={14} />
+                            <p className={`text-xs mt-2 ${currentColor.text}`}>Appetite Fit</p>
+                          </div>
+                          <div className="text-center flex-1 mx-4">
+                            <p className={`text-xl font-bold mb-2 ${currentColor.text}`}>{submission.slaTimer}</p>
+                            <div className="w-full bg-gray-200 rounded-full h-3">
+                              <div
+                                className={`h-3 rounded-full transition-all ${getSLABarColor(submission.slaProgress)}`}
+                                style={{ width: `${submission.slaProgress}%` }}
+                              />
+                            </div>
+                            <p className={`text-xs mt-2 ${currentColor.text}`}>SLA Progress</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <div className="flex flex-wrap gap-2">
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                              {submission.broker}
+                            </span>
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                              {submission.lineOfBusiness}
+                            </span>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                              {submission.state} • {submission.businessType}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      </CardContent>
+                    </Card>
+                )
+              })()}
+              
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {top3Submissions.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTopSubmission(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      currentTopSubmission === index ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
                   />
-                </svg>
-                <Select>
-                  <SelectTrigger className="w-52 bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                    <SelectValue placeholder="Appetite Fit" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Appetite Fits</SelectItem>
-                    <SelectItem value="good">In Appetite</SelectItem>
-                    <SelectItem value="missing">Missing Info</SelectItem>
-                    <SelectItem value="poor">Out of Appetite</SelectItem>
-                  </SelectContent>
-                </Select>
+                ))}
               </div>
 
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <Select>
-                  <SelectTrigger className="w-52 bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                    <SelectValue placeholder="Region" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Regions</SelectItem>
-                    <SelectItem value="na">North America</SelectItem>
-                    <SelectItem value="eu">Europe</SelectItem>
-                    <SelectItem value="apac">APAC</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Filters Section */}
+              <Card className="shadow-sm border-gray-200 bg-white">
+                <CardHeader>
+                  <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+                </CardHeader>
+                <CardContent className="p-6 pt-0">
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Appetite Fit" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Appetite Fits</SelectItem>
+                          <SelectItem value="good">In Appetite</SelectItem>
+                          <SelectItem value="missing">Missing Info</SelectItem>
+                          <SelectItem value="poor">Out of Appetite</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <Select>
-                  <SelectTrigger className="w-52 bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                    <SelectValue placeholder="Broker" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Brokers</SelectItem>
-                    <SelectItem value="marsh">Marsh & McLennan</SelectItem>
-                    <SelectItem value="aon">Aon Risk Solutions</SelectItem>
-                    <SelectItem value="willis">Willis Towers Watson</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Region" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Regions</SelectItem>
+                          <SelectItem value="na">North America</SelectItem>
+                          <SelectItem value="eu">Europe</SelectItem>
+                          <SelectItem value="apac">APAC</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-              <div className="flex items-center space-x-2">
-                <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <Select>
-                  <SelectTrigger className="w-52 bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                    <SelectValue placeholder="Premium Size" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">All Sizes</SelectItem>
-                    <SelectItem value="small">Under $1M</SelectItem>
-                    <SelectItem value="medium">$1M - $5M</SelectItem>
-                    <SelectItem value="large">Over $5M</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Broker" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Brokers</SelectItem>
+                          <SelectItem value="marsh">Marsh & McLennan</SelectItem>
+                          <SelectItem value="aon">Aon Risk Solutions</SelectItem>
+                          <SelectItem value="willis">Willis Towers Watson</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Premium Size" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Sizes</SelectItem>
+                          <SelectItem value="small">Under $1M</SelectItem>
+                          <SelectItem value="medium">$1M - $5M</SelectItem>
+                          <SelectItem value="large">Over $5M</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         <Card className="shadow-sm border-gray-200 bg-white">
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl font-semibold text-gray-900">Ranked Submissions</CardTitle>
-            <p className="text-gray-600">Click any submission to view detailed analysis and recommendations</p>
+            <CardTitle className="text-2xl font-semibold text-gray-900">All Submissions</CardTitle>
+            <p className="text-gray-600">Hover over rows to see why they surfaced • Click to view detailed analysis</p>
           </CardHeader>
           <CardContent className="p-0">
-            <div className="divide-y divide-gray-100">
+            <div className="divide-y divide-gray-50">
               {submissions.map((submission, index) => (
-                <Link key={submission.id} href={`/submission/${submission.id}`}>
-                  <div className="p-8 hover:bg-blue-50/50 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-blue-500">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-10 flex-1">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-sm">
-                            {index + 1}
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-1">{submission.client}</h3>
-                            <p className="text-gray-500 font-medium">{submission.broker}</p>
-                          </div>
-                        </div>
-
-                        <div className="text-center">
-                          <p className="text-3xl font-bold text-gray-900">{submission.premium}</p>
-                          <p className="text-sm text-gray-500 font-medium">Premium</p>
-                        </div>
-
-                        <div className="text-center">
-                          <div className="relative w-16 h-16 mx-auto mb-2">
-                            <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 36 36">
-                              <path
-                                className="text-gray-200"
-                                stroke="currentColor"
-                                strokeWidth="3"
-                                fill="none"
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                              />
-                              <path
-                                className={
-                                  submission.appetiteStatus === "good"
-                                    ? "text-green-500"
-                                    : submission.appetiteStatus === "missing"
-                                      ? "text-amber-500"
-                                      : "text-red-500"
-                                }
-                                stroke="currentColor"
-                                strokeWidth="3"
-                                strokeLinecap="round"
-                                fill="none"
-                                strokeDasharray={`${submission.appetiteScore}, 100`}
-                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                              />
-                            </svg>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-sm font-bold text-gray-900">{submission.appetiteScore}%</span>
+                <div
+                  key={submission.id}
+                  className="relative"
+                  onMouseEnter={() => setHoveredRow(submission.id)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                >
+                  <Link href={`/submission/${submission.id}`}>
+                    <div className="p-6 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-gradient-to-b hover:border-blue-500 min-h-[120px] flex items-center">
+                        <div className="flex items-center justify-between w-full">
+                          <div className="flex items-center space-x-8 flex-1">
+                            {/* Rank and Client */}
+                            <div className="flex items-center space-x-4 min-w-[280px]">
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
+                              {index + 1}
+                            </div>
+                            <div>
+                              <h3 className="text-xl font-bold text-gray-900 mb-1">{submission.client}</h3>
+                              <p className="text-gray-500 font-medium mb-2">{submission.broker}</p>
+                              <div className="flex items-center space-x-2">
+                                <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                                  {submission.lineOfBusiness}
+                                </span>
+                                <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                                  {submission.state}
+                                </span>
+                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                  submission.businessType === 'Renewal' 
+                                    ? 'bg-green-100 text-green-800' 
+                                    : 'bg-purple-100 text-purple-800'
+                                }`}>
+                                  {submission.businessType}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                          <Badge
-                            className={`${getAppetiteColor(submission.appetiteStatus)} text-xs font-semibold px-2 py-1 border`}
-                          >
-                            {submission.appetiteStatus === "good"
-                              ? "In Appetite"
-                              : submission.appetiteStatus === "missing"
-                                ? "Info Needed"
-                                : "Out of Appetite"}
-                          </Badge>
-                        </div>
 
-                        <div className="text-center">
-                          <p className={`text-2xl font-bold ${getSLAColor(submission.slaProgress)}`}>
-                            {submission.slaTimer}
-                          </p>
-                          <div className="w-20 bg-gray-200 rounded-full h-2 mt-2">
-                            <div
-                              className={`h-2 rounded-full ${submission.slaProgress >= 80 ? "bg-red-500" : submission.slaProgress >= 60 ? "bg-amber-500" : "bg-green-500"}`}
-                              style={{ width: `${submission.slaProgress}%` }}
-                            ></div>
+                          {/* Premium */}
+                          <div className="text-center min-w-[120px]">
+                            <p className="text-3xl font-bold text-gray-900">{submission.premium}</p>
+                            <p className="text-sm text-gray-500 font-medium">Premium</p>
                           </div>
-                          <p className="text-sm text-gray-500 font-medium mt-1">Time Remaining</p>
+
+                          {/* Appetite Fit */}
+                          <div className="text-center min-w-[100px]">
+                            <div className="flex justify-center mb-2">
+                              <ProgressRing score={submission.appetiteScore} size={16} />
+                            </div>
+                            <Badge className={`${getAppetiteColor(submission.appetiteStatus)} text-xs font-semibold px-3 py-1 rounded-full border-0`}>
+                              {submission.appetiteStatus === "good"
+                                ? "In Appetite"
+                                : submission.appetiteStatus === "missing"
+                                  ? "Info Needed"
+                                  : "Out of Appetite"}
+                            </Badge>
+                          </div>
+
+                          {/* SLA Timer */}
+                          <div className="text-center min-w-[120px]">
+                            <p className={`text-2xl font-bold ${getSLAColor(submission.slaProgress)} mb-1`}>
+                              {submission.slaTimer}
+                            </p>
+                            <div className="w-20 bg-gray-200 rounded-full h-2 mx-auto">
+                              <div
+                                className={`h-2 rounded-full transition-all ${getSLABarColor(submission.slaProgress)}`}
+                                style={{ width: `${submission.slaProgress}%` }}
+                              />
+                            </div>
+                            <p className="text-sm text-gray-500 font-medium mt-1">Time Remaining</p>
+                          </div>
+
+                          {/* Status */}
+                          <div className="min-w-[140px]">
+                            <Badge className={`${getStatusColor(submission.status)} text-sm font-semibold px-4 py-2 rounded-full border-0`}>
+                              {submission.status === "Under Review" && (
+                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              )}
+                              {submission.status === "Pending Info" && (
+                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              )}
+                              {submission.status === "Review Required" && (
+                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                              )}
+                              {submission.status}
+                            </Badge>
+                            </div>
+                          </div>
                         </div>
-
-                        <Badge
-                          className={`${getStatusColor(submission.status)} text-sm font-semibold px-4 py-2 border`}
-                        >
-                          {submission.status === "Under Review" && (
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                          )}
-                          {submission.status === "Pending Info" && (
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                              />
-                            </svg>
-                          )}
-                          {submission.status === "Review Required" && (
-                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                              />
-                            </svg>
-                          )}
-                          {submission.status}
-                        </Badge>
                       </div>
+                    </Link>
 
-                      <div className="flex items-center text-blue-600 font-semibold">
-                        <span className="mr-2">View Details</span>
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
+                  {/* Hover Popover */}
+                  {hoveredRow === submission.id && (
+                    <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-lg shadow-lg p-4 w-80">
+                      <h4 className="font-semibold text-gray-900 mb-2">Why This Surfaced</h4>
+                      <ul className="space-y-1">
+                        {submission.whySurfaced.slice(0, 3).map((reason, i) => (
+                          <li key={i} className="text-sm text-gray-700 flex items-start">
+                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            {reason}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </Link>
+                  )}
+                </div>
               ))}
             </div>
           </CardContent>

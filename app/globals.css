@@ -150,6 +150,28 @@
   .bg-appetite-poor {
     background-color: oklch(0.5 0.2 350);
   }
+
+  /* Electric border animations */
+  .animate-spin-slow {
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes electric-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-electric {
+    background-size: 400% 400%;
+    animation: electric-border 3s ease infinite;
+  }
 }
 
 @layer base {
