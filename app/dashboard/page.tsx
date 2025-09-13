@@ -10,7 +10,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { X } from "lucide-react"
 // import { Toggle } from "@/components/ui/toggle"
-import SlidingToggle from "@/helper/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
 const submissions = [
@@ -144,6 +143,7 @@ export default function Dashboard() {
   const [brokerFilter, setBrokerFilter] = useState<string | null>(null);
   const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(null);
   const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
+  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
 
   // Helper functions for filtering
