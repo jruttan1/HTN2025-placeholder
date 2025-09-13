@@ -3,9 +3,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Satoshi font family definition */
+.font-satoshi {
+  font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
 :root {
   /* Updated color system to match Federato's branding with blue gradients and appetite scoring colors */
-  --background: oklch(0.97 0.005 240); /* Light blue-gray background */
+  --background: oklch(0.96 0.005 45); /* Off-white textured background */
   --foreground: oklch(0.3 0.02 240); /* Dark blue-gray text */
   --card: oklch(1 0 0); /* Pure white cards */
   --card-foreground: oklch(0.3 0.02 240); /* Dark blue-gray card text */
@@ -76,7 +81,7 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -152,6 +157,11 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: oklch(0.96 0.005 45);
+    background-image: 
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
 }
