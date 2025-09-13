@@ -225,11 +225,11 @@ export default function Dashboard() {
   }
 
   // Placeholder function for when risk level data is implemented
-  const handleRiskLevelFilter = (submissions: typeof submissions) => {
+  const handleRiskLevelFilter = (submissionList: any[]) => {
     // TODO: When risk level data is added to submissions, filter based on riskLevelRange
-    // Example: return submissions.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
+    // Example: return submissionList.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
     console.log(`Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`)
-    return submissions // Return unfiltered for now
+    return submissionList // Return unfiltered for now
   }
 
   const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
@@ -746,7 +746,7 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                  </Link>
 
                   {/* Hover Popover */}
                   {hoveredRow === submission.id && (
@@ -771,3 +771,4 @@ export default function Dashboard() {
     </div>
   )
 }
+
