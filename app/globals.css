@@ -1,20 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Force slider to use blue instead of orange/amber */
-.blue-slider [data-slot="slider-track"] {
-  background-color: #e5e7eb !important;
-}
-
-.blue-slider [data-slot="slider-range"] {
-  background-color: #2563eb !important;
-}
-
-.blue-slider [data-slot="slider-thumb"] {
-  background-color: #2563eb !important;
-  border-color: #2563eb !important;
-}
-
 @custom-variant dark (&:is(.dark *));
 
 /* Satoshi font family definition */

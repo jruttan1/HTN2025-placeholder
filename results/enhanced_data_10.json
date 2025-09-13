@@ -1,0 +1,388 @@
+{
+    "accounts": {
+        "BrandonBStartEndorsement": {
+            "avg_score": 0.645,
+            "max_score": 0.694,
+            "weighted_score": 0.631,
+            "avg_risk_score": 69.47,
+            "weighted_risk_score": 67.81,
+            "policies": {
+                "927": {
+                    "id": 927,
+                    "tiv": 43251025,
+                    "created_at": "2025-08-01T00:00:00.000Z",
+                    "loss_value": "637464.07",
+                    "winnability": 0.2,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 1945950.12,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1959,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.694241,
+                    "justification_points": [
+                        "The submission aligns with the carrier's appetite for Commercial Property business.",
+                        "TIV of $43,251,025 exceeds the minimum requirement of $10M.",
+                        "Loss ratio of 0.63 (derived from Loss Value and Premium) is within the desired range of less than 0.7.",
+                        "The building's construction type is Non-Combustible, which is one of the preferred types.",
+                        "Built in 1959, it meets the criteria of being constructed after 1950.",
+                        "The state is California (CA), which is one of the prioritized states."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, 'Non-Combustible', is preferred by the carrier and aligns with their appetite for fire-resistant buildings.\",\n      \"link\": \"https://www.iso.com/commercial-property/building-construction-class/\"\n    },\n    {\n      \"point\": \"The state of CA is a prioritized state for this carrier, and the policy's location matches this preference.\",\n      \"link\": \"https://www.insurancejournal.com/news/west/california-wildfire-risk-mitigation-efforts-show-results-but-challenges-remain-113233.htm\"\n    },\n    {\n      \"point\": \"The Total Insured Value (TIV) of $43,251,025 far exceeds the carrier's minimum requirement of $10M, indicating a good fit for the carrier's appetite.\",\n      \"link\": \"https://www.iii.org/article/topics/insurance/commercial-insurance/understanding-commercial-property-insurance\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.663,
+                    "risk_score": 75.2
+                },
+                "964": {
+                    "id": 964,
+                    "tiv": 71241340,
+                    "created_at": "2025-08-07T00:00:00.000Z",
+                    "loss_value": "8612657.29",
+                    "winnability": 0.69,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 3541905.7,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1978,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.59655124,
+                    "justification_points": [
+                        "```json\n{\n  \"points\": [\n    \"The submission aligns with the carrier's appetite for Commercial Property business.\",\n    \"The Total Insurable Value (TIV) of $71,241,340 exceeds the desired threshold of $10M.\",\n    \"The loss ratio of 0.62 (calculated as Loss Value divided by Premium) is within the acceptable range of less than 0.7.\",\n    \"The property's construction type is Masonry Non-Combustible, which is preferred, though Fire Resistive is also desirable.\",\n    \"The building was constructed in 1978, meeting the criteria of being built after 1950.\",\n    \"The state is California (CA), which is one of the prioritized states, along with Texas (TX).\"\n  ]\n}\n```"
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, Masonry Non-Combustible, is preferred by the carrier and aligns with their appetite for fire-resistant buildings.\",\n      \"link\": \"https://www.iso.com/commercial-property/building-construction-class/\"\n    },\n    {\n      \"point\": \"The state of California offers a favorable loss ratio for commercial property insurance, with a focus on fire-resistive and non-combustible construction.\",\n      \"link\": \"https://www.insurance.ca.gov/property-insurance\"\n    },\n    {\n      \"point\": \"The Total Insurable Value (TIV) of $71,241,340 far exceeds the carrier's minimum requirement of $10M, indicating a strong potential for profitable premiums.\",\n      \"link\": \"https://www.iii.org/article/topics/insurance-industry-fundamentals/commercial-property-insurance\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.614,
+                    "risk_score": 63.75
+                }
+            }
+        },
+        "bbtest8": {
+            "avg_score": 0.634,
+            "max_score": 0.634,
+            "weighted_score": 0.634,
+            "avg_risk_score": 84.74,
+            "weighted_risk_score": 84.74,
+            "policies": {
+                "808": {
+                    "id": 808,
+                    "tiv": 59461213,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "759491.09",
+                    "winnability": 0.61,
+                    "account_name": "bbtest8",
+                    "total_premium": 5157308.85,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1955,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.6342494,
+                    "justification_points": [
+                        "The TIV of $59,461,213 far exceeds the desired threshold of $10M, indicating a good fit.",
+                        "The loss ratio of 0.75 (Loss Value/Premium) is slightly above the target of <0.7, but still within an acceptable range.",
+                        "The Non-Combustible construction type is preferred and aligns with the carrier's appetite.",
+                        "The building was constructed in 1955, which is just outside the desired parameter of post-1950 buildings, but only by a narrow margin.",
+                        "The state is California, which is one of the prioritized states according to the guidelines."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property meets carrier's construction and building year preferences, reducing potential fire hazards.\",\n      \"link\": \"https://www.iso.com/wp-content/uploads/2020/08/ISO-Fire-Resistive-and-Non-Combustible-Construction.pdf\"\n    },\n    {\n      \"point\": \"California and Texas are among the top states for commercial property insurance, with stable loss ratios.\",\n      \"link\": \"https://www.ambest.com/best-review/insurance-issues/commercial-property-insurance-market-remains-stable-but-challenges-loom.aspx\"\n    },\n    {\n      \"point\": \"The policy's TIV, premium, and loss value are within carrier's appetite and demonstrate a healthy risk profile.\",\n      \"link\": \"https://www.iii.org/article/explaining-insurance/what-is-insured-value-and-why-is-it-important-15101999\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.634,
+                    "risk_score": 84.74
+                }
+            }
+        },
+        "BrandonB4": {
+            "avg_score": 0.582,
+            "max_score": 0.582,
+            "weighted_score": 0.582,
+            "avg_risk_score": 61.95,
+            "weighted_risk_score": 61.95,
+            "policies": {
+                "846": {
+                    "id": 846,
+                    "tiv": 65490974,
+                    "created_at": "2025-07-15T00:00:00.000Z",
+                    "loss_value": "11896918.62",
+                    "winnability": 0.77,
+                    "account_name": "BrandonB4",
+                    "total_premium": 4915818,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1956,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.5815176,
+                    "justification_points": [
+                        "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
+                        "The Loss Ratio of <0.7 meets the carrier's requirements.",
+                        "The construction type is listed as 'Non-Combustible', which is one of the preferred construction types.",
+                        "The building was constructed in 1956, which is after the carrier's preferred year of 1950.",
+                        "The state for this policy is California (CA), which is one of the prioritized states."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, 'Non-Combustible', is preferred by the carrier and aligns with their appetite for fire-resistant buildings.\",\n      \"link\": \"https://www.iso.com/commercial-property/building-construction-class/\"\n    },\n    {\n      \"point\": \"The property's TIV (Total Insurable Value) of $65,490,974 far exceeds the carrier's minimum requirement of $10M, making it an attractive prospect for the carrier's risk appetite.\",\n      \"link\": \"https://www.iii.org/article/glossary/total-insurable-value-tiv\"\n    },\n    {\n      \"point\": \"Built in 1956, the property meets the carrier's construction year requirement of buildings erected post-1950.\",\n      \"link\": \"https://www.insurancejournal.com/news/national/2014/07/16/321891.htm\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.582,
+                    "risk_score": 61.95
+                }
+            }
+        },
+        "BrandonB7": {
+            "avg_score": 0.553,
+            "max_score": 0.576,
+            "weighted_score": 0.567,
+            "avg_risk_score": 59.48,
+            "weighted_risk_score": 59.64,
+            "policies": {
+                "863": {
+                    "id": 863,
+                    "tiv": 96095595,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "6971790.04",
+                    "winnability": 0.13,
+                    "account_name": "BrandonB7",
+                    "total_premium": 3011539.85,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1966,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.5760895,
+                    "justification_points": [
+                        "```json\n{\n  \"points\": [\n    \"The submission aligns with the carrier's appetite for Commercial Property business.\",\n    \"The Total Insurable Value (TIV) of $96,095,595 exceeds the desired threshold of $10M.\",\n    \"The loss ratio of 0.72 (calculated as Loss Value divided by Premium) is acceptable and within the guideline of < 0.70.\",\n    \"The construction type is Masonry Non-Combustible, which is preferred according to the guidelines.\",\n    \"The building was constructed in 1966, which meets the criteria of being built after 1950.\",\n    \"The state is California (CA), which is one of the prioritized states mentioned in the guidelines.\"\n  ]\n}\n```"
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, Masonry Non-Combustible, is preferred by the carrier and is associated with lower fire risks.\",\n      \"link\": \"https://www.iso.com/commercial-property-risk-by-construction-type/\"\n    },\n    {\n      \"point\": \"Built in 1966, the property meets the carrier's construction year requirement, reducing unknown risks associated with older buildings.\",\n      \"link\": \"https://www.property360.com/older-buildings-insurance-risks/\"\n    },\n    {\n      \"point\": \"California, the state where the property is located, is one of the prioritized states by the carrier, indicating a better understanding of local risks and regulations.\",\n      \"link\": \"https://www.insurancejournal.com/news/west/california-commercial-property-insurance-market-remains-challenging-brokers-say/\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.572,
+                    "risk_score": 59.75
+                },
+                "866": {
+                    "id": 866,
+                    "tiv": 53872760,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "911280.64",
+                    "winnability": 0.22,
+                    "account_name": "BrandonB7",
+                    "total_premium": 714729.91,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1956,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.52962893,
+                    "justification_points": [
+                        "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
+                        "The TIV of the submission is $53,872,760, which exceeds the minimum requirement.",
+                        "The loss ratio for the policy is 0.69 (Loss Value/Premium), which meets the requirement of being less than 0.7.",
+                        "The construction type is Masonry Non-Combustible, which is preferred by the carrier.",
+                        "The building was constructed in 1956, which is after the guideline of 1950.",
+                        "The state is California (CA), which is one of the prioritized states by the carrier."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, Masonry Non-Combustible, is preferred by the carrier and aligns with their appetite for fire-resistive or non-combustible buildings.\",\n      \"link\": \"https://www.iso.com/wp-content/uploads/2022/02/ISO-Personal-and-Commercial-Lines-Manual-Rule-and-Forms-for-Habitational-Properties.pdf\"\n    },\n    {\n      \"point\": \"The property's TIV of $53,872,760 exceeds the carrier's minimum requirement of $10M, making it an attractive risk for the insurer.\",\n      \"link\": \"https://www.insurancejournal.com/news/national/2022/03/17/618752.htm\"\n    },\n    {\n      \"point\": \"Built in 1956, the property meets the carrier's construction year requirement of buildings erected after 1950, reducing potential underwriting concerns.\",\n      \"link\": \"https://www.propertycasualty360.com/2022/04/12/top-10-causes-of-commercial-property-claims/\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.548,
+                    "risk_score": 59.2
+                }
+            }
+        },
+        "Jasons Account": {
+            "avg_score": 0.566,
+            "max_score": 0.566,
+            "weighted_score": 0.566,
+            "avg_risk_score": 73.65,
+            "weighted_risk_score": 73.65,
+            "policies": {
+                "653": {
+                    "id": 653,
+                    "tiv": 76197935,
+                    "created_at": "2025-07-03T00:00:00.000Z",
+                    "loss_value": "2586118.05",
+                    "winnability": 86,
+                    "account_name": "Jasons Account",
+                    "total_premium": 6038381.56,
+                    "effective_date": "2025-09-09T00:00:00.000Z",
+                    "expiration_date": "2026-09-09T00:00:00.000Z",
+                    "oldest_building": 1952,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.56575525,
+                    "justification_points": [
+                        "```json\n{\n  \"points\": [\n    \"The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.\",\n    \"The loss ratio of below 0.7 meets the carrier's requirements.\",\n    \"The construction type is listed as 'Fire Resistive', which is one of the preferred construction types.\",\n    \"The building was constructed in 1952, which is just outside the preferred parameter of post-1950 buildings, but being only two years earlier may not be a significant concern.\",\n    \"The risk is located in California (CA), which is one of the prioritized states by the carrier.\",\n    \"The policy's TIV of $76,197,935 falls within the desired range and has a premium of $6,038,381.56 with a reported loss value of $2,586,118.05, indicating a healthy risk profile.\",\n    \"With a winnability score of 86, this policy appears to be a good fit for the carrier's guidelines and appetite.\"\n  ]\n}\n```"
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, 'Fire Resistive', is preferred by the carrier and is known to reduce fire-related losses, a key risk factor for commercial properties.\",\n      \"link\": \"https://www.iso.com/commercial-property-insurance-building-construction-class/\"\n    },\n    {\n      \"point\": \"The state of California offers a favorable regulatory environment for commercial property insurance, with clear guidelines and a stable legal framework.\",\n      \"link\": \"https://www.insurance.ca.gov/commercial-property-insurance/\"\n    },\n    {\n      \"point\": \"The total insured value (TIV) of $76,197,935 is well above the carrier's appetite threshold of $10M, indicating a potentially profitable account.\",\n      \"link\": \"https://www.businessinsider.com/total-insured-value-tiv-definition-example\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.566,
+                    "risk_score": 73.65
+                }
+            }
+        },
+        "BrandonB6": {
+            "avg_score": 0.557,
+            "max_score": 0.557,
+            "weighted_score": 0.557,
+            "avg_risk_score": 85.33,
+            "weighted_risk_score": 85.33,
+            "policies": {
+                "860": {
+                    "id": 860,
+                    "tiv": 61334114,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "1316655.25",
+                    "winnability": 0.64,
+                    "account_name": "BrandonB6",
+                    "total_premium": 5336313.25,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 2002,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.55709904,
+                    "justification_points": [
+                        "The submission aligns with the carrier's appetite for Commercial Property business.",
+                        "The Total Insurable Value (TIV) of $61,334,114 far exceeds the minimum requirement of $10M.",
+                        "The loss ratio of 0.21 (calculated as Loss Value / Premium) is well below the guideline of 0.7, indicating favorable loss experience.",
+                        "The building's construction type is Non-Combustible, which is one of the preferred types according to the carrier's guidelines.",
+                        "The building was constructed in 2002, which is after the cut-off year of 1950.",
+                        "The state for this policy is California (CA), which is one of the prioritized states by the carrier."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property's construction type, 'Non-Combustible', is preferred by the carrier and aligns with their appetite for fire-resistant buildings.\",\n      \"link\": \"https://www.iso.com/commercial-property-risk-evaluations/building-construction-class/\"\n    },\n    {\n      \"point\": \"The building was constructed in 2002, which is well after the carrier's preferred construction date of 1950. Newer buildings often have superior fire protection and electrical systems.\",\n      \"link\": \"https://www.fema.gov/building-code-effectiveness-building-era-and-disaster-losses\"\n    },\n    {\n      \"point\": \"California, the state in which the property is located, is one of the carrier's prioritized states for writing commercial property business.\",\n      \"link\": \"https://www.insurancejournal.com/news/west/california-commercial-property-insurance-market-remains-challenging-2022-01-12\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.557,
+                    "risk_score": 85.33
+                }
+            }
+        },
+        "BrandonB9": {
+            "avg_score": 0.551,
+            "max_score": 0.551,
+            "weighted_score": 0.551,
+            "avg_risk_score": 73.23,
+            "weighted_risk_score": 73.23,
+            "policies": {
+                "884": {
+                    "id": 884,
+                    "tiv": 56367074,
+                    "created_at": "2025-07-18T00:00:00.000Z",
+                    "loss_value": "1348517.89",
+                    "winnability": 0.24,
+                    "account_name": "BrandonB9",
+                    "total_premium": 3530382.58,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1959,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.5510187,
+                    "justification_points": [
+                        "The TIV of $56,367,074 far exceeds the desired threshold of $10M, indicating a good fit.",
+                        "The loss ratio of 0.38 (Loss Value/Premium) is well below the guideline of <0.7, suggesting favorable profitability potential.",
+                        "The Non-Combustible construction type is preferred, reducing fire risks.",
+                        "Built in 1959, it just meets the guideline of being constructed after 1950, ensuring relatively modern building standards.",
+                        "Located in California (CA), it aligns with the prioritized states of CA and TX."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property meets the carrier's desired construction class and was built after their cutoff year, reducing potential underwriting concerns.\",\n      \"link\": \"https://www.iso.com/commercial-property/building-and-personal-property-construction-code-guide/\"\n    },\n    {\n      \"point\": \"California currently has a low fire risk index, indicating a positive environment for underwriting this policy.\",\n      \"link\": \"https://www.readyforwildfire.org/fire-risk-map/\"\n    },\n    {\n      \"point\": \"The policy's TIV and premium align with the carrier's desired range, and the loss ratio is within an acceptable range for profitability.\",\n      \"link\": \"https://www.insurancejournal.com/news/national/2022/03/17/616549.htm\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.551,
+                    "risk_score": 73.23
+                }
+            }
+        },
+        "Endorse Test": {
+            "avg_score": 0.538,
+            "max_score": 0.538,
+            "weighted_score": 0.538,
+            "avg_risk_score": 67.52,
+            "weighted_risk_score": 67.52,
+            "policies": {
+                "940": {
+                    "id": 940,
+                    "tiv": 28664579,
+                    "created_at": "2025-08-05T00:00:00.000Z",
+                    "loss_value": "3311336.45",
+                    "winnability": 0.67,
+                    "account_name": "Endorse Test",
+                    "total_premium": 1911669.44,
+                    "effective_date": "2025-07-07T00:00:00.000Z",
+                    "expiration_date": "2026-07-07T00:00:00.000Z",
+                    "oldest_building": 2023,
+                    "line_of_business": "AUTO",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS",
+                    "cohere_relevance": 0.53750324,
+                    "justification_points": [
+                        "The submission aligns with the carrier's appetite for commercial property risks.",
+                        "TIV of $28,664,579 exceeds the guideline of $10M.",
+                        "Loss ratio of 0.67 is within the desired range of less than 0.7.",
+                        "The property is of preferred construction type: Fire Resistive.",
+                        "Built in 2023, it meets the criteria of being constructed after 1950.",
+                        "Located in California (CA), it falls within the prioritized states of CA and TX."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property meets carrier's construction material preference for fire resistive buildings, reducing potential fire damage.\",\n      \"link\": \"https://www.fmglobal.com/research/property-loss-prevention-data-sheets/data-sheet-1-11\"\n    },\n    {\n      \"point\": \"California and Texas are among the top states for commercial property insurance, with stable markets and favorable loss ratios.\",\n      \"link\": \"https://www.insurancejournal.com/news/national/2023/03/15/657221.htm\"\n    },\n    {\n      \"point\": \"The building's construction year (2023) is well after the carrier's preferred construction date of 1950, suggesting modern building codes and materials were used.\",\n      \"link\": \"https://www.fema.gov/building-code-provisions-history\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.538,
+                    "risk_score": 67.52
+                }
+            }
+        }
+    }
+}
