@@ -98,7 +98,7 @@ const submissions = [
 ]
 
 export default function SubmissionDetailPage({ params }: { params: { id: string } }) {
-  const submission = submissions.find((s) => s.id === Number.parseInt(params.id))
+  const submission = submissions.find((s) => s.id === parseInt(params.id))
 
   if (!submission) {
     return (
@@ -243,8 +243,8 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                     <p className="text-4xl font-bold text-green-600">{submission.appetiteScore}%</p>
                     <p className="text-sm text-gray-600 mt-2 font-medium">Appetite Score</p>
                   </div>
-                  <div className="text-center p-4 bg-amber-50 rounded-lg">
-                    <p className="text-4xl font-bold text-amber-600">{submission.slaTimer}</p>
+                  <div className="text-center p-4 bg-blue-50 rounded-lg">
+                    <p className="text-4xl font-bold text-blue-600">{submission.slaTimer}</p>
                     <p className="text-sm text-gray-600 mt-2 font-medium">Time Remaining</p>
                   </div>
                   <div className="text-center p-4 bg-purple-50 rounded-lg">
@@ -469,7 +469,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
             <Card className="border-gray-200 bg-white shadow-sm">
               <CardHeader>
                 <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -483,8 +483,8 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
               <CardContent>
                 <div className="space-y-3">
                   {submission.missingInfo.map((item, index) => (
-                    <div key={index} className="p-3 bg-amber-50 rounded-lg border border-amber-200">
-                      <Badge className="text-amber-700 bg-amber-100 border-amber-300 text-sm font-semibold px-3 py-1">
+                    <div key={index} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                      <Badge className="text-blue-700 bg-blue-100 border-blue-300 text-sm font-semibold px-3 py-1">
                         {item}
                       </Badge>
                     </div>
