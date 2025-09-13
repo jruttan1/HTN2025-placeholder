@@ -1,0 +1,24 @@
+{
+    "output": [
+        {
+            "data": [
+                {
+                    "id": 956,
+                    "tiv": 57075450,
+                    "created_at": "2025-08-06T00:00:00.000Z",
+                    "loss_value": "2585536.95",
+                    "winnability": 86,
+                    "account_name": "F10 Goal RETENTION BOUND (DO NOT MODIFY)",
+                    "total_premium": 1375175.89,
+                    "effective_date": "2024-12-12T00:00:00.000Z",
+                    "expiration_date": "2025-12-12T00:00:00.000Z",
+                    "oldest_building": 1984,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "RENEWAL"
+                }
+            ]
+        }
+    ]
+}
