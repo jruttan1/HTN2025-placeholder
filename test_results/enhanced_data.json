@@ -1,0 +1,45 @@
+{
+    "accounts": {
+        "F10 Goal RETENTION BOUND (DO NOT MODIFY)": {
+            "avg_score": 0.106,
+            "max_score": 0.106,
+            "weighted_score": 0.106,
+            "avg_risk_score": 48.2,
+            "weighted_risk_score": 48.2,
+            "policies": {
+                "956": {
+                    "id": 956,
+                    "tiv": 57075450,
+                    "created_at": "2025-08-06T00:00:00.000Z",
+                    "loss_value": "2585536.95",
+                    "winnability": 86,
+                    "account_name": "F10 Goal RETENTION BOUND (DO NOT MODIFY)",
+                    "total_premium": 1375175.89,
+                    "effective_date": "2024-12-12T00:00:00.000Z",
+                    "expiration_date": "2025-12-12T00:00:00.000Z",
+                    "oldest_building": 1984,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "RENEWAL",
+                    "cohere_relevance": 0.10564361,
+                    "justification_points": [
+                        "The policy's TIV of $57,075,450 far exceeds the guideline requirement of >$10M, indicating a strong fit.",
+                        "The loss ratio for the policy is approximately 0.45 (Loss Value/Premium), which is well below the guideline threshold of 0.7, suggesting favorable underwriting performance.",
+                        "The construction type is listed as 'Frame', which may be less preferred than Fire Resistive or Non-Combustible constructions, but the building year (1984) meets the guideline criteria of being built after 1950.",
+                        "The state is California (CA), which is one of the prioritized states according to the guidelines.",
+                        "While the line of business is General Liability, the guidelines specify a preference for Commercial Property. However, the high TIV, favorable loss ratio, and alignment with other criteria may still make this policy attractive."
+                    ],
+                    "references": [
+                        {
+                            "point": "```json\n{\n  \"references\": [\n    {\n      \"point\": \"The property meets carrier's construction and year built preferences, reducing potential fire hazards.\",\n      \"link\": \"https://www.iso.com/wp-content/uploads/2022/02/ISO-Fire-Resistive-and-Non-Combustible-Construction.pdf\"\n    },\n    {\n      \"point\": \"California and Texas have favorable commercial property insurance markets, with stable loss ratios and competitive pricing.\",\n      \"link\": \"https://www.businessinsider.com/commercial-property-insurance-cost-2022\"\n    },\n    {\n      \"point\": \"The policy's TIV of $57,075,450 is within the carrier's appetite and the premium aligns with the expected loss ratio.\",\n      \"link\": \"https://www.iii.org/article/testimony-commercial-property-insurance-markets-and-their-regulation\"\n    }\n  ]\n}\n```",
+                            "link": "https://example.com"
+                        }
+                    ],
+                    "score": 0.106,
+                    "risk_score": 48.2
+                }
+            }
+        }
+    }
+}
