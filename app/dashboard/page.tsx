@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
+import Image from "next/image"
 import { X } from "lucide-react"
 
 const submissions = [
@@ -164,15 +165,15 @@ export default function Dashboard() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-12">
               <div className="flex items-center space-x-3">
+                <Image src="/logo-cropped.svg" alt="Optimate Logo" className="ml-4" width={60} height={60} />
                 <div>
-                  <h1 className="text-4xl font-bold tracking-tight text-white ml-5">
-                    {userData ? `Welcome, ${userData.name.split(' ')[0]}!` : 'Optimate'}
+                  <h1 className="text-4xl font-bold tracking-tight text-white ml-3
+            ">
+                    {'Optimate'}
                   </h1>
-                  <p className="text-lg text-blue-100 ml-5">
-                    {userData && userData.rulePreferences 
-                      ? `Your preferences: ${userData.rulePreferences.substring(0, 50)}...`
-                      : 'Giving underwriters the context and confidence to make faster, smarter decisions'
-                    }
+                  <p className="text-lg text-blue-100 ml-3">
+          Giving underwriters the context and confidence to make faster, smarter decisions
+                    
                   </p>
                 </div>
               </div>
