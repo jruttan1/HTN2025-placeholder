@@ -1,12 +1,11 @@
-import { Auth0Client } from '@auth0/nextjs-auth0/server';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-const auth0 = new Auth0Client();
-
-export function GET(req: NextRequest) {
-  return auth0.middleware(req);
+export async function GET(request: NextRequest) {
+  // Redirect to dashboard after any auth action - user data will be processed there
+  return NextResponse.redirect(new URL('/dashboard', request.url));
 }
 
-export function POST(req: NextRequest) {
-  return auth0.middleware(req);
+export async function POST(request: NextRequest) {
+  // Handle POST auth requests and redirect to dashboard
+  return NextResponse.redirect(new URL('/dashboard', request.url));
 }
