@@ -1,14 +1,6 @@
-import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
+
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-
-export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
-}
 
 export default function RootLayout({
   children,
@@ -17,7 +9,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-satoshi">
         {children}
         <Analytics />
       </body>

@@ -99,7 +99,7 @@ export default function UnderwriterDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <header
         className="shadow-lg border-b border-white/10"
         style={{
@@ -107,7 +107,7 @@ export default function UnderwriterDashboard() {
           background: "linear-gradient(135deg, #1e3a8a, #3b82f6)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-12">
               <div className="flex items-center space-x-3">
@@ -117,8 +117,8 @@ export default function UnderwriterDashboard() {
                   </svg>
                 </div>
                 <div>
-                  <h1 className="text-2xl font-bold tracking-tight text-white">Federato</h1>
-                  <p className="text-sm text-blue-100">RiskOps Platform</p>
+                  <h1 className="text-2xl font-bold tracking-tight text-white">Optimate</h1>
+                  <p className="text-sm text-blue-100">RiskOps</p>
                 </div>
               </div>
               <nav className="hidden md:flex space-x-8">
@@ -173,7 +173,7 @@ export default function UnderwriterDashboard() {
         </div>
       </header>
 
-      <div className="flex max-w-7xl mx-auto">
+      <div className="flex">
         <aside className="w-72 bg-white border-r border-gray-200 min-h-[calc(100vh-120px)]">
           <nav className="p-6 space-y-2">
             <div className="mb-6">
@@ -246,7 +246,7 @@ export default function UnderwriterDashboard() {
               <h1 className="text-4xl font-bold text-gray-900 tracking-tight">Underwriter Copilot</h1>
             </div>
             <p className="text-xl text-gray-600 leading-relaxed">
-              AI-powered submission prioritization based on appetite fit and SLA requirements
+            Giving underwriters the context and confidence to make faster, smarter decisions
             </p>
           </div>
 
