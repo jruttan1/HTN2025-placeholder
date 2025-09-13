@@ -66,6 +66,8 @@ const submissions = [
 ]
 
 export default function UnderwriterDashboard() {
+
+
   const getAppetiteColor = (status: string) => {
     switch (status) {
       case "good":

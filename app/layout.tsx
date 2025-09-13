@@ -1,5 +1,6 @@
 
 import { Analytics } from '@vercel/analytics/next'
+import { Auth0Provider } from '@auth0/nextjs-auth0'
 import './globals.css'
 
 export default function RootLayout({
@@ -17,6 +18,10 @@ export default function RootLayout({
       </head>
       <body className="font-satoshi">
         {children}
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <Auth0Provider>
+          {children}
+        </Auth0Provider>
         <Analytics />
       </body>
     </html>
