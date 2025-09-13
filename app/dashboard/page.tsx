@@ -11,8 +11,167 @@ import { Slider } from "@/components/ui/slider"
 import Link from "next/link"
 import Image from "next/image"
 import { X, LogOut } from "lucide-react"
-import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 
+const submissions = [
+  {
+    id: 1,
+    client: "TechCorp Industries",
+    broker: "Marsh & McLennan",
+    premium: "$2.5M",
+    premiumValue: 2500000,
+    appetiteScore: 85,
+    appetiteStatus: "good",
+    slaTimer: "2h 15m",
+    slaProgress: 75,
+    status: "Under Review",
+    company: "TechCorp Industries",
+    product: "Cyber Liability",
+    coverage: "$50M General Liability",
+    lineOfBusiness: "Cyber",
+    state: "CA",
+    businessType: "Renewal",
+    whySurfaced: [
+      "High appetite match for tech sector",
+      "Premium size within target range",
+      "Strong broker relationship",
+    ],
+    missingInfo: ["Financial statements", "Loss history"],
+    recommendation: "Approve",
+  },
+  {
+    id: 2,
+    client: "Global Manufacturing Co",
+    broker: "Aon Risk Solutions",
+    premium: "$1.8M",
+    premiumValue: 1800000,
+    appetiteScore: 85,
+    appetiteStatus: "good",
+    slaTimer: "4h 32m",
+    slaProgress: 45,
+    status: "Under Review",
+    company: "Global Manufacturing Co",
+    product: "Property Insurance",
+    coverage: "$25M Property Coverage",
+    lineOfBusiness: "Property",
+    state: "TX",
+    businessType: "New",
+    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
+    missingInfo: [],
+    recommendation: "Approve",
+  },
+  {
+    id: 3,
+    client: "StartupXYZ",
+    broker: "Willis Towers Watson",
+    premium: "$500K",
+    premiumValue: 500000,
+    appetiteScore: 25,
+    appetiteStatus: "poor",
+    slaTimer: "1h 45m",
+    slaProgress: 85,
+    status: "Review Required",
+    company: "StartupXYZ",
+    product: "D&O Insurance",
+    coverage: "$10M Directors & Officers",
+    lineOfBusiness: "D&O",
+    state: "NY",
+    businessType: "New",
+    whySurfaced: ["New business opportunity", "Broker relationship priority", "Sector diversification"],
+    missingInfo: ["Business plan", "Revenue projections"],
+    recommendation: "Decline",
+  },
+  {
+    id: 4,
+    client: "Regional Bank Corp",
+    broker: "Gallagher",
+    premium: "$3.2M",
+    premiumValue: 3200000,
+    appetiteScore: 92,
+    appetiteStatus: "good",
+    slaTimer: "5h 30m",
+    slaProgress: 25,
+    status: "Under Review",
+    company: "Regional Bank Corp",
+    product: "Financial Lines",
+    coverage: "$100M Professional Liability",
+    lineOfBusiness: "Financial",
+    state: "FL",
+    businessType: "Renewal",
+    whySurfaced: ["Perfect appetite match", "Excellent loss history", "Long-term relationship"],
+    missingInfo: [],
+    recommendation: "Approve",
+  },
+  {
+    id: 5,
+    client: "HealthTech Solutions",
+    broker: "Marsh & McLennan",
+    premium: "$750K",
+    premiumValue: 750000,
+    appetiteScore: 78,
+    appetiteStatus: "good",
+    slaTimer: "3h 20m",
+    slaProgress: 60,
+    status: "Under Review",
+    company: "HealthTech Solutions",
+    product: "E&O Insurance",
+    coverage: "$20M E&O Coverage",
+    lineOfBusiness: "Tech E&O",
+    state: "WA",
+    businessType: "New",
+    whySurfaced: ["Growing tech sector", "Strong financials", "Good risk profile"],
+    missingInfo: ["Security audit"],
+    recommendation: "Approve",
+  },
+]
+
+interface UserData {
+  name: string
+  email: string
+  rulePreferences: string
+  signedUpAt: string
+}
+
+export default function Dashboard() {
+  const [userData, setUserData] = useState<UserData | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [showWelcome, setShowWelcome] = useState(false)
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null)
+  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
+  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
+
+  // Calculate summary metrics
+  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
+  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
+  const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
+  const top3Submissions = submissions.slice(0, 3)
+
+  useEffect(() => {
+    // Process pending user data from sign up
+    const pendingData = localStorage.getItem('pendingUserData')
+    if (pendingData) {
+      try {
+        const parsedData = JSON.parse(pendingData) as UserData
+        setUserData(parsedData)
+        setShowWelcome(true) // Show welcome message for new users
+        // Clear the pending data as it's now processed
+        localStorage.removeItem('pendingUserData')
+        // In a real app, you'd save this to your backend/database here
+        console.log('User data processed:', parsedData)
+      } catch (error) {
+        console.error('Error processing user data:', error)
+      }
+    } else if (process.env.NODE_ENV === 'development') {
+      // Development mode: provide default user data
+      setUserData({
+        name: 'Dev User',
+        email: 'dev@optimate.com',
+        rulePreferences: 'Development mode - no specific preferences',
+        signedUpAt: new Date().toISOString()
+      })
+    }
+    setIsLoading(false)
+  }, [])
 interface User {
   sub: string;
   name: string;
@@ -22,7 +181,6 @@ interface User {
 
 interface Submission {
   submissionId: string;
-  id?: number;
   client: string;
   broker: string;
   premium: string;
@@ -34,9 +192,6 @@ interface Submission {
   company: string;
   product: string;
   coverage: string;
-  lineOfBusiness?: string;
-  state?: string;
-  businessType?: string;
   whySurfaced: string[];
   missingInfo: string[];
   recommendation: string;
@@ -49,17 +204,6 @@ export default function Dashboard() {
   const [submissions, setSubmissions] = useState<Submission[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [showWelcome, setShowWelcome] = useState(false)
-  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
-  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
-
-  // Calculate summary metrics
-  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
-  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
-  const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => {
-    const premiumValue = parseFloat(s.premium.replace(/[$MK,]/g, '')) * (s.premium.includes('M') ? 1000000 : s.premium.includes('K') ? 1000 : 1)
-    return sum + premiumValue
-  }, 0)
-  const top3Submissions = submissions.slice(0, 3)
 
   useEffect(() => {
     checkAuth()
@@ -276,11 +420,11 @@ export default function Dashboard() {
   }
 
   // Placeholder function for when risk level data is implemented
-  const handleRiskLevelFilter = (submissionsToFilter: Submission[]) => {
+  const handleRiskLevelFilter = (submissions: typeof submissions) => {
     // TODO: When risk level data is added to submissions, filter based on riskLevelRange
     // Example: return submissions.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
     console.log(`Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`)
-    return submissionsToFilter // Return unfiltered for now
+    return submissions // Return unfiltered for now
   }
 
   const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
@@ -530,57 +674,46 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-          {/* Left Side - Filters */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-sm border-gray-200 bg-white">
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
                     <div className="flex items-center space-x-2">
                       <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                      <label className="text-sm font-medium text-gray-700">Premium Size</label>
+                      <Select>
+                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectValue placeholder="Premium Size" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Sizes</SelectItem>
+                          <SelectItem value="small">Under $1M</SelectItem>
+                          <SelectItem value="medium">$1M - $5M</SelectItem>
+                          <SelectItem value="large">Over $5M</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
-                    <Select>
-                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                        <SelectValue placeholder="Premium Size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Sizes</SelectItem>
-                        <SelectItem value="small">Under $1M</SelectItem>
-                        <SelectItem value="medium">$1M - $5M</SelectItem>
-                        <SelectItem value="large">Over $5M</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
 
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                      </svg>
-                      <label className="text-sm font-medium text-gray-700">Risk Level</label>
-                    </div>
-                    <div className="px-1">
-                      <Slider
-                        value={riskLevelRange}
-                        onValueChange={setRiskLevelRange}
-                        max={100}
-                        min={0}
-                        step={5}
-                        className="w-full blue-slider"
-                      />
-                      <div className="flex justify-between mt-2 text-xs text-gray-500">
-                        <span>Low ({riskLevelRange[0]})</span>
-                        <span>High ({riskLevelRange[1]})</span>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <label className="text-sm font-medium text-gray-700">Risk Level</label>
+                      </div>
+                      <div className="px-1">
+                        <Slider
+                          value={riskLevelRange}
+                          onValueChange={setRiskLevelRange}
+                          max={100}
+                          min={0}
+                          step={5}
+                          className="w-full blue-slider"
+                        />
+                        <div className="flex justify-between mt-2 text-xs text-gray-500">
+                          <span>Low ({riskLevelRange[0]})</span>
+                          <span>High ({riskLevelRange[1]})</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
               </CardContent>
             </Card>
           </div>
@@ -691,104 +824,21 @@ export default function Dashboard() {
                 )
               })()}
               
+              {/* Dots Indicator */}
+              <div className="flex justify-center space-x-2 mt-4">
+                {top3Submissions.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTopSubmission(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      currentTopSubmission === index ? 'bg-blue-600' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Choropleth Map Section */}
-        <Card className="mb-8 shadow-sm border-gray-200 bg-white">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-2xl font-semibold text-gray-900">North America Risk Distribution</CardTitle>
-            <p className="text-gray-600">Geographic distribution of submissions and risk levels across North America</p>
-          </CardHeader>
-          <CardContent className="p-6">
-            <div className="w-full h-96">
-              <ComposableMap
-                projection="geoAlbersUsa"
-                projectionConfig={{
-                  scale: 1000,
-                  center: [-100, 40]
-                }}
-                width={800}
-                height={400}
-                style={{
-                  width: "100%",
-                  height: "100%"
-                }}
-              >
-                <Geographies geography="/north-america.json">
-                  {({ geographies }) =>
-                    geographies.map((geo) => {
-                      // Sample data for demonstration - in real app this would come from props/state
-                      const riskLevel = Math.random() * 100
-                      const getFillColor = (level: number) => {
-                        if (level >= 80) return "#dc2626" // red
-                        if (level >= 60) return "#f59e0b" // amber
-                        if (level >= 40) return "#eab308" // yellow
-                        if (level >= 20) return "#22c55e" // green
-                        return "#e5e7eb" // gray
-                      }
-                      
-                      return (
-                        <Geography
-                          key={geo.rsmKey}
-                          geography={geo}
-                          fill={getFillColor(riskLevel)}
-                          stroke="#ffffff"
-                          strokeWidth={0.5}
-                          style={{
-                            default: {
-                              fill: getFillColor(riskLevel),
-                              stroke: "#ffffff",
-                              strokeWidth: 0.5,
-                              outline: "none",
-                            },
-                            hover: {
-                              fill: "#3b82f6",
-                              stroke: "#ffffff",
-                              strokeWidth: 1,
-                              outline: "none",
-                            },
-                            pressed: {
-                              fill: "#1d4ed8",
-                              stroke: "#ffffff",
-                              strokeWidth: 1,
-                              outline: "none",
-                            },
-                          }}
-                        />
-                      )
-                    })
-                  }
-                </Geographies>
-              </ComposableMap>
-            </div>
-            
-            {/* Legend */}
-            <div className="mt-6 flex items-center justify-center space-x-6">
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-gray-200 rounded"></div>
-                <span className="text-sm text-gray-600">Low Risk (0-20%)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-green-500 rounded"></div>
-                <span className="text-sm text-gray-600">Low-Medium (20-40%)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-yellow-500 rounded"></div>
-                <span className="text-sm text-gray-600">Medium (40-60%)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-amber-500 rounded"></div>
-                <span className="text-sm text-gray-600">Medium-High (60-80%)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-red-500 rounded"></div>
-                <span className="text-sm text-gray-600">High Risk (80-100%)</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         <Card className="shadow-sm border-gray-200 bg-white">
           <CardHeader className="pb-4">
