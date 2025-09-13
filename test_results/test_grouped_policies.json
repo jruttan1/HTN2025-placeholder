@@ -1,0 +1,506 @@
+{
+    "grouped_accounts": [
+        {
+            "account_name": "F10 Goal RETENTION BOUND (DO NOT MODIFY)",
+            "records": [
+                {
+                    "id": 956,
+                    "tiv": 57075450,
+                    "created_at": "2025-08-06T00:00:00.000Z",
+                    "loss_value": "2585536.95",
+                    "winnability": 86,
+                    "account_name": "F10 Goal RETENTION BOUND (DO NOT MODIFY)",
+                    "total_premium": 1375175.89,
+                    "effective_date": "2024-12-12T00:00:00.000Z",
+                    "expiration_date": "2025-12-12T00:00:00.000Z",
+                    "oldest_building": 1984,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "RENEWAL"
+                },
+                {
+                    "id": 960,
+                    "tiv": 10265578,
+                    "created_at": "2025-08-06T00:00:00.000Z",
+                    "loss_value": "556818.74",
+                    "winnability": 0.79,
+                    "account_name": "F10 Goal RETENTION BOUND (DO NOT MODIFY)",
+                    "total_premium": 468982.93,
+                    "effective_date": "2024-12-12T00:00:00.000Z",
+                    "expiration_date": "2025-12-12T00:00:00.000Z",
+                    "oldest_building": 1987,
+                    "line_of_business": "WORKERS COMPENSATION",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "BrandonBStartEndorsement",
+            "records": [
+                {
+                    "id": 910,
+                    "tiv": 14002013,
+                    "created_at": "2025-07-30T00:00:00.000Z",
+                    "loss_value": "410515.64",
+                    "winnability": 0.46,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 541891.91,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 2022,
+                    "line_of_business": "INLAND MARINE",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 911,
+                    "tiv": 18811678,
+                    "created_at": "2025-07-30T00:00:00.000Z",
+                    "loss_value": "2485246.53",
+                    "winnability": 0.68,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 1174319,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1941,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 912,
+                    "tiv": 97034687,
+                    "created_at": "2025-07-30T00:00:00.000Z",
+                    "loss_value": "4801595.88",
+                    "winnability": 0.28,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 3788525.28,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1969,
+                    "line_of_business": "CYBER",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 1011,
+                    "tiv": 93237143,
+                    "created_at": "2025-08-25T00:00:00.000Z",
+                    "loss_value": "5432895.60",
+                    "winnability": 86,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 3323065.01,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1956,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 913,
+                    "tiv": 54824214,
+                    "created_at": "2025-07-30T00:00:00.000Z",
+                    "loss_value": "3208483.94",
+                    "winnability": 0.19,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 3917299.74,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1995,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 914,
+                    "tiv": 14786900,
+                    "created_at": "2025-07-30T00:00:00.000Z",
+                    "loss_value": "3114208.61",
+                    "winnability": 0.52,
+                    "account_name": "BrandonBStartEndorsement",
+                    "total_premium": 1287184.86,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-09-01T00:00:00.000Z",
+                    "oldest_building": 1948,
+                    "line_of_business": "CYBER",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "bbtest7",
+            "records": [
+                {
+                    "id": 797,
+                    "tiv": 71064371,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "7542886.10",
+                    "winnability": 0.27,
+                    "account_name": "bbtest7",
+                    "total_premium": 4846803.3,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1967,
+                    "line_of_business": "AUTO",
+                    "construction_type": "Joisted Masonry",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 798,
+                    "tiv": 35073654,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "2513739.58",
+                    "winnability": 0.34,
+                    "account_name": "bbtest7",
+                    "total_premium": 3476746.1,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 2013,
+                    "line_of_business": "CYBER",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 799,
+                    "tiv": 77392153,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "12309017.22",
+                    "winnability": 0.5,
+                    "account_name": "bbtest7",
+                    "total_premium": 5694901.58,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1993,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Joisted Masonry",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 800,
+                    "tiv": 38099474,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "5318355.60",
+                    "winnability": 0.59,
+                    "account_name": "bbtest7",
+                    "total_premium": 3370698.56,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1906,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Joisted Masonry",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 801,
+                    "tiv": 18439718,
+                    "created_at": "2025-07-11T00:00:00.000Z",
+                    "loss_value": "740048.77",
+                    "winnability": 0.46,
+                    "account_name": "bbtest7",
+                    "total_premium": 1589724.97,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-11-01T00:00:00.000Z",
+                    "oldest_building": 1906,
+                    "line_of_business": "INLAND MARINE",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "Colorado State University",
+            "records": [
+                {
+                    "id": 18,
+                    "tiv": 64975767,
+                    "created_at": "2025-03-20T00:00:00.000Z",
+                    "loss_value": "5889434.20",
+                    "winnability": 0.4,
+                    "account_name": "Colorado State University",
+                    "total_premium": 2887133.23,
+                    "effective_date": "2026-01-01T00:00:00.000Z",
+                    "expiration_date": "2026-12-31T00:00:00.000Z",
+                    "oldest_building": 2004,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "AK",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "BrandonB5",
+            "records": [
+                {
+                    "id": 854,
+                    "tiv": 23924670,
+                    "created_at": "2025-07-16T00:00:00.000Z",
+                    "loss_value": "2198896.72",
+                    "winnability": 0.91,
+                    "account_name": "BrandonB5",
+                    "total_premium": 924401.4,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 2007,
+                    "line_of_business": "COMMERCIAL PROPERTY",
+                    "construction_type": "Joisted Masonry",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 855,
+                    "tiv": 37308277,
+                    "created_at": "2025-07-16T00:00:00.000Z",
+                    "loss_value": "7487336.27",
+                    "winnability": 0.87,
+                    "account_name": "BrandonB5",
+                    "total_premium": 3422586.72,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1986,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "BrandonBDupEndor",
+            "records": [
+                {
+                    "id": 1008,
+                    "tiv": 19982170,
+                    "created_at": "2025-08-15T00:00:00.000Z",
+                    "loss_value": "242429.54",
+                    "winnability": 0.06,
+                    "account_name": "BrandonBDupEndor",
+                    "total_premium": 1657241.25,
+                    "effective_date": "2025-08-01T00:00:00.000Z",
+                    "expiration_date": "2025-12-01T00:00:00.000Z",
+                    "oldest_building": 1905,
+                    "line_of_business": "CYBER",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "z account 1",
+            "records": [
+                {
+                    "id": 115,
+                    "tiv": 42062259,
+                    "created_at": "2025-04-04T00:00:00.000Z",
+                    "loss_value": "1715656.27",
+                    "winnability": 0.98,
+                    "account_name": "z account 1",
+                    "total_premium": 698864.43,
+                    "effective_date": "2025-04-24T00:00:00.000Z",
+                    "expiration_date": "2025-04-26T00:00:00.000Z",
+                    "oldest_building": 1978,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "TX",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "Brandon Account",
+            "records": [
+                {
+                    "id": 398,
+                    "tiv": 67791252,
+                    "created_at": "2025-05-28T00:00:00.000Z",
+                    "loss_value": "3280717.80",
+                    "winnability": 0.88,
+                    "account_name": "Brandon Account",
+                    "total_premium": 4004293.67,
+                    "effective_date": "2025-05-01T00:00:00.000Z",
+                    "expiration_date": "2026-05-01T00:00:00.000Z",
+                    "oldest_building": 1996,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CE",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "BrandonB6",
+            "records": [
+                {
+                    "id": 856,
+                    "tiv": 8969523,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "1270817.55",
+                    "winnability": 0.72,
+                    "account_name": "BrandonB6",
+                    "total_premium": 687469.09,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1980,
+                    "line_of_business": "INLAND MARINE",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 857,
+                    "tiv": 25677240,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "3089710.35",
+                    "winnability": 0.86,
+                    "account_name": "BrandonB6",
+                    "total_premium": 2545076.67,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1958,
+                    "line_of_business": "CYBER",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                },
+                {
+                    "id": 858,
+                    "tiv": 51136584,
+                    "created_at": "2025-07-17T00:00:00.000Z",
+                    "loss_value": "1815501.44",
+                    "winnability": 0.71,
+                    "account_name": "BrandonB6",
+                    "total_premium": 1684490.21,
+                    "effective_date": "2025-07-01T00:00:00.000Z",
+                    "expiration_date": "2025-10-01T00:00:00.000Z",
+                    "oldest_building": 1904,
+                    "line_of_business": "GENERAL LIABILITY",
+                    "construction_type": "Fire Resistive",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "BB Account Test",
+            "records": [
+                {
+                    "id": 1010,
+                    "tiv": 47145362,
+                    "created_at": "2025-08-18T00:00:00.000Z",
+                    "loss_value": "684328.77",
+                    "winnability": 86,
+                    "account_name": "BB Account Test",
+                    "total_premium": 490971.8,
+                    "effective_date": "2025-05-01T00:00:00.000Z",
+                    "expiration_date": "2026-05-01T00:00:00.000Z",
+                    "oldest_building": 2005,
+                    "line_of_business": "UMBRELLA",
+                    "construction_type": "Masonry Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "F9 Goal NEW BUSINESS BOUND (DO NOT MODIFY)",
+            "records": [
+                {
+                    "id": 959,
+                    "tiv": 97233042,
+                    "created_at": "2025-08-06T00:00:00.000Z",
+                    "loss_value": "8462857.68",
+                    "winnability": 0.11,
+                    "account_name": "F9 Goal NEW BUSINESS BOUND (DO NOT MODIFY)",
+                    "total_premium": 6618458.7,
+                    "effective_date": "2024-12-12T00:00:00.000Z",
+                    "expiration_date": "2025-12-12T00:00:00.000Z",
+                    "oldest_building": 1938,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "E2E 3-Apr-2025 V1 VF",
+            "records": [
+                {
+                    "id": 111,
+                    "tiv": 49341013,
+                    "created_at": "2025-04-04T00:00:00.000Z",
+                    "loss_value": "1837771.96",
+                    "winnability": 0.44,
+                    "account_name": "E2E 3-Apr-2025 V1 VF",
+                    "total_premium": 4394113.25,
+                    "effective_date": "2025-12-12T00:00:00.000Z",
+                    "expiration_date": "2026-12-12T00:00:00.000Z",
+                    "oldest_building": 2021,
+                    "line_of_business": "AUTO",
+                    "construction_type": "Joisted Masonry",
+                    "primary_risk_state": "TX",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        },
+        {
+            "account_name": "University of Waterloo",
+            "records": [
+                {
+                    "id": 16,
+                    "tiv": 20253118,
+                    "created_at": null,
+                    "loss_value": "479340.45",
+                    "winnability": 0.86,
+                    "account_name": "University of Waterloo",
+                    "total_premium": 934742.16,
+                    "effective_date": "2025-03-01T00:00:00.000Z",
+                    "expiration_date": "2025-04-01T00:00:00.000Z",
+                    "oldest_building": 2007,
+                    "line_of_business": "AUTO",
+                    "construction_type": "Non-Combustible",
+                    "primary_risk_state": "TX",
+                    "renewal_or_new_business": null
+                }
+            ]
+        },
+        {
+            "account_name": "BrandonBTestRobertBug",
+            "records": [
+                {
+                    "id": 1012,
+                    "tiv": 1016958,
+                    "created_at": "2025-08-25T00:00:00.000Z",
+                    "loss_value": "64503.59",
+                    "winnability": 0.49,
+                    "account_name": "BrandonBTestRobertBug",
+                    "total_premium": 29142.97,
+                    "effective_date": "2025-08-01T00:00:00.000Z",
+                    "expiration_date": "2025-12-01T00:00:00.000Z",
+                    "oldest_building": 1903,
+                    "line_of_business": "HABITATIONAL",
+                    "construction_type": "Frame",
+                    "primary_risk_state": "CA",
+                    "renewal_or_new_business": "NEW_BUSINESS"
+                }
+            ]
+        }
+    ]
+}
