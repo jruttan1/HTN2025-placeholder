@@ -42,20 +42,20 @@ const submissions = [
     broker: "Aon Risk Solutions",
     premium: "$1.8M",
     premiumValue: 1800000,
-    appetiteScore: 65,
-    appetiteStatus: "missing",
+    appetiteScore: 85,
+    appetiteStatus: "good",
     slaTimer: "4h 32m",
     slaProgress: 45,
-    status: "Pending Info",
+    status: "Under Review",
     company: "Global Manufacturing Co",
     product: "Property Insurance",
     coverage: "$25M Property Coverage",
     lineOfBusiness: "Property",
     state: "TX",
     businessType: "New",
-    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Renewal opportunity"],
-    missingInfo: ["Environmental assessment", "Safety protocols", "Previous claims"],
-    recommendation: "Request Info",
+    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
+    missingInfo: [],
+    recommendation: "Approve",
   },
   {
     id: 3,
@@ -166,8 +166,6 @@ export default function Dashboard() {
     switch (status) {
       case "good":
         return "text-green-700 bg-green-50 border-green-200"
-      case "missing":
-        return "text-amber-700 bg-amber-50 border-amber-200"
       case "poor":
         return "text-red-700 bg-red-50 border-red-200"
       default:
@@ -179,8 +177,6 @@ export default function Dashboard() {
     switch (status) {
       case "Under Review":
         return "text-blue-700 bg-blue-50 border-blue-200"
-      case "Pending Info":
-        return "text-amber-700 bg-amber-50 border-amber-200"
       case "Review Required":
         return "text-red-700 bg-red-50 border-red-200"
       default:
@@ -248,19 +244,19 @@ export default function Dashboard() {
   }
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-        <div className="text-center">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg mb-6">
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-            </svg>
-          </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">Setting up your dashboard...</h1>
-          <div className="mt-4">
-            <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-          </div>
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="text-center">
+        <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg mb-6">
+          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
+          </svg>
         </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">Setting up your dashboard...</h1>
+        <div className="mt-4">
+          <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+        </div>
+      </div>
       </div>
     )
   }
@@ -352,65 +348,149 @@ export default function Dashboard() {
           </Card>
         )}
 
-        {/* Side by Side Layout: Summary Metrics + Top Submissions & Filters */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        {/* Main Layout: Pipeline Overview & Filters, Top Priority */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           
-          {/* Left Side - Summary Metrics Only */}
-          <div className="lg:col-span-2">
-            {/* Summary Metrics Bar */}
+          {/* Left Side - Pipeline Overview & Filters */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Pipeline Overview */}
             <Card className="shadow-sm border-gray-200 bg-white">
               <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-gray-900">Pipeline Overview</h2>
-                  <div className="flex items-center space-x-4">
+                <div className="space-y-4">
+                  <h2 className="text-xl font-semibold text-gray-900">Pipeline Overview</h2>
+                  
+                  {/* Summary Metrics */}
+                  <div className="grid grid-cols-4 gap-4">
                     <button
                       onClick={() => setSelectedFilter('in-appetite')}
-                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                      className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === 'in-appetite'
-                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md'
                       }`}
                     >
-                      <div className="text-center">
-                        <div className="text-xl font-bold">{inAppetite}</div>
-                        <div className="text-xs">In Appetite</div>
-                      </div>
+                      <div className="text-3xl font-bold mb-1">{inAppetite}</div>
+                      <div className="text-sm font-medium">In Appetite</div>
                     </button>
                     <button
                       onClick={() => setSelectedFilter('sla-risk')}
-                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                      className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === 'sla-risk'
-                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md'
                       }`}
                     >
-                      <div className="text-center">
-                        <div className="text-xl font-bold">{atSlaRisk}</div>
-                        <div className="text-xs">At SLA Risk</div>
-                      </div>
+                      <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
+                      <div className="text-sm font-medium">At SLA Risk</div>
                     </button>
                     <button
                       onClick={() => setSelectedFilter('top-premium')}
-                      className={`px-3 py-2 rounded-lg transition-all text-sm ${
+                      className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === 'top-premium'
-                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md'
                       }`}
                     >
-                      <div className="text-center">
-                        <div className="text-xl font-bold">{formatPremium(totalPremiumTop10)}</div>
-                        <div className="text-xs">Total Premium</div>
-                      </div>
+                      <div className="text-3xl font-bold mb-1">{formatPremium(totalPremiumTop10)}</div>
+                      <div className="text-sm font-medium">Total Premium</div>
                     </button>
+                    <button
+                      onClick={() => setSelectedFilter('total-contracts')}
+                      className={`p-4 rounded-xl transition-all text-left ${
+                        selectedFilter === 'total-contracts'
+                          ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md'
+                      }`}
+                    >
+                      <div className="text-3xl font-bold mb-1">{submissions.length}</div>
+                      <div className="text-sm font-medium">Total Policies</div>
+                    </button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Filters Section */}
+            <Card className="shadow-sm border-gray-200 bg-white">
+              <CardHeader className="pb-4">
+                <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <Select>
+                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                        <SelectValue placeholder="Appetite Fit" />
+                      </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all">All Appetite Fits</SelectItem>
+                          <SelectItem value="good">In Appetite</SelectItem>
+                          <SelectItem value="poor">Out of Appetite</SelectItem>
+                        </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <Select>
+                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                        <SelectValue placeholder="Region" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Regions</SelectItem>
+                        <SelectItem value="na">North America</SelectItem>
+                        <SelectItem value="eu">Europe</SelectItem>
+                        <SelectItem value="apac">APAC</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <Select>
+                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                        <SelectValue placeholder="Broker" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Brokers</SelectItem>
+                        <SelectItem value="marsh">Marsh & McLennan</SelectItem>
+                        <SelectItem value="aon">Aon Risk Solutions</SelectItem>
+                        <SelectItem value="willis">Willis Towers Watson</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <Select>
+                      <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                        <SelectValue placeholder="Premium Size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Sizes</SelectItem>
+                        <SelectItem value="small">Under $1M</SelectItem>
+                        <SelectItem value="medium">$1M - $5M</SelectItem>
+                        <SelectItem value="large">Over $5M</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Right Side - Top 3 Submissions & Filters */}
+          {/* Right Side - Top Priority */}
           <div className="lg:col-span-1">
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-semibold text-gray-900">Top Priority</h2>
                 <div className="flex items-center space-x-2">
@@ -462,30 +542,30 @@ export default function Dashboard() {
                 const currentColor = cardColors[currentTopSubmission]
                 
                 return (
-                  <Card key={submission.id} className="shadow-lg bg-white cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-gray-200">
+                  <Card key={submission.id} className="shadow-lg bg-white cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-gray-200 relative">
                       <CardContent className="p-6">
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-4 right-4 z-10">
                         <div className={`${currentColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}>
                           {currentTopSubmission + 1}
                         </div>
                       </div>
                       
-                      <div className="mb-6">
-                        <h3 className={`text-2xl font-bold mb-2 ${currentColor.text}`}>{submission.client}</h3>
-                        <p className={`text-3xl font-extrabold ${currentColor.text}`}>{submission.premium}</p>
+                      <div className="mb-6 pr-12">
+                        <h3 className={`text-xl font-bold mb-2 ${currentColor.text}`}>{submission.client}</h3>
+                        <p className={`text-2xl font-extrabold ${currentColor.text}`}>{submission.premium}</p>
                       </div>
                       
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="text-center">
-                            <ProgressRing score={submission.appetiteScore} size={14} />
+                            <ProgressRing score={submission.appetiteScore} size={12} />
                             <p className={`text-xs mt-2 ${currentColor.text}`}>Appetite Fit</p>
                           </div>
                           <div className="text-center flex-1 mx-4">
-                            <p className={`text-xl font-bold mb-2 ${currentColor.text}`}>{submission.slaTimer}</p>
-                            <div className="w-full bg-gray-200 rounded-full h-3">
+                            <p className={`text-lg font-bold mb-2 ${currentColor.text}`}>{submission.slaTimer}</p>
+                            <div className="w-full bg-gray-200 rounded-full h-2">
                               <div
-                                className={`h-3 rounded-full transition-all ${getSLABarColor(submission.slaProgress)}`}
+                                className={`h-2 rounded-full transition-all ${getSLABarColor(submission.slaProgress)}`}
                                 style={{ width: `${submission.slaProgress}%` }}
                               />
                             </div>
@@ -493,17 +573,17 @@ export default function Dashboard() {
                           </div>
                         </div>
 
-                        <div className="space-y-2">
-                          <div className="flex flex-wrap gap-2">
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                        <div className="space-y-2 pr-12">
+                          <div className="flex flex-wrap gap-1">
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
                               {submission.broker}
                             </span>
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
                               {submission.lineOfBusiness}
                             </span>
                           </div>
-                          <div className="flex flex-wrap gap-2">
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
+                          <div className="flex flex-wrap gap-1">
+                            <span className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}>
                               {submission.state} • {submission.businessType}
                             </span>
                           </div>
@@ -526,84 +606,6 @@ export default function Dashboard() {
                   />
                 ))}
               </div>
-
-              {/* Filters Section */}
-              <Card className="shadow-sm border-gray-200 bg-white">
-                <CardHeader>
-                  <h3 className="text-lg font-semibold text-gray-900">Filters</h3>
-                </CardHeader>
-                <CardContent className="p-6 pt-0">
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <Select>
-                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                          <SelectValue placeholder="Appetite Fit" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Appetite Fits</SelectItem>
-                          <SelectItem value="good">In Appetite</SelectItem>
-                          <SelectItem value="missing">Missing Info</SelectItem>
-                          <SelectItem value="poor">Out of Appetite</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <Select>
-                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                          <SelectValue placeholder="Region" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Regions</SelectItem>
-                          <SelectItem value="na">North America</SelectItem>
-                          <SelectItem value="eu">Europe</SelectItem>
-                          <SelectItem value="apac">APAC</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                      <Select>
-                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                          <SelectValue placeholder="Broker" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Brokers</SelectItem>
-                          <SelectItem value="marsh">Marsh & McLennan</SelectItem>
-                          <SelectItem value="aon">Aon Risk Solutions</SelectItem>
-                          <SelectItem value="willis">Willis Towers Watson</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <Select>
-                        <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
-                          <SelectValue placeholder="Premium Size" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="all">All Sizes</SelectItem>
-                          <SelectItem value="small">Under $1M</SelectItem>
-                          <SelectItem value="medium">$1M - $5M</SelectItem>
-                          <SelectItem value="large">Over $5M</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
@@ -666,9 +668,7 @@ export default function Dashboard() {
                             <Badge className={`${getAppetiteColor(submission.appetiteStatus)} text-xs font-semibold px-3 py-1 rounded-full border-0`}>
                               {submission.appetiteStatus === "good"
                                 ? "In Appetite"
-                                : submission.appetiteStatus === "missing"
-                                  ? "Info Needed"
-                                  : "Out of Appetite"}
+                                : "Out of Appetite"}
                             </Badge>
                           </div>
 
@@ -692,11 +692,6 @@ export default function Dashboard() {
                               {submission.status === "Under Review" && (
                                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                              )}
-                              {submission.status === "Pending Info" && (
-                                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                               )}
                               {submission.status === "Review Required" && (

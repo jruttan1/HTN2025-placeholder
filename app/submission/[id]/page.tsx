@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { useUser } from '@auth0/nextjs-auth0'
 import Link from "next/link"
+import Image from "next/image"
+import { Input } from "@/components/ui/input"
 
 // Mock data for submissions (same as main page)
 const submissions = [
@@ -45,16 +46,16 @@ const submissions = [
     client: "Global Manufacturing Co",
     broker: "Aon Risk Solutions",
     premium: "$1.8M",
-    appetiteScore: 45,
-    appetiteStatus: "missing",
+    appetiteScore: 85,
+    appetiteStatus: "good",
     slaTimer: "4h 32m",
-    status: "Pending Info",
+    status: "Under Review",
     company: "Global Manufacturing Co",
     product: "Property Insurance",
     coverage: "$25M Property Coverage",
-    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Renewal opportunity"],
-    missingInfo: ["Environmental assessment", "Safety protocols", "Previous claims"],
-    recommendation: "Request Info",
+    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
+    missingInfo: [],
+    recommendation: "Approve",
     detailedInfo: {
       submissionDate: "March 12, 2024",
       expirationDate: "April 12, 2024",
@@ -97,16 +98,7 @@ const submissions = [
 ]
 
 export default function SubmissionDetailPage({ params }: { params: { id: string } }) {
-  const { user, error, isLoading } = useUser();
   const submission = submissions.find((s) => s.id === Number.parseInt(params.id))
-
-  if (isLoading) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="text-lg">Loading...</div>
-  </div>;
-  
-  if (error) return <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="text-red-600">Error: {error.message}</div>
-  </div>;
 
   if (!submission) {
     return (
@@ -125,8 +117,6 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
     switch (status) {
       case "good":
         return "text-green-700 bg-green-50 border-green-200"
-      case "missing":
-        return "text-amber-700 bg-amber-50 border-amber-200"
       case "poor":
         return "text-red-700 bg-red-50 border-red-200"
       default:
@@ -136,73 +126,59 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header
-        className="shadow-lg border-b border-white/10"
+      <header 
+        className="relative shadow-lg border-b border-white/10 overflow-hidden"
         style={{
-          backgroundColor: "#1e3a8a",
-          background: "linear-gradient(135deg, #1e3a8a, #3b82f6)",
+          backgroundImage: `url('/stacked-peaks-haikei.svg')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          minHeight: '120px'
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-6">
+        <div className="px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-12">
-              <Link href="/">
-                <div className="cursor-pointer flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold tracking-tight text-white">Federato</h1>
-                    <p className="text-sm text-blue-100">RiskOps Platform</p>
-                  </div>
+              <div className="flex items-center space-x-3">
+                <Image src="/logo-cropped.svg" alt="Optimate Logo" className="ml-4" width={60} height={60} />
+                <div>
+                  <h1 className="text-4xl font-bold tracking-tight text-white ml-3
+            ">
+                    {'Optimate'}
+                  </h1>
+                  <p className="text-lg text-blue-100 ml-3">
+          Giving underwriters the context and confidence to make faster, smarter decisions
+                    
+                  </p>
                 </div>
-              </Link>
-              <nav className="hidden md:flex space-x-8">
-                <Link href="/">
-                  <Button variant="ghost" className="font-medium hover:bg-white/20 text-white">
-                    Dashboard
-                  </Button>
-                </Link>
-                <Button variant="ghost" className="hover:bg-white/20 text-white">
-                  Reports
-                </Button>
-                <Button variant="ghost" className="hover:bg-white/20 text-white">
-                  Settings
-                </Button>
-              </nav>
+              </div>
             </div>
 
             <div className="flex items-center space-x-6">
-              <Button variant="ghost" size="sm" className="hover:bg-white/20 text-white relative">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="relative">
+                <svg
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M15 17h5l-5 5v-5zM9 7H4l5-5v5z"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
-              </Button>
-              <div className="flex items-center space-x-3">
-                <Avatar className="h-9 w-9">
-                  {user?.picture && <AvatarImage src={user.picture} alt={user.name || 'User'} />}
-                  <AvatarFallback className="font-semibold bg-white text-blue-700">
-                    {user?.name ? user.name.substring(0, 2).toUpperCase() : 'U'}
-                  </AvatarFallback>
-                </Avatar>
-                <div className="hidden md:block">
-                  <p className="text-sm font-medium text-white">{user?.name}</p>
-                  <a 
-                    href="/api/auth/logout" 
-                    className="text-xs text-blue-100 hover:text-white transition-colors"
-                  >
-                    Logout
-                  </a>
-                </div>
+                <Input
+                  placeholder="Search submissions..."
+                  className="w-80 pl-10 border-white/40 focus:bg-white/25 bg-white/20 text-white placeholder:text-white/60"
+                />
               </div>
+              <Avatar className="h-12 w-12">
+                <AvatarFallback className="font-semibold bg-white text-blue-700">
+                  NA
+                </AvatarFallback>
+              </Avatar>
             </div>
           </div>
         </div>
@@ -233,43 +209,8 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
             <div className="flex items-center space-x-4">
               <div className="text-center">
                 <div className="relative w-20 h-20 mx-auto mb-2">
-                  <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
-                    <path
-                      className="text-gray-200"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      fill="none"
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                    <path
-                      className={
-                        submission.appetiteStatus === "good"
-                          ? "text-green-500"
-                          : submission.appetiteStatus === "missing"
-                            ? "text-amber-500"
-                            : "text-red-500"
-                      }
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                      fill="none"
-                      strokeDasharray={`${submission.appetiteScore}, 100`}
-                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg font-bold text-gray-900">{submission.appetiteScore}%</span>
-                  </div>
+                  
                 </div>
-                <Badge
-                  className={`${getAppetiteColor(submission.appetiteStatus)} text-sm font-semibold px-3 py-2 border`}
-                >
-                  {submission.appetiteStatus === "good"
-                    ? "Strong Match"
-                    : submission.appetiteStatus === "missing"
-                      ? "Info Required"
-                      : "Outside Appetite"}
-                </Badge>
               </div>
             </div>
           </div>
@@ -468,9 +409,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                         className={
                           submission.appetiteStatus === "good"
                             ? "text-green-500"
-                            : submission.appetiteStatus === "missing"
-                              ? "text-amber-500"
-                              : "text-red-500"
+                            : "text-red-500"
                         }
                         stroke="currentColor"
                         strokeWidth="3"
@@ -489,9 +428,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                   >
                     {submission.appetiteStatus === "good"
                       ? "Strong Appetite Match"
-                      : submission.appetiteStatus === "missing"
-                        ? "Information Required"
-                        : "Outside Appetite"}
+                      : "Outside Appetite"}
                   </Badge>
                 </div>
                 <p className="text-gray-600 text-center">Based on historical data and risk parameters</p>
@@ -571,9 +508,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                     className={`text-lg font-bold px-6 py-3 ${
                       submission.recommendation === "Approve"
                         ? "bg-green-600 text-white hover:bg-green-700"
-                        : submission.recommendation === "Request Info"
-                          ? "bg-amber-600 text-white hover:bg-amber-700"
-                          : "bg-red-600 text-white hover:bg-red-700"
+                        : "bg-red-600 text-white hover:bg-red-700"
                     }`}
                   >
                     {submission.recommendation}
@@ -587,9 +522,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                     className={`w-full ${
                       submission.recommendation === "Approve"
                         ? "bg-green-600 hover:bg-green-700"
-                        : submission.recommendation === "Request Info"
-                          ? "bg-amber-600 hover:bg-amber-700"
-                          : "bg-red-600 hover:bg-red-700"
+                        : "bg-red-600 hover:bg-red-700"
                     } text-white font-semibold shadow-sm`}
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
