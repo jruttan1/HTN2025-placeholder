@@ -563,8 +563,8 @@ export default function Dashboard() {
                       onClick={() => setSelectedFilter("in-appetite")}
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "in-appetite"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -576,8 +576,8 @@ export default function Dashboard() {
                       onClick={() => setSelectedFilter("sla-risk")}
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "sla-risk"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
@@ -587,8 +587,8 @@ export default function Dashboard() {
                       onClick={() => setSelectedFilter("top-premium")}
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "top-premium"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -600,8 +600,8 @@ export default function Dashboard() {
                       onClick={() => setSelectedFilter("total-contracts")}
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "total-contracts"
-                          ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -616,23 +616,14 @@ export default function Dashboard() {
 
             {/* Filters Section */}
 
-            <Card className="shadow-sm border-border bg-card justify-center pb-12">
+            <Card className="shadow-sm border-border bg-card justify-center pb-10">
               <div className="flex items-bottom justify-between">
-                <CardHeader className="pb-4">
+                <CardHeader className="pb-0">
                   <h3 className="text-lg font-semibold text-foreground">
                     Filters
                   </h3>
                 </CardHeader>
-                <div className="mr-3">
-                  <SlidingToggle
-                    value={advancedFilterToggled}
-                    onChange={setAdvancedFilterToggled}
-                    leftLabel="Basic"
-                    rightLabel="Advanced"
-                  />
-                </div>
               </div>
-              {advancedFilterToggled && (
                 <div>
                   <CardContent className="pt-0">
                     <div className="grid grid-cols-2 gap-4">
@@ -767,7 +758,6 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </div>
-              )}
             </Card>
           </div>
 
