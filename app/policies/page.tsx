@@ -17,8 +17,6 @@ import Image from "next/image";
 import { X } from "lucide-react";
 import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper";
 import SlidingToggle from "@/helper/toggle";
-// import { Toggle } from "@/components/ui/toggle"
-// import { getSubmission } from "@/controller/dashboard"
 
 // This will be replaced with real data loaded from enhanced_data.json
 const mockSubmissions = [
