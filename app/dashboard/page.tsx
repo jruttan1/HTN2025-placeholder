@@ -9,8 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Link from "next/link"
 import Image from "next/image"
 import { X } from "lucide-react"
-// import { Toggle } from "@/components/ui/toggle"
-// import { getSubmission } from "@/controller/dashboard"
+import SlidingToggle from "@/helper/toggle"
 
 const submissions = [
   {
