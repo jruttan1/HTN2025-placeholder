@@ -199,7 +199,7 @@ interface UserData {
 
 export default function Dashboard() {
   const router = useRouter()
-  const { user, isLoading: authLoading, isAuthenticated } = useAuth()
+  const { isLoading: authLoading, isAuthenticated } = useAuth()
   const { searchQuery, setSearchQuery, submissions: globalSubmissions } = useSearch()
   const [userData, setUserData] = useState<UserData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -348,19 +348,17 @@ export default function Dashboard() {
   }, [authLoading, isAuthenticated, router])
 
   useEffect(() => {
-    // Set user data from Auth0 user if available
-    if (user) {
-      setUserData({
-        name: user.name || 'User',
-        email: user.email || '',
-        rulePreferences: '',
-        signedUpAt: new Date().toISOString()
-      })
-    }
+    // Set default user data
+    setUserData({
+      name: 'User',
+      email: 'user@example.com',
+      rulePreferences: '',
+      signedUpAt: new Date().toISOString()
+    })
 
     // Process pending user data from sign up (fallback)
     const pendingData = localStorage.getItem('pendingUserData')
-    if (pendingData && !user) {
+    if (pendingData) {
       try {
         const parsedData = JSON.parse(pendingData) as UserData
         setUserData(parsedData)
@@ -374,7 +372,7 @@ export default function Dashboard() {
       }
     }
     setIsLoading(false)
-  }, [user])
+  }, [])
 
   // Use global submissions data
   useEffect(() => {

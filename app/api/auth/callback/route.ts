@@ -42,7 +42,14 @@ export async function GET(request: NextRequest) {
           path: '/',
         });
         
-        console.log('Setting optimate_session cookie for redirect to:', state);
+        console.log('✅ Setting optimate_session cookie for redirect to:', state);
+        console.log('✅ Cookie settings:', {
+          httpOnly: false,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'lax',
+          maxAge: 86400,
+          path: '/'
+        });
         
         // Store user info in a separate cookie
         if (tokens.id_token) {

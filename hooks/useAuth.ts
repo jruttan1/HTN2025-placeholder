@@ -1,11 +1,10 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import { useUser } from '@auth0/nextjs-auth0';
 
 export function useAuth() {
-  const { user, isLoading, error } = useUser();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Check if we have authentication cookies (only on client side)
@@ -17,23 +16,28 @@ export function useAuth() {
         );
         
         console.log('useAuth - Session cookie found:', !!sessionCookie);
-        console.log('useAuth - Auth0 user:', !!user);
         console.log('useAuth - All cookies:', document.cookie);
         
-        setIsAuthenticated(!!sessionCookie || !!user);
+        const authenticated = !!sessionCookie;
+        console.log('useAuth - Final authenticated state:', authenticated);
+        setIsAuthenticated(authenticated);
+        setIsLoading(false);
       };
 
+      // Check immediately first, then with a small delay as fallback
       checkAuth();
+      setTimeout(checkAuth, 100);
+    } else {
+      // On server side, assume not authenticated
+      setIsAuthenticated(false);
+      setIsLoading(false);
     }
-  }, [user]);
-
-  // If Auth0 user exists, consider authenticated
-  const finalAuthState = isAuthenticated || !!user;
+  }, []);
 
   return {
-    user,
+    user: null, // We're not using Auth0 user for now
     isLoading,
-    error,
-    isAuthenticated: finalAuthState
+    error: null,
+    isAuthenticated
   };
 }
