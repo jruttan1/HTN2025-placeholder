@@ -40,8 +40,8 @@ export default function AuthPage() {
       
       localStorage.setItem('pendingUserData', JSON.stringify(userData))
       
-      // Redirect to dashboard - user data will be processed there
-      router.push('/dashboard')
+      // Redirect to Auth0 login with custom return URL
+      window.location.href = '/api/auth/login?returnTo=' + encodeURIComponent('/dashboard')
     } catch (error) {
       setIsLoading(false)
       console.error("Sign up error:", error)
@@ -53,8 +53,8 @@ export default function AuthPage() {
     setIsLoading(true)
     
     try {
-      // For existing users, redirect directly to dashboard
-      router.push('/dashboard')
+      // Redirect to Auth0 login with custom return URL
+      window.location.href = '/api/auth/login?returnTo=' + encodeURIComponent('/dashboard')
     } catch (error) {
       setIsLoading(false)
       console.error("Sign in error:", error)

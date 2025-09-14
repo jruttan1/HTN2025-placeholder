@@ -211,6 +211,10 @@ export default function Dashboard() {
   const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
   const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
   const [allSubmissions, setAllSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
+  
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 10
 
   // Helper functions for filtering
   const getRegionFromState = (state: string) => {
@@ -311,7 +315,18 @@ export default function Dashboard() {
       
       return true
     })
-  }, [allSubmissions, searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
+    }, [allSubmissions, searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredSubmissions.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const paginatedSubmissions = filteredSubmissions.slice(startIndex, endIndex)
+
+  // Reset to first page when filters change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
 
   // Calculate summary metrics
   const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
@@ -921,7 +936,9 @@ export default function Dashboard() {
                   </div>
                 </div>
               ) : (
-                filteredSubmissions.map((submission, index) => (
+                paginatedSubmissions.map((submission, index) => {
+                  const continuousIndex = startIndex + index;
+                  return (
                   <div
                     key={submission.id}
                     className="relative"
@@ -934,9 +951,9 @@ export default function Dashboard() {
                           <div className="flex items-center space-x-8 flex-1">
                             {/* Rank and Client */}
                             <div className="flex items-center space-x-4 min-w-[280px]">
-                              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                                {index + 1}
-                              </div>
+                               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
+                                 {continuousIndex + 1}
+                               </div>
                               <div>
                                 <h3 className="text-xl font-bold text-foreground mb-1">
                                   {submission.client}
@@ -1084,9 +1101,69 @@ export default function Dashboard() {
                       </div>
                     )}
                   </div>
-                ))
+                  );
+                })
               )}
             </div>
+            
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200 bg-gray-50">
+                <div className="flex items-center text-sm text-gray-700">
+                  <span>
+                    Showing {startIndex + 1} to {Math.min(endIndex, filteredSubmissions.length)} of {filteredSubmissions.length} results
+                  </span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1"
+                  >
+                    Previous
+                  </Button>
+                  
+                  <div className="flex items-center space-x-1">
+                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                      let pageNum;
+                      if (totalPages <= 5) {
+                        pageNum = i + 1;
+                      } else if (currentPage <= 3) {
+                        pageNum = i + 1;
+                      } else if (currentPage >= totalPages - 2) {
+                        pageNum = totalPages - 4 + i;
+                      } else {
+                        pageNum = currentPage - 2 + i;
+                      }
+                      
+                      return (
+                        <Button
+                          key={pageNum}
+                          variant={currentPage === pageNum ? "default" : "outline"}
+                          size="sm"
+                          onClick={() => setCurrentPage(pageNum)}
+                          className="px-3 py-1 min-w-[32px]"
+                        >
+                          {pageNum}
+                        </Button>
+                      );
+                    })}
+                  </div>
+                  
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1"
+                  >
+                    Next
+                  </Button>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
         </main>

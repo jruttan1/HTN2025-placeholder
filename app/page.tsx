@@ -1,16 +1,25 @@
 "use client"
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { useUser } from '@auth0/nextjs-auth0'
 import Image from "next/image"
 
 
 export default function HomePage() {
   const router = useRouter()
+  const { user, isLoading } = useUser()
 
   useEffect(() => {
-    // Redirect to sign up page as the entry point
-    router.push('/auth')
-  }, [router])
+    if (!isLoading) {
+      if (user) {
+        // User is authenticated, redirect to dashboard
+        router.push('/dashboard')
+      } else {
+        // User is not authenticated, redirect to login
+        router.push('/login')
+      }
+    }
+  }, [user, isLoading, router])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">

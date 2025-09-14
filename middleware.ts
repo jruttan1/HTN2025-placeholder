@@ -1,8 +1,22 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  // Simple middleware - just allow all requests to pass through
-  // In a real app, you'd add proper authentication checks here
+  const { pathname } = request.nextUrl;
+  
+  // Allow access to auth routes, login page, and static files
+  if (
+    pathname.startsWith('/api/auth') ||
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/auth') ||
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/favicon') ||
+    pathname === '/'
+  ) {
+    return NextResponse.next();
+  }
+
+  // For now, allow all requests - authentication will be handled by Auth0
+  // In a production app, you might want to add session checking here
   return NextResponse.next();
 }
 
