@@ -64,34 +64,51 @@ const BROKER_MAPPING = [
   "Brown & Brown"
 ];
 
-// Calculate SLA timer based on expiration date
-function calculateSLATimer(expirationDate: string): { timer: string; progress: number } {
-  const expiry = new Date(expirationDate);
-  const now = new Date();
-  const diffTime = expiry.getTime() - now.getTime();
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+// Calculate days since creation date
+function calculateDaysSinceCreated(createdAt: string): { timer: string; progress: number } {
+  // Handle null or undefined dates
+  if (!createdAt) {
+    return { timer: "Unknown", progress: 0 };
+  }
   
-  if (diffDays <= 0) {
-    return { timer: "Expired", progress: 100 };
+  const created = new Date(createdAt);
+  const now = new Date();
+  
+  // Check if the date is valid
+  if (isNaN(created.getTime())) {
+    return { timer: "Invalid Date", progress: 0 };
+  }
+  
+  const diffTime = now.getTime() - created.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  
+  // Handle negative days (future dates)
+  if (diffDays < 0) {
+    return { timer: "Future", progress: 0 };
+  }
+  
+  if (diffDays === 0) {
+    return { timer: "Today", progress: 0 };
+  } else if (diffDays === 1) {
+    return { timer: "1 day ago", progress: 10 };
   } else if (diffDays <= 7) {
-    return { timer: `${diffDays}d left`, progress: 85 };
+    return { timer: `${diffDays} days ago`, progress: Math.min(30, diffDays * 5) };
   } else if (diffDays <= 30) {
-    return { timer: `${diffDays}d left`, progress: 60 };
+    return { timer: `${diffDays} days ago`, progress: Math.min(60, 30 + (diffDays - 7) * 2) };
   } else {
     const months = Math.floor(diffDays / 30);
-    const days = diffDays % 30;
+    const remainingDays = diffDays % 30;
     return { 
-      timer: months > 0 ? `${months}m ${days}d` : `${days}d`, 
-      progress: Math.max(20, 100 - (diffDays * 2)) 
+      timer: months > 0 ? `${months}m ${remainingDays}d ago` : `${diffDays} days ago`, 
+      progress: Math.min(100, 60 + (diffDays - 30) * 1.5) 
     };
   }
 }
 
 // Convert appetite score to status
 function getAppetiteStatus(score: number): string {
-  if (score >= 0.8) return "good";
-  if (score < 0.3) return "poor";
-  return "good"; // Most of your data seems to be in good range
+  if (score >= 0.65) return "good";
+  else return "poor";
 }
 
 // Format premium for display
@@ -117,7 +134,7 @@ function mapLineOfBusinessToProduct(lob: string): string {
 // Main mapper function
 export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardSubmission[] {
   return realData.map((policy, index) => {
-    const slaInfo = calculateSLATimer(policy.expiration_date);
+    const slaInfo = calculateDaysSinceCreated(policy.created_at);
     // Use Cohere relevance score as appetite score, fallback to other scores if not available
     const appetiteScore = (policy as EnhancedPolicy).cohere_relevance ? 
                          Math.round((policy as EnhancedPolicy).cohere_relevance * 100) :

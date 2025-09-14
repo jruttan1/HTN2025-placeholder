@@ -29,7 +29,7 @@ import { usePathname } from "next/navigation"
 const navigationItems = [
   {
     title: "Dashboard",
-    url: "/",
+    url: "/dashboard",
     icon: Home,
   },
   {

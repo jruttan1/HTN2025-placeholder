@@ -206,7 +206,6 @@ export default function Dashboard() {
   const [regionFilter, setRegionFilter] = useState<string | null>(null);
   const [brokerFilter, setBrokerFilter] = useState<string | null>(null);
   const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(null);
-  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
   const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
   const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
@@ -330,11 +329,10 @@ export default function Dashboard() {
   }, [searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
 
   // Calculate summary metrics
-  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
-  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
+  const inAppetite = submissions.filter(s => s.appetiteScore >= 65).length
   const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
   console.log(filteredSubmissions)
-  const top3Submissions = filteredSubmissions.slice(0, 3)
+  const topSubmission = filteredSubmissions.slice(0, 1)
 
   useEffect(() => {
     // Process pending user data from sign up
@@ -391,7 +389,7 @@ export default function Dashboard() {
     }
   }
 
-  const getSLAColor = (progress: number) => {
+  const getAgeColor = (progress: number) => {
     if (progress >= 80) return "text-red-600"
     if (progress >= 60) return "text-amber-600"
     return "text-green-600"
@@ -403,7 +401,7 @@ export default function Dashboard() {
     return "text-red-500"
   }
 
-  const getSLABarColor = (progress: number) => {
+  const getAgeBarColor = (progress: number) => {
     if (progress >= 80) return "bg-red-500"
     if (progress >= 60) return "bg-amber-500"
     return "bg-green-500"
@@ -499,18 +497,18 @@ export default function Dashboard() {
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
                   <svg
                     className="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
                       d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
+                  />
+                </svg>
+              </div>
                 <div>
                   <h3 className="font-semibold text-green-800">
                     Welcome to Optimate!
@@ -518,8 +516,8 @@ export default function Dashboard() {
                   <p className="text-green-700">
                     Your account has been set up successfully.
                   </p>
-                </div>
-              </div>
+            </div>
+          </div>
             </CardContent>
           </Card>
         )}
@@ -543,18 +541,18 @@ export default function Dashboard() {
                       </p>
                     </div>
                   </div>
-                  <Button
-                    variant="ghost"
-                    size="sm"
+              <Button
+                variant="ghost"
+                size="sm"
                     onClick={() => setSearchQuery('')}
                     className="text-blue-600 hover:text-blue-800 hover:bg-blue-100"
-                  >
+              >
                     <X className="w-4 h-4 mr-1" />
                     Clear Search
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              </Button>
+              </div>
+            </CardContent>
+          </Card>
           </div>
         )}
 
@@ -569,7 +567,7 @@ export default function Dashboard() {
                   <h2 className="text-xl font-semibold text-foreground">
                     Pipeline Overview
                   </h2>
-
+                  
                   {/* Summary Metrics */}
                   <div className="grid grid-cols-4 gap-4">
                     <button
@@ -593,8 +591,8 @@ export default function Dashboard() {
                           : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
-                      <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
-                      <div className="text-sm font-medium">At SLA Risk</div>
+                      <div className="text-3xl font-bold mb-1">50</div>
+                      <div className="text-sm font-medium">Older Submissions</div>
                     </button>
                     <button
                       onClick={() => setSelectedFilter("top-premium")}
@@ -635,12 +633,12 @@ export default function Dashboard() {
                   <h3 className="text-lg font-semibold text-foreground">
                     Filters
                   </h3>
-                </CardHeader>
+              </CardHeader>
               </div>
                 <div>
-                  <CardContent className="pt-0">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center space-x-2">
+              <CardContent className="pt-0">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center space-x-2">
                         <svg
                           className="w-4 h-4 text-gray-500"
                           fill="none"
@@ -653,27 +651,27 @@ export default function Dashboard() {
                             strokeWidth={2}
                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
-                        </svg>
+                    </svg>
                         <Select
                           value={appetiteFilter || "all"}
                           onValueChange={setAppetiteFilter}
                         >
                           <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
-                            <SelectValue placeholder="Appetite Fit" />
-                          </SelectTrigger>
-                          <SelectContent>
+                        <SelectValue placeholder="Appetite Fit" />
+                      </SelectTrigger>
+                        <SelectContent>
                             <SelectItem value="all">
                               All Appetite Fits
                             </SelectItem>
-                            <SelectItem value="good">In Appetite</SelectItem>
+                          <SelectItem value="good">In Appetite</SelectItem>
                             <SelectItem value="poor">
                               Out of Appetite
                             </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                        </SelectContent>
+                    </Select>
+                  </div>
 
-                      <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                         <svg
                           className="w-4 h-4 text-gray-500"
                           fill="none"
@@ -686,24 +684,24 @@ export default function Dashboard() {
                             strokeWidth={2}
                             d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
-                        </svg>
+                    </svg>
                         <Select
                           value={regionFilter || "all"}
                           onValueChange={setRegionFilter}
                         >
                           <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
-                            <SelectValue placeholder="Region" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="all">All Regions</SelectItem>
-                            <SelectItem value="na">North America</SelectItem>
-                            <SelectItem value="eu">Europe</SelectItem>
-                            <SelectItem value="apac">APAC</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                        <SelectValue placeholder="Region" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Regions</SelectItem>
+                        <SelectItem value="na">North America</SelectItem>
+                        <SelectItem value="eu">Europe</SelectItem>
+                        <SelectItem value="apac">APAC</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                      <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                         <svg
                           className="w-4 h-4 text-gray-500"
                           fill="none"
@@ -716,16 +714,16 @@ export default function Dashboard() {
                             strokeWidth={2}
                             d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                           />
-                        </svg>
+                    </svg>
                         <Select
                           value={brokerFilter || "all"}
                           onValueChange={setBrokerFilter}
                         >
                           <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
-                            <SelectValue placeholder="Broker" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="all">All Brokers</SelectItem>
+                        <SelectValue placeholder="Broker" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Brokers</SelectItem>
                             <SelectItem value="marsh">
                               Marsh & McLennan
                             </SelectItem>
@@ -735,11 +733,11 @@ export default function Dashboard() {
                             <SelectItem value="willis">
                               Willis Towers Watson
                             </SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                      <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                         <svg
                           className="w-4 h-4 text-gray-500"
                           fill="none"
@@ -752,170 +750,101 @@ export default function Dashboard() {
                             strokeWidth={2}
                             d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
-                        </svg>
+                    </svg>
                         <Select
                           value={premiumSizeFilter || "all"}
                           onValueChange={setPremiumSizeFilter}
                         >
                           <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
-                            <SelectValue placeholder="Premium Size" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="all">All Sizes</SelectItem>
-                            <SelectItem value="small">Under $1M</SelectItem>
-                            <SelectItem value="medium">$1M - $5M</SelectItem>
-                            <SelectItem value="large">Over $5M</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                  </CardContent>
+                        <SelectValue placeholder="Premium Size" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Sizes</SelectItem>
+                        <SelectItem value="small">Under $1M</SelectItem>
+                        <SelectItem value="medium">$1M - $5M</SelectItem>
+                        <SelectItem value="large">Over $5M</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </CardContent>
                 </div>
             </Card>
           </div>
 
           {/* Right Side - Top Priority */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 mt-8">
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold text-foreground">
+              <div>
+                <h2 className="text-3xl text-center font-semibold text-foreground">
                   Top Priority
                 </h2>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() =>
-                      setCurrentTopSubmission(
-                        Math.max(0, currentTopSubmission - 1)
-                      )
-                    }
-                    disabled={currentTopSubmission === 0}
-                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  >
-                    <svg
-                      className="w-4 h-4 text-gray-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <span className="text-sm text-gray-500 min-w-[40px] text-center">
-                    {currentTopSubmission + 1} / {top3Submissions.length}
-                  </span>
-                  <button
-                    onClick={() =>
-                      setCurrentTopSubmission(
-                        Math.min(
-                          top3Submissions.length - 1,
-                          currentTopSubmission + 1
-                        )
-                      )
-                    }
-                    disabled={
-                      currentTopSubmission === top3Submissions.length - 1
-                    }
-                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  >
-                    <svg
-                      className="w-4 h-4 text-gray-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
               </div>
-
-              {/* Current Top Submission */}
+              
+              {/* Top Submission */}
               {(() => {
-                const submission = top3Submissions[currentTopSubmission];
-                const cardColors = [
-                  {
-                    accent: "bg-indigo-600",
-                    text: "text-foreground",
-                    chip: "bg-indigo-100 text-indigo-800",
-                  },
-                  {
-                    accent: "bg-purple-600",
-                    text: "text-foreground",
-                    chip: "bg-purple-100 text-purple-800",
-                  },
-                  {
-                    accent: "bg-emerald-600",
-                    text: "text-foreground",
-                    chip: "bg-emerald-100 text-emerald-800",
-                  },
-                ];
-
-                const currentColor = cardColors[currentTopSubmission];
+                const submission = topSubmission[0];
+                const cardColor = {
+                  accent: "bg-indigo-600",
+                  text: "text-foreground",
+                  chip: "bg-indigo-100 text-indigo-800",
+                };
 
                 return submission ? (
-                  <Card
-                    key={submission.id}
-                    className="shadow-lg bg-card cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-border relative"
-                  >
-                    <CardContent className="p-6">
+                  <Link href={`/submission/${submission.id}`}>
+                    <Card
+                      key={submission.id}
+                      className="shadow-lg bg-card cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-border relative min-h-[350px]"
+                    >
+                      <CardContent className="p-6">
                       <div className="absolute top-4 right-4 z-10">
-                        <div
-                          className={`${currentColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}
-                        >
-                          {currentTopSubmission + 1}
+                        <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                          <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
                         </div>
                       </div>
-
-                      <div className="mb-6 pr-12">
+                      
+                      <div className="mb-8 pr-12">
                         <h3
-                          className={`text-xl font-bold mb-2 ${currentColor.text}`}
+                          className={`text-xl font-bold mb-2 ${cardColor.text}`}
                         >
                           {submission.client}
                         </h3>
                         <p
-                          className={`text-2xl font-extrabold ${currentColor.text}`}
+                          className={`text-2xl font-extrabold ${cardColor.text}`}
                         >
                           {submission.premium}
                         </p>
                       </div>
-
-                      <div className="space-y-4">
+                      
+                      <div className="space-y-6">
                         <div className="flex items-center justify-between">
                           <div className="text-center">
                             <ProgressRing
                               score={submission.appetiteScore}
                               size={12}
                             />
-                            <p className={`text-xs mt-2 ${currentColor.text}`}>
+                            <p className={`text-xs mt-2 ${cardColor.text}`}>
                               Appetite Fit
                             </p>
                           </div>
                           <div className="text-center flex-1 mx-4">
                             <p
-                              className={`text-lg font-bold mb-2 ${currentColor.text}`}
+                              className={`text-lg font-bold mb-2 ${cardColor.text}`}
                             >
                               {submission.slaTimer}
                             </p>
                             <div className="w-full bg-gray-200 rounded-full h-2">
                               <div
-                                className={`h-2 rounded-full transition-all ${getSLABarColor(
+                                className={`h-2 rounded-full transition-all ${getAgeBarColor(
                                   submission.slaProgress
                                 )}`}
                                 style={{ width: `${submission.slaProgress}%` }}
                               />
                             </div>
-                            <p className={`text-xs mt-2 ${currentColor.text}`}>
-                              SLA Progress
+                            <p className={`text-xs mt-2 ${cardColor.text}`}>
+                              Since Submission
                             </p>
                           </div>
                         </div>
@@ -923,48 +852,34 @@ export default function Dashboard() {
                         <div className="space-y-2 pr-12">
                           <div className="flex flex-wrap gap-1">
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.broker}
                             </span>
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.lineOfBusiness}
                             </span>
                           </div>
                           <div className="flex flex-wrap gap-1">
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.state} • {submission.businessType}
                             </span>
                           </div>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                  </Card></Link>
                 ) : (
                   <div className="p-6 text-center text-gray-500">
                     No submissions available
                   </div>
                 );
               })()}
-
-              {/* Dots Indicator */}
-              <div className="flex justify-center space-x-2 mt-4">
-                {top3Submissions.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTopSubmission(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      currentTopSubmission === index
-                        ? "bg-blue-600"
-                        : "bg-gray-300"
-                    }`}
-                  />
-                ))}
-              </div>
+              
             </div>
           </div>
         </div>
@@ -979,7 +894,7 @@ export default function Dashboard() {
               analysis
             </p>
           </CardHeader>
-            <CardContent className="p-0">
+          <CardContent className="p-0">
               {/* Column Headers */}
               <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
                 <div className="grid grid-cols-12 gap-4 items-center">
@@ -1000,7 +915,7 @@ export default function Dashboard() {
                   </div>
                   <div className="col-span-2 text-center">
                     <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                      Time Remaining
+                      Since Created
                     </h4>
                   </div>
                   <div className="col-span-2 text-center">
@@ -1011,7 +926,7 @@ export default function Dashboard() {
                 </div>
               </div>
               
-              <div className="divide-y divide-gray-50">
+            <div className="divide-y divide-gray-50">
               {filteredSubmissions.length === 0 ? (
                 <div className="p-12 text-center">
                   <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -1054,13 +969,13 @@ export default function Dashboard() {
                 paginatedSubmissions.map((submission, index) => {
                   const continuousIndex = startIndex + index;
                   return (
-                  <div
-                    key={submission.id}
-                    className="relative"
-                    onMouseEnter={() => setHoveredRow(submission.id)}
-                    onMouseLeave={() => setHoveredRow(null)}
-                  >
-                    <Link href={`/submission/${submission.id}`}>
+                <div
+                  key={submission.id}
+                  className="relative"
+                  onMouseEnter={() => setHoveredRow(submission.id)}
+                  onMouseLeave={() => setHoveredRow(null)}
+                >
+                  <Link href={`/submission/${submission.id}`}>
                       <div className="p-6 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-gradient-to-b hover:border-blue-500 min-h-[120px]">
                         <div className="grid grid-cols-12 gap-4 items-center h-full">
                           {/* Rank and Client - 4 columns */}
@@ -1124,28 +1039,28 @@ export default function Dashboard() {
                             </Badge>
                           </div>
 
-                          {/* SLA Timer - 2 columns */}
-                          <div className="col-span-2 text-center">
-                            <p
-                              className={`text-xl font-bold ${getSLAColor(
-                                submission.slaProgress
-                              )} mb-1`}
-                            >
+                            {/* Age Display */}
+                            <div className="col-span-2 text-center">
+                              <p
+                                className={`text-2xl font-bold ${getAgeColor(
+                                  submission.slaProgress
+                                )} mb-1`}
+                              >
                               {submission.slaTimer}
                             </p>
-                            <div className="w-16 bg-gray-200 rounded-full h-2 mx-auto">
+                            <div className="w-20 bg-gray-200 rounded-full h-2 mx-auto">
                               <div
-                                className={`h-2 rounded-full transition-all ${getSLABarColor(
-                                  submission.slaProgress
-                                )}`}
-                                style={{
-                                  width: `${submission.slaProgress}%`,
-                                }}
+                                  className={`h-2 rounded-full transition-all ${getAgeBarColor(
+                                    submission.slaProgress
+                                  )}`}
+                                  style={{
+                                    width: `${submission.slaProgress}%`,
+                                  }}
                               />
                             </div>
-                            <p className="text-xs text-gray-500 font-medium mt-1">
-                              Time Remaining
-                            </p>
+                              <p className="text-sm text-gray-500 font-medium mt-1">
+                                Since Created
+                              </p>
                           </div>
 
                           {/* Status - 2 columns */}
@@ -1190,15 +1105,15 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </div>
-                  </Link>
+                    </Link>
 
-                    {/* Hover Popover */}
-                    {hoveredRow === submission.id && (
+                  {/* Hover Popover */}
+                  {hoveredRow === submission.id && (
                       <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10 bg-popover border border-border rounded-lg shadow-lg p-4 w-80">
                         <h4 className="font-semibold text-popover-foreground mb-2">
                           Why This Surfaced
                         </h4>
-                        <ul className="space-y-1">
+                      <ul className="space-y-1">
                           {submission.whySurfaced
                             .slice(0, 3)
                             .map((reason, i) => (
@@ -1206,14 +1121,14 @@ export default function Dashboard() {
                                 key={i}
                                 className="text-sm text-gray-700 flex items-start"
                               >
-                                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                {reason}
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
+                            <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                            {reason}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
                   );
                 })
               )}
@@ -1231,6 +1146,7 @@ export default function Dashboard() {
                   <Button
                     variant="outline"
                     size="sm"
+
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
                     disabled={currentPage === 1}
                     className="px-3 py-1"
@@ -1279,7 +1195,7 @@ export default function Dashboard() {
             )}
           </CardContent>
         </Card>
-        </main>
+      </main>
         </SidebarInset>
       </SidebarProvider>
     </div>
