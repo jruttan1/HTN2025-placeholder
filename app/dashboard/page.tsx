@@ -9,10 +9,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Link from "next/link"
 import Image from "next/image"
 import { X } from "lucide-react"
+import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
+import SlidingToggle from "@/helper/toggle"
 // import { Toggle } from "@/components/ui/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
-const submissions = [
+// This will be replaced with real data loaded from enhanced_data.json
+const mockSubmissions = [
   {
     id: 1,
     client: "TechCorp Industries",
@@ -145,6 +148,8 @@ export default function Dashboard() {
   const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
   const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
+  const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
+  const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
 
   // Helper functions for filtering
   const getRegionFromState = (state: string) => {
@@ -215,6 +220,26 @@ export default function Dashboard() {
       }
     }
     setIsLoading(false)
+  }, [])
+
+  // Load real submissions data from enhanced_data.json
+  useEffect(() => {
+    const loadSubmissions = async () => {
+      try {
+        setIsLoadingSubmissions(true)
+        const realSubmissions = await loadRealSubmissions()
+        if (realSubmissions.length > 0) {
+          setSubmissions(realSubmissions)
+        }
+      } catch (error) {
+        console.error('Error loading submissions:', error)
+        // Keep using mock data if loading fails
+      } finally {
+        setIsLoadingSubmissions(false)
+      }
+    }
+
+    loadSubmissions()
   }, [])
 
   const getAppetiteColor = (status: string) => {
@@ -362,6 +387,11 @@ export default function Dashboard() {
             </div>
 
             <div className="flex items-center space-x-6">
+              <Link href="/policies">
+                <Button variant="outline" className="text-white border-white/20 hover:bg-white/10">
+                  Live Policies
+                </Button>
+              </Link>
               <div className="relative">
                 <svg
                   className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60"
