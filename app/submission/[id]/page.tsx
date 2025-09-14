@@ -193,7 +193,7 @@ export default function SubmissionDetailPage({ params }: { params: Promise<{ id:
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
+      <Header userData={null} />
       <SidebarProvider>
         <AppSidebar />
         <SidebarPullTab />

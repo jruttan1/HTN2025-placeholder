@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import Header from "@/components/Header";
 import ChoroplethMap from '@/components/ChoroplethMap';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -94,10 +97,22 @@ const HeatmapPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 space-y-6">
+    <div className="min-h-screen flex flex-col">
+      <Header userData={null} />
+      <div className="flex-1 container mx-auto p-6 space-y-6">
+        {/* Back to Dashboard Button */}
+        <div className="mb-6">
+          <Link href="/dashboard">
+            <Button variant="outline" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Dashboard
+            </Button>
+          </Link>
+        </div>
+
       <div className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight">US States Choropleth Heatmap</h1>
-        <p className="text-black mt-2">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">US States Choropleth Heatmap</h1>
+        <p className="text-muted-foreground mt-2">
           Interactive visualization of state-level data with customizable parameters
         </p>
       </div>
@@ -194,6 +209,7 @@ const HeatmapPage = () => {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 };
