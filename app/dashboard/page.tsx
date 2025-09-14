@@ -895,8 +895,39 @@ export default function Dashboard() {
               analysis
             </p>
           </CardHeader>
-          <CardContent className="p-0">
-            <div className="divide-y divide-gray-50">
+            <CardContent className="p-0">
+              {/* Column Headers */}
+              <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                <div className="grid grid-cols-12 gap-4 items-center">
+                  <div className="col-span-4">
+                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      Client & Details
+                    </h4>
+                  </div>
+                  <div className="col-span-2 text-center">
+                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      Premium
+                    </h4>
+                  </div>
+                  <div className="col-span-2 text-center">
+                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      Appetite Fit
+                    </h4>
+                  </div>
+                  <div className="col-span-2 text-center">
+                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      Time Remaining
+                    </h4>
+                  </div>
+                  <div className="col-span-2 text-center">
+                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      Status
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="divide-y divide-gray-50">
               {filteredSubmissions.length === 0 ? (
                 <div className="p-12 text-center">
                   <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -946,134 +977,132 @@ export default function Dashboard() {
                     onMouseLeave={() => setHoveredRow(null)}
                   >
                     <Link href={`/submission/${submission.id}`}>
-                      <div className="p-6 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-gradient-to-b hover:border-blue-500 min-h-[120px] flex items-center">
-                        <div className="flex items-center justify-between w-full">
-                          <div className="flex items-center space-x-8 flex-1">
-                            {/* Rank and Client */}
-                            <div className="flex items-center space-x-4 min-w-[280px]">
-                               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                                 {continuousIndex + 1}
-                               </div>
-                              <div>
-                                <h3 className="text-xl font-bold text-foreground mb-1">
-                                  {submission.client}
-                                </h3>
-                                <p className="text-gray-500 font-medium mb-2">
-                                  {submission.broker}
-                                </p>
-                                <div className="flex items-center space-x-2">
-                                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
-                                    {submission.lineOfBusiness}
-                                  </span>
-                                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
-                                    {submission.state}
-                                  </span>
-                                  <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                      submission.businessType === "Renewal"
-                                        ? "bg-green-100 text-green-800"
-                                        : "bg-purple-100 text-purple-800"
-                                    }`}
-                                  >
-                                    {submission.businessType}
-                                  </span>
-                                </div>
+                      <div className="p-6 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-gradient-to-b hover:border-blue-500 min-h-[120px]">
+                        <div className="grid grid-cols-12 gap-4 items-center h-full">
+                          {/* Rank and Client - 4 columns */}
+                          <div className="col-span-4 flex items-center space-x-4">
+                            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg flex-shrink-0">
+                              {continuousIndex + 1}
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-xl font-bold text-foreground mb-1 truncate">
+                                {submission.client}
+                              </h3>
+                              <p className="text-gray-500 font-medium mb-2 truncate">
+                                {submission.broker}
+                              </p>
+                              <div className="flex items-center space-x-2 flex-wrap">
+                                <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                                  {submission.lineOfBusiness}
+                                </span>
+                                <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                                  {submission.state}
+                                </span>
+                                <span
+                                  className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                    submission.businessType === "Renewal"
+                                      ? "bg-green-100 text-green-800"
+                                      : "bg-purple-100 text-purple-800"
+                                  }`}
+                                >
+                                  {submission.businessType}
+                                </span>
                               </div>
                             </div>
+                          </div>
 
-                            {/* Premium */}
-                            <div className="text-center min-w-[120px]">
-                              <p className="text-3xl font-bold text-foreground">
-                                {submission.premium}
-                              </p>
-                              <p className="text-sm text-gray-500 font-medium">
-                                Premium
-                              </p>
+                          {/* Premium - 2 columns */}
+                          <div className="col-span-2 text-center">
+                            <p className="text-2xl font-bold text-foreground">
+                              {submission.premium}
+                            </p>
+                            <p className="text-sm text-gray-500 font-medium">
+                              Premium
+                            </p>
+                          </div>
+
+                          {/* Appetite Fit - 2 columns */}
+                          <div className="col-span-2 text-center">
+                            <div className="flex justify-center mb-2">
+                              <ProgressRing
+                                score={submission.appetiteScore}
+                                size={16}
+                              />
                             </div>
+                            <Badge
+                              className={`${getAppetiteColor(
+                                submission.appetiteStatus
+                              )} text-xs font-semibold px-3 py-1 rounded-full border-0`}
+                            >
+                              {submission.appetiteStatus === "good"
+                                ? "In Appetite"
+                                : "Out of Appetite"}
+                            </Badge>
+                          </div>
 
-                            {/* Appetite Fit */}
-                            <div className="text-center min-w-[100px]">
-                              <div className="flex justify-center mb-2">
-                                <ProgressRing
-                                  score={submission.appetiteScore}
-                                  size={16}
-                                />
-                              </div>
-                              <Badge
-                                className={`${getAppetiteColor(
-                                  submission.appetiteStatus
-                                )} text-xs font-semibold px-3 py-1 rounded-full border-0`}
-                              >
-                                {submission.appetiteStatus === "good"
-                                  ? "In Appetite"
-                                  : "Out of Appetite"}
-                              </Badge>
-                            </div>
-
-                            {/* SLA Timer */}
-                            <div className="text-center min-w-[120px]">
-                              <p
-                                className={`text-2xl font-bold ${getSLAColor(
+                          {/* SLA Timer - 2 columns */}
+                          <div className="col-span-2 text-center">
+                            <p
+                              className={`text-xl font-bold ${getSLAColor(
+                                submission.slaProgress
+                              )} mb-1`}
+                            >
+                              {submission.slaTimer}
+                            </p>
+                            <div className="w-16 bg-gray-200 rounded-full h-2 mx-auto">
+                              <div
+                                className={`h-2 rounded-full transition-all ${getSLABarColor(
                                   submission.slaProgress
-                                )} mb-1`}
-                              >
-                                {submission.slaTimer}
-                              </p>
-                              <div className="w-20 bg-gray-200 rounded-full h-2 mx-auto">
-                                <div
-                                  className={`h-2 rounded-full transition-all ${getSLABarColor(
-                                    submission.slaProgress
-                                  )}`}
-                                  style={{
-                                    width: `${submission.slaProgress}%`,
-                                  }}
-                                />
-                              </div>
-                              <p className="text-sm text-gray-500 font-medium mt-1">
-                                Time Remaining
-                              </p>
+                                )}`}
+                                style={{
+                                  width: `${submission.slaProgress}%`,
+                                }}
+                              />
                             </div>
+                            <p className="text-xs text-gray-500 font-medium mt-1">
+                              Time Remaining
+                            </p>
+                          </div>
 
-                            {/* Status */}
-                            <div className="min-w-[140px]">
-                              <Badge
-                                className={`${getStatusColor(
-                                  submission.status
-                                )} text-sm font-semibold px-4 py-2 rounded-full border-0`}
-                              >
-                                {submission.status === "Under Review" && (
-                                  <svg
-                                    className="w-4 h-4 mr-2"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth={2}
-                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                  </svg>
-                                )}
-                                {submission.status === "Review Required" && (
-                                  <svg
-                                    className="w-4 h-4 mr-2"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth={2}
-                                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                                    />
-                                  </svg>
-                                )}
-                                {submission.status}
-                              </Badge>
-                            </div>
+                          {/* Status - 2 columns */}
+                          <div className="col-span-2 text-center">
+                            <Badge
+                              className={`${getStatusColor(
+                                submission.status
+                              )} text-sm font-semibold px-3 py-2 rounded-full border-0`}
+                            >
+                              {submission.status === "Under Review" && (
+                                <svg
+                                  className="w-4 h-4 mr-2"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                  />
+                                </svg>
+                              )}
+                              {submission.status === "Review Required" && (
+                                <svg
+                                  className="w-4 h-4 mr-2"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                  />
+                                </svg>
+                              )}
+                              {submission.status}
+                            </Badge>
                           </div>
                         </div>
                       </div>
