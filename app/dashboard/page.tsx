@@ -206,7 +206,6 @@ export default function Dashboard() {
   const [regionFilter, setRegionFilter] = useState<string | null>(null);
   const [brokerFilter, setBrokerFilter] = useState<string | null>(null);
   const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(null);
-  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
   const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
   const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
@@ -319,7 +318,7 @@ export default function Dashboard() {
   const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
   const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
   console.log(filteredSubmissions)
-  const top3Submissions = filteredSubmissions.slice(0, 3)
+  const topSubmission = filteredSubmissions.slice(0, 1)
 
   useEffect(() => {
     // Process pending user data from sign up
@@ -760,134 +759,65 @@ export default function Dashboard() {
           </div>
 
           {/* Right Side - Top Priority */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 mt-10">
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
+              <div>
                 <h2 className="text-xl font-semibold text-foreground">
                   Top Priority
                 </h2>
-                <div className="flex items-center space-x-2">
-                  <button
-                    onClick={() =>
-                      setCurrentTopSubmission(
-                        Math.max(0, currentTopSubmission - 1)
-                      )
-                    }
-                    disabled={currentTopSubmission === 0}
-                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  >
-                    <svg
-                      className="w-4 h-4 text-gray-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <span className="text-sm text-gray-500 min-w-[40px] text-center">
-                    {currentTopSubmission + 1} / {top3Submissions.length}
-                  </span>
-                  <button
-                    onClick={() =>
-                      setCurrentTopSubmission(
-                        Math.min(
-                          top3Submissions.length - 1,
-                          currentTopSubmission + 1
-                        )
-                      )
-                    }
-                    disabled={
-                      currentTopSubmission === top3Submissions.length - 1
-                    }
-                    className="p-1 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  >
-                    <svg
-                      className="w-4 h-4 text-gray-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
               </div>
 
-              {/* Current Top Submission */}
+              {/* Top Submission */}
               {(() => {
-                const submission = top3Submissions[currentTopSubmission];
-                const cardColors = [
-                  {
-                    accent: "bg-indigo-600",
-                    text: "text-foreground",
-                    chip: "bg-indigo-100 text-indigo-800",
-                  },
-                  {
-                    accent: "bg-purple-600",
-                    text: "text-foreground",
-                    chip: "bg-purple-100 text-purple-800",
-                  },
-                  {
-                    accent: "bg-emerald-600",
-                    text: "text-foreground",
-                    chip: "bg-emerald-100 text-emerald-800",
-                  },
-                ];
-
-                const currentColor = cardColors[currentTopSubmission];
+                const submission = topSubmission[0];
+                const cardColor = {
+                  accent: "bg-indigo-600",
+                  text: "text-foreground",
+                  chip: "bg-indigo-100 text-indigo-800",
+                };
 
                 return submission ? (
-                  <Card
-                    key={submission.id}
-                    className="shadow-lg bg-card cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-border relative"
-                  >
-                    <CardContent className="p-6">
+                  <Link href={`/submission/${submission.id}`}>
+                    <Card
+                      key={submission.id}
+                      className="shadow-lg bg-card cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-border relative min-h-[350px]"
+                    >
+                      <CardContent className="p-6">
                       <div className="absolute top-4 right-4 z-10">
                         <div
-                          className={`${currentColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}
+                          className={`${cardColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}
                         >
-                          {currentTopSubmission + 1}
+                          1
                         </div>
                       </div>
 
-                      <div className="mb-6 pr-12">
+                      <div className="mb-8 pr-12">
                         <h3
-                          className={`text-xl font-bold mb-2 ${currentColor.text}`}
+                          className={`text-xl font-bold mb-2 ${cardColor.text}`}
                         >
                           {submission.client}
                         </h3>
                         <p
-                          className={`text-2xl font-extrabold ${currentColor.text}`}
+                          className={`text-2xl font-extrabold ${cardColor.text}`}
                         >
                           {submission.premium}
                         </p>
                       </div>
 
-                      <div className="space-y-4">
+                      <div className="space-y-6">
                         <div className="flex items-center justify-between">
                           <div className="text-center">
                             <ProgressRing
                               score={submission.appetiteScore}
                               size={12}
                             />
-                            <p className={`text-xs mt-2 ${currentColor.text}`}>
+                            <p className={`text-xs mt-2 ${cardColor.text}`}>
                               Appetite Fit
                             </p>
                           </div>
                           <div className="text-center flex-1 mx-4">
                             <p
-                              className={`text-lg font-bold mb-2 ${currentColor.text}`}
+                              className={`text-lg font-bold mb-2 ${cardColor.text}`}
                             >
                               {submission.slaTimer}
                             </p>
@@ -899,7 +829,7 @@ export default function Dashboard() {
                                 style={{ width: `${submission.slaProgress}%` }}
                               />
                             </div>
-                            <p className={`text-xs mt-2 ${currentColor.text}`}>
+                            <p className={`text-xs mt-2 ${cardColor.text}`}>
                               SLA Progress
                             </p>
                           </div>
@@ -908,19 +838,19 @@ export default function Dashboard() {
                         <div className="space-y-2 pr-12">
                           <div className="flex flex-wrap gap-1">
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.broker}
                             </span>
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.lineOfBusiness}
                             </span>
                           </div>
                           <div className="flex flex-wrap gap-1">
                             <span
-                              className={`px-2 py-1 rounded-full text-xs font-medium ${currentColor.chip}`}
+                              className={`px-2 py-1 rounded-full text-xs font-medium ${cardColor.chip}`}
                             >
                               {submission.state} • {submission.businessType}
                             </span>
@@ -928,7 +858,7 @@ export default function Dashboard() {
                         </div>
                       </div>
                     </CardContent>
-                  </Card>
+                  </Card></Link>
                 ) : (
                   <div className="p-6 text-center text-gray-500">
                     No submissions available
@@ -936,20 +866,6 @@ export default function Dashboard() {
                 );
               })()}
 
-              {/* Dots Indicator */}
-              <div className="flex justify-center space-x-2 mt-4">
-                {top3Submissions.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTopSubmission(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      currentTopSubmission === index
-                        ? "bg-blue-600"
-                        : "bg-gray-300"
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>
