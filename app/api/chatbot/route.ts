@@ -1,26 +1,92 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CohereClientV2 } from 'cohere-ai'
+
+const cohere = new CohereClientV2({ 
+  token: process.env.COHERE_API_KEY 
+})
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, policyContext } = await request.json()
+    const { message, policyContext, messages = [] } = await request.json()
 
-    // In a real implementation, you'd use your Cohere API key
-    // For now, we'll simulate a smart response based on policy context
-    const contextualResponse = generateContextualResponse(message, policyContext)
+    if (!process.env.COHERE_API_KEY) {
+      throw new Error('COHERE_API_KEY environment variable is not set')
+    }
 
-    // Simulate API delay for realistic feel
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    // Build context information for the system prompt
+    const contextInfo = policyContext ? `
+Policy Context:
+- Account: ${policyContext.accountName || 'N/A'}
+- Line of Business: ${policyContext.lineOfBusiness || 'N/A'}
+- Premium: ${policyContext.premium || 'N/A'}
+- Appetite Score: ${policyContext.appetiteScore || 'N/A'}%
+- State: ${policyContext.state || 'N/A'}
+- Business Type: ${policyContext.businessType || 'N/A'}
+- Construction Type: ${policyContext.constructionType || 'N/A'}
+- TIV: $${policyContext.tiv ? (policyContext.tiv / 1000000).toFixed(1) + 'M' : 'N/A'}
+- Status: ${policyContext.status || 'N/A'}
+- Why Surfaced: ${policyContext.whySurfaced ? policyContext.whySurfaced.join(', ') : 'N/A'}
+` : ''
+
+    // System prompt - can be customized via environment variable or updated here
+    const baseSystemPrompt = process.env.COHERE_SYSTEM_PROMPT || `You are an AI underwriting assistant helping insurance professionals analyze policies and make informed decisions. 
+
+You have access to detailed policy information and should provide expert guidance on:
+- Risk assessment and appetite scoring
+- Premium analysis and pricing recommendations  
+- Coverage evaluation and gap analysis
+- Underwriting decision support
+- Regulatory compliance considerations
+- Market trends and competitive positioning
+
+Always be professional, accurate, and provide actionable insights based on the policy context provided.`
+
+    const systemPrompt = `${baseSystemPrompt}
+
+${contextInfo}
+
+Please provide helpful, accurate, and professional responses about insurance underwriting, risk assessment, and policy analysis based on the above context.`
+
+    // Prepare messages for Cohere API
+    const cohereMessages = [
+      {
+        role: 'system' as const,
+        content: systemPrompt
+      },
+      // Include previous messages if any
+      ...messages.map((msg: any) => ({
+        role: msg.sender === 'user' ? 'user' as const : 'assistant' as const,
+        content: msg.content
+      })),
+      {
+        role: 'user' as const,
+        content: message
+      }
+    ]
+
+    const response = await cohere.chat({
+      messages: cohereMessages,
+      temperature: 0.15,
+      model: "command-r-03-2024"
+    })
+
+    const botResponse = response.message?.content?.[0]?.text || 'I apologize, but I encountered an issue processing your request.'
 
     return NextResponse.json({
-      response: contextualResponse,
+      response: botResponse,
       timestamp: new Date().toISOString()
     })
   } catch (error) {
     console.error('Chatbot API error:', error)
-    return NextResponse.json(
-      { error: 'Failed to process message' },
-      { status: 500 }
-    )
+    
+    // Fallback to contextual response if Cohere fails
+    const fallbackResponse = generateContextualResponse(message, policyContext)
+    
+    return NextResponse.json({
+      response: fallbackResponse,
+      timestamp: new Date().toISOString(),
+      fallback: true
+    })
   }
 }
 

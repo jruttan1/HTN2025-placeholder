@@ -20,6 +20,18 @@ export interface RealPolicyData {
   justification_points?: string[];
 }
 
+export interface DetailedInfo {
+  submissionDate: string;
+  expirationDate: string;
+  industry: string;
+  employees: string;
+  revenue: string;
+  location: string;
+  riskFactors: string[];
+  previousClaims: string;
+  competitorQuotes: string[];
+}
+
 export interface DashboardSubmission {
   id: number;
   client: string;
@@ -40,6 +52,7 @@ export interface DashboardSubmission {
   whySurfaced: string[];
   missingInfo: string[];
   recommendation: string;
+  detailedInfo: DetailedInfo;
 }
 
 // Sample broker mapping - you can expand this
@@ -134,7 +147,30 @@ export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardS
         `Located in ${policy.primary_risk_state} - priority state`
       ],
       missingInfo: [],
-      recommendation: appetiteScore >= 70 ? "Approve" : "Decline"
+      recommendation: appetiteScore >= 70 ? "Approve" : "Decline",
+      detailedInfo: {
+        submissionDate: new Date(policy.created_at).toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        }),
+        expirationDate: new Date(policy.expiration_date).toLocaleDateString('en-US', { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        }),
+        industry: mapLineOfBusinessToProduct(policy.line_of_business),
+        employees: "N/A", // Not available in real data
+        revenue: formatPremium(policy.total_premium * 20), // Estimate revenue as 20x premium
+        location: `${policy.primary_risk_state}, US`,
+        riskFactors: [
+          `${policy.construction_type} construction`,
+          `Building age: ${new Date().getFullYear() - policy.oldest_building} years`,
+          `TIV: $${(policy.tiv / 1000000).toFixed(1)}M`
+        ],
+        previousClaims: policy.loss_value !== "0" ? `Loss value: ${policy.loss_value}` : "No recent claims",
+        competitorQuotes: [] // Not available in real data
+      }
     };
   });
 }

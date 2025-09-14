@@ -5,7 +5,8 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { X, Send, MessageCircle, Bot, User, Loader2 } from 'lucide-react'
+import { Switch } from '@/components/ui/switch'
+import { X, Send, MessageCircle, Bot, User, Loader2, FileText, Info } from 'lucide-react'
 
 interface Message {
   id: string
@@ -20,19 +21,21 @@ interface ChatBotProps {
   onClose?: () => void
   compact?: boolean
   className?: string
+  disableAutoScroll?: boolean
 }
 
-const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose, compact = false, className = "" }) => {
+const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose, compact = false, className = "", disableAutoScroll = false }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      content: `Hello! I'm your AI underwriting assistant. I have context about this ${policyContext?.lineOfBusiness || 'policy'} submission and I'm here to help you analyze the risk, coverage, and make informed decisions. What would you like to know?`,
+      content: `Hello! I'm your AI underwriting assistant. ${policyContext ? `I can provide context about this ${policyContext?.lineOfBusiness || 'policy'} submission to help you analyze the risk, coverage, and make informed decisions. Use the toggle below to include or exclude policy details in our conversation.` : 'I\'m here to help you with underwriting analysis and policy questions.'} What would you like to know?`,
       sender: 'bot',
       timestamp: new Date()
     }
   ])
   const [inputMessage, setInputMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [includeContext, setIncludeContext] = useState(true)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -41,8 +44,10 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
   }
 
   useEffect(() => {
-    scrollToBottom()
-  }, [messages])
+    if (!disableAutoScroll) {
+      scrollToBottom()
+    }
+  }, [messages, disableAutoScroll])
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -50,12 +55,69 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
     }
   }, [isOpen])
 
+  // Function to format comprehensive policy context
+  const formatPolicyContext = (context: any) => {
+    if (!context) return null
+
+    const details = []
+    
+    // Basic Information
+    if (context.accountName) details.push(`Account: ${context.accountName}`)
+    if (context.lineOfBusiness) details.push(`Line of Business: ${context.lineOfBusiness}`)
+    if (context.premium) details.push(`Premium: ${context.premium}`)
+    if (context.businessType) details.push(`Business Type: ${context.businessType}`)
+    if (context.state) details.push(`State: ${context.state}`)
+    
+    // Risk Assessment
+    if (context.appetiteScore !== undefined) details.push(`Appetite Score: ${context.appetiteScore}%`)
+    if (context.status) details.push(`Status: ${context.status}`)
+    if (context.constructionType) details.push(`Construction Type: ${context.constructionType}`)
+    if (context.tiv) details.push(`Total Insured Value (TIV): $${(context.tiv / 1000000).toFixed(1)}M`)
+    
+    // Detailed Information
+    if (context.detailedInfo) {
+      const info = context.detailedInfo
+      if (info.industry) details.push(`Industry: ${info.industry}`)
+      if (info.employees) details.push(`Employees: ${info.employees}`)
+      if (info.revenue) details.push(`Revenue: ${info.revenue}`)
+      if (info.location) details.push(`Location: ${info.location}`)
+      if (info.submissionDate) details.push(`Submission Date: ${info.submissionDate}`)
+      if (info.expirationDate) details.push(`Expiration Date: ${info.expirationDate}`)
+      if (info.previousClaims) details.push(`Previous Claims: ${info.previousClaims}`)
+      
+      if (info.riskFactors && info.riskFactors.length > 0) {
+        details.push(`Risk Factors: ${info.riskFactors.join(', ')}`)
+      }
+      
+      if (info.competitorQuotes && info.competitorQuotes.length > 0) {
+        details.push(`Competitor Quotes: ${info.competitorQuotes.join(', ')}`)
+      }
+    }
+    
+    // Why Surfaced
+    if (context.whySurfaced && context.whySurfaced.length > 0) {
+      details.push(`Why Surfaced: ${context.whySurfaced.join(', ')}`)
+    }
+    
+    // Missing Information
+    if (context.missingInfo && context.missingInfo.length > 0) {
+      details.push(`Missing Information: ${context.missingInfo.join(', ')}`)
+    }
+    
+    return details.length > 0 ? `\n\nPolicy Context:\n${details.join('\n')}` : null
+  }
+
   const sendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return
 
+    // Create the enhanced message with optional context
+    const contextualMessage = includeContext && policyContext 
+      ? inputMessage + formatPolicyContext(policyContext)
+      : inputMessage
+
     const userMessage: Message = {
       id: Date.now().toString(),
-      content: inputMessage,
+      content: inputMessage, // Display only the user's actual message
       sender: 'user',
       timestamp: new Date()
     }
@@ -71,8 +133,9 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          message: inputMessage,
-          policyContext
+          message: contextualMessage, // Send the enhanced message with context
+          policyContext: includeContext ? policyContext : null,
+          messages: messages.slice(1) // Exclude the initial bot message to avoid duplication
         })
       })
 
@@ -147,6 +210,12 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
                     : 'bg-gray-100 text-gray-900'
                 }`}>
                   <p className="text-xs leading-relaxed">{message.content}</p>
+                  {message.sender === 'user' && includeContext && policyContext && (
+                    <div className="flex items-center mt-1 opacity-75">
+                      <Info className="w-2 h-2 mr-1" />
+                      <span className="text-xs">+ policy context</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -194,6 +263,25 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
               <Send className="w-3 h-3" />
             </Button>
           </div>
+          {policyContext && (
+            <div className="flex items-center justify-center mt-2">
+              <div className="flex items-center space-x-2">
+                <Switch
+                  id="include-context-compact"
+                  checked={includeContext}
+                  onCheckedChange={setIncludeContext}
+                  className="h-3 w-6"
+                />
+                <label 
+                  htmlFor="include-context-compact" 
+                  className="text-xs text-gray-600 cursor-pointer flex items-center space-x-1"
+                >
+                  <FileText className="w-3 h-3" />
+                  <span>Include policy context</span>
+                </label>
+              </div>
+            </div>
+          )}
         </div>
       </Card>
     )
@@ -276,6 +364,12 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
                     : 'bg-gray-100 text-gray-900'
                 }`}>
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                  {message.sender === 'user' && includeContext && policyContext && (
+                    <div className="flex items-center mt-1 opacity-75">
+                      <Info className="w-3 h-3 mr-1" />
+                      <span className="text-xs">+ policy context included</span>
+                    </div>
+                  )}
                   <p className={`text-xs mt-1 ${
                     message.sender === 'user' ? 'text-blue-100' : 'text-gray-500'
                   }`}>
@@ -328,9 +422,28 @@ const ChatBot: React.FC<ChatBotProps> = ({ policyContext, isOpen = true, onClose
             </Button>
           </div>
           <div className="flex items-center justify-between mt-2">
-            <p className="text-xs text-gray-500">
-              Press Enter to send • Shift+Enter for new line
-            </p>
+            <div className="flex items-center space-x-4">
+              <p className="text-xs text-gray-500">
+                Press Enter to send • Shift+Enter for new line
+              </p>
+              {policyContext && (
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    id="include-context"
+                    checked={includeContext}
+                    onCheckedChange={setIncludeContext}
+                    className="h-4 w-7"
+                  />
+                  <label 
+                    htmlFor="include-context" 
+                    className="text-xs text-gray-600 cursor-pointer flex items-center space-x-1"
+                  >
+                    <FileText className="w-3 h-3" />
+                    <span>Include policy context</span>
+                  </label>
+                </div>
+              )}
+            </div>
             <div className="flex items-center space-x-2 text-xs text-gray-500">
               <MessageCircle className="w-3 h-3" />
               <span>Powered by AI</span>

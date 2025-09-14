@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -44,6 +44,17 @@ const mockSubmissions = [
     ],
     missingInfo: ["Financial statements", "Loss history"],
     recommendation: "Approve",
+    detailedInfo: {
+      submissionDate: "March 15, 2024",
+      expirationDate: "April 15, 2024",
+      industry: "Technology",
+      employees: "2,500",
+      revenue: "$500M",
+      location: "San Francisco, CA",
+      riskFactors: ["Cyber exposure", "International operations", "High-growth company"],
+      previousClaims: "None in last 5 years",
+      competitorQuotes: ["$2.2M (AIG)", "$2.8M (Chubb)"],
+    },
   },
   {
     id: 2,
@@ -65,6 +76,17 @@ const mockSubmissions = [
     whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
     missingInfo: [],
     recommendation: "Approve",
+    detailedInfo: {
+      submissionDate: "March 12, 2024",
+      expirationDate: "April 12, 2024",
+      industry: "Manufacturing",
+      employees: "5,000",
+      revenue: "$1.2B",
+      location: "Detroit, MI",
+      riskFactors: ["Environmental liability", "Equipment breakdown", "Supply chain disruption"],
+      previousClaims: "2 property claims in last 3 years",
+      competitorQuotes: ["$1.6M (Zurich)", "$1.9M (Hartford)"],
+    },
   },
   {
     id: 3,
@@ -86,6 +108,17 @@ const mockSubmissions = [
     whySurfaced: ["New business opportunity", "Broker relationship priority", "Sector diversification"],
     missingInfo: ["Business plan", "Revenue projections"],
     recommendation: "Decline",
+    detailedInfo: {
+      submissionDate: "March 18, 2024",
+      expirationDate: "April 18, 2024",
+      industry: "Technology Startup",
+      employees: "50",
+      revenue: "$5M",
+      location: "Austin, TX",
+      riskFactors: ["Early stage company", "Limited operating history", "High growth volatility"],
+      previousClaims: "No prior D&O coverage",
+      competitorQuotes: ["$450K (Travelers)", "$550K (Liberty)"],
+    },
   },
   {
     id: 4,
@@ -107,6 +140,17 @@ const mockSubmissions = [
     whySurfaced: ["Perfect appetite match", "Excellent loss history", "Long-term relationship"],
     missingInfo: [],
     recommendation: "Approve",
+    detailedInfo: {
+      submissionDate: "March 10, 2024",
+      expirationDate: "April 10, 2024",
+      industry: "Financial Services",
+      employees: "8,000",
+      revenue: "$2.5B",
+      location: "Miami, FL",
+      riskFactors: ["Regulatory compliance", "Cyber security", "Interest rate risk"],
+      previousClaims: "No claims in last 10 years",
+      competitorQuotes: ["$3.0M (AXA)", "$3.5M (Allianz)"],
+    },
   },
   {
     id: 5,
@@ -128,6 +172,17 @@ const mockSubmissions = [
     whySurfaced: ["Growing tech sector", "Strong financials", "Good risk profile"],
     missingInfo: ["Security audit"],
     recommendation: "Approve",
+    detailedInfo: {
+      submissionDate: "March 14, 2024",
+      expirationDate: "April 14, 2024",
+      industry: "Healthcare Technology",
+      employees: "1,200",
+      revenue: "$150M",
+      location: "Seattle, WA",
+      riskFactors: ["Healthcare data privacy", "Software liability", "Regulatory compliance"],
+      previousClaims: "1 minor E&O claim in last 2 years",
+      competitorQuotes: ["$700K (Beazley)", "$800K (Hiscox)"],
+    },
   },
 ]
 // const submissions = getSubmission()
@@ -154,6 +209,8 @@ export default function Dashboard() {
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
   const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
   const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [allSubmissions, setAllSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
 
   // Helper functions for filtering
   const getRegionFromState = (state: string) => {
@@ -175,30 +232,86 @@ export default function Dashboard() {
     return 'other'
   }
 
-  // Filter submissions based on all filters
-  const filteredSubmissions = submissions.filter(submission => {
-    // Appetite filter
-    if (appetiteFilter && appetiteFilter !== "all" && submission.appetiteStatus !== appetiteFilter) {
-      return false
-    }
+  // Comprehensive search function
+  const searchSubmissions = (submissions: DashboardSubmission[], query: string): DashboardSubmission[] => {
+    if (!query.trim()) return submissions
+
+    const searchTerm = query.toLowerCase().trim()
     
-    // Region filter
-    if (regionFilter && regionFilter !== "all" && getRegionFromState(submission.state) !== regionFilter) {
+    return submissions.filter(submission => {
+      // Search in basic fields
+      if (submission.client?.toLowerCase().includes(searchTerm)) return true
+      if (submission.broker?.toLowerCase().includes(searchTerm)) return true
+      if (submission.company?.toLowerCase().includes(searchTerm)) return true
+      if (submission.product?.toLowerCase().includes(searchTerm)) return true
+      if (submission.lineOfBusiness?.toLowerCase().includes(searchTerm)) return true
+      if (submission.state?.toLowerCase().includes(searchTerm)) return true
+      if (submission.businessType?.toLowerCase().includes(searchTerm)) return true
+      if (submission.status?.toLowerCase().includes(searchTerm)) return true
+      if (submission.premium?.toLowerCase().includes(searchTerm)) return true
+      if (submission.coverage?.toLowerCase().includes(searchTerm)) return true
+      if (submission.recommendation?.toLowerCase().includes(searchTerm)) return true
+      if (submission.appetiteStatus?.toLowerCase().includes(searchTerm)) return true
+      
+      // Search in arrays
+      if (submission.whySurfaced?.some(reason => reason.toLowerCase().includes(searchTerm))) return true
+      if (submission.missingInfo?.some(info => info.toLowerCase().includes(searchTerm))) return true
+      
+      // Search in detailed info
+      if (submission.detailedInfo) {
+        const details = submission.detailedInfo
+        if (details.industry?.toLowerCase().includes(searchTerm)) return true
+        if (details.location?.toLowerCase().includes(searchTerm)) return true
+        if (details.employees?.toLowerCase().includes(searchTerm)) return true
+        if (details.revenue?.toLowerCase().includes(searchTerm)) return true
+        if (details.previousClaims?.toLowerCase().includes(searchTerm)) return true
+        if (details.submissionDate?.toLowerCase().includes(searchTerm)) return true
+        if (details.expirationDate?.toLowerCase().includes(searchTerm)) return true
+        
+        if (details.riskFactors?.some(factor => factor.toLowerCase().includes(searchTerm))) return true
+        if (details.competitorQuotes?.some(quote => quote.toLowerCase().includes(searchTerm))) return true
+      }
+      
+      // Search by ID (convert to string for partial matches)
+      if (submission.id.toString().includes(searchTerm)) return true
+      
+      // Search by appetite score
+      if (submission.appetiteScore.toString().includes(searchTerm)) return true
+      
       return false
-    }
+    })
+  }
+
+  // Apply search first, then filters (optimized with useMemo)
+  const filteredSubmissions = useMemo(() => {
+    // Apply search first
+    const searchedSubmissions = searchSubmissions(allSubmissions, searchQuery)
     
-    // Broker filter
-    if (brokerFilter && brokerFilter !== "all" && getBrokerKey(submission.broker) !== brokerFilter) {
-      return false
-    }
-    
-    // Premium size filter
-    if (premiumSizeFilter && premiumSizeFilter !== "all" && getPremiumSize(submission.premiumValue) !== premiumSizeFilter) {
-      return false
-    }
-    
-    return true
-  })
+    // Then apply filters
+    return searchedSubmissions.filter(submission => {
+      // Appetite filter
+      if (appetiteFilter && appetiteFilter !== "all" && submission.appetiteStatus !== appetiteFilter) {
+        return false
+      }
+      
+      // Region filter
+      if (regionFilter && regionFilter !== "all" && getRegionFromState(submission.state) !== regionFilter) {
+        return false
+      }
+      
+      // Broker filter
+      if (brokerFilter && brokerFilter !== "all" && getBrokerKey(submission.broker) !== brokerFilter) {
+        return false
+      }
+      
+      // Premium size filter
+      if (premiumSizeFilter && premiumSizeFilter !== "all" && getPremiumSize(submission.premiumValue) !== premiumSizeFilter) {
+        return false
+      }
+      
+      return true
+    })
+  }, [allSubmissions, searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
 
   // Calculate summary metrics
   const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
@@ -233,11 +346,14 @@ export default function Dashboard() {
         setIsLoadingSubmissions(true)
         const realSubmissions = await loadRealSubmissions()
         if (realSubmissions.length > 0) {
+          setAllSubmissions(realSubmissions)
           setSubmissions(realSubmissions)
         }
       } catch (error) {
         console.error('Error loading submissions:', error)
         // Keep using mock data if loading fails
+        setAllSubmissions(mockSubmissions)
+        setSubmissions(mockSubmissions)
       } finally {
         setIsLoadingSubmissions(false)
       }
@@ -298,6 +414,7 @@ export default function Dashboard() {
     // In a real app, this would trigger API calls
   }
 
+
   // Placeholder function for when risk level data is implemented
   const handleRiskLevelFilter = (submissionList: any[]) => {
     // TODO: When risk level data is added to submissions, filter based on riskLevelRange
@@ -354,7 +471,12 @@ export default function Dashboard() {
 
   return (
 <div className="min-h-screen flex flex-col">
-  <Header userData={userData} />
+  <Header 
+    userData={userData} 
+    searchQuery={searchQuery}
+    onSearchChange={setSearchQuery}
+    submissions={allSubmissions}
+  />
   <SidebarProvider>
     <AppSidebar />
     <SidebarPullTab />
@@ -398,6 +520,40 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
+        )}
+
+        {/* Search Results Indicator */}
+        {searchQuery && (
+          <div className="mb-6">
+            <Card className="shadow-sm border-blue-200 bg-blue-50">
+              <CardContent className="p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-blue-900">
+                        Search Results for "{searchQuery}"
+                      </p>
+                      <p className="text-sm text-blue-700">
+                        Found {filteredSubmissions.length} submission{filteredSubmissions.length !== 1 ? 's' : ''}
+                      </p>
+                    </div>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setSearchQuery('')}
+                    className="text-blue-600 hover:text-blue-800 hover:bg-blue-100"
+                  >
+                    <X className="w-4 h-4 mr-1" />
+                    Clear Search
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
 
         {/* Main Layout: Pipeline Overview & Filters, Top Priority */}

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, use } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -12,20 +12,26 @@ import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import ChatBot from "@/components/ChatBot"
-// Mock data for submissions (same as main page)
-const submissions = [
+import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
+// Mock data for submissions (fallback only)
+const mockSubmissions = [
   {
     id: 1,
     client: "TechCorp Industries",
     broker: "Marsh & McLennan",
     premium: "$2.5M",
+    premiumValue: 2500000,
     appetiteScore: 85,
     appetiteStatus: "good",
     slaTimer: "2h 15m",
+    slaProgress: 75,
     status: "Under Review",
     company: "TechCorp Industries",
     product: "Cyber Liability",
     coverage: "$50M General Liability",
+    lineOfBusiness: "Cyber",
+    state: "CA",
+    businessType: "Renewal",
     whySurfaced: [
       "High appetite match for tech sector",
       "Premium size within target range",
@@ -50,13 +56,18 @@ const submissions = [
     client: "Global Manufacturing Co",
     broker: "Aon Risk Solutions",
     premium: "$1.8M",
+    premiumValue: 1800000,
     appetiteScore: 85,
     appetiteStatus: "good",
     slaTimer: "4h 32m",
+    slaProgress: 45,
     status: "Under Review",
     company: "Global Manufacturing Co",
     product: "Property Insurance",
     coverage: "$25M Property Coverage",
+    lineOfBusiness: "Property",
+    state: "TX",
+    businessType: "New",
     whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
     missingInfo: [],
     recommendation: "Approve",
@@ -77,13 +88,18 @@ const submissions = [
     client: "StartupXYZ",
     broker: "Willis Towers Watson",
     premium: "$500K",
+    premiumValue: 500000,
     appetiteScore: 25,
     appetiteStatus: "poor",
     slaTimer: "1h 45m",
+    slaProgress: 85,
     status: "Review Required",
     company: "StartupXYZ",
     product: "D&O Insurance",
     coverage: "$10M Directors & Officers",
+    lineOfBusiness: "D&O",
+    state: "NY",
+    businessType: "New",
     whySurfaced: ["New business opportunity", "Broker relationship priority", "Sector diversification"],
     missingInfo: ["Business plan", "Revenue projections"],
     recommendation: "Decline",
@@ -101,8 +117,55 @@ const submissions = [
   },
 ]
 
-export default function SubmissionDetailPage({ params }: { params: { id: string } }) {
-  const submission = submissions.find((s) => s.id === parseInt(params.id))
+export default function SubmissionDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params)
+  const [submissions, setSubmissions] = useState<DashboardSubmission[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Scroll to top when component mounts or ID changes
+  useEffect(() => {
+    // Smooth scroll to top with fallback
+    if (window.scrollTo) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      document.documentElement.scrollTop = 0
+    }
+  }, [resolvedParams.id])
+
+  // Load real submissions data
+  useEffect(() => {
+    const loadSubmissions = async () => {
+      try {
+        setIsLoading(true)
+        const realSubmissions = await loadRealSubmissions()
+        setSubmissions(realSubmissions.length > 0 ? realSubmissions : mockSubmissions)
+      } catch (error) {
+        console.error('Error loading submissions:', error)
+        setSubmissions(mockSubmissions)
+      } finally {
+        setIsLoading(false)
+        // Ensure scroll to top after loading completes
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 100)
+      }
+    }
+
+    loadSubmissions()
+  }, [])
+
+  const submission = submissions.find((s) => s.id === parseInt(resolvedParams.id))
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <h1 className="text-2xl font-bold text-gray-900">Loading submission...</h1>
+        </div>
+      </div>
+    )
+  }
 
   if (!submission) {
     return (
@@ -286,6 +349,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
                 <ChatBot
                   compact={true}
                   className="h-[500px]"
+                  disableAutoScroll={true}
                   policyContext={{
                     accountName: submission.client,
                     lineOfBusiness: submission.product,

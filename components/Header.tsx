@@ -1,16 +1,89 @@
 "use client"
+import { useState, useRef, useEffect } from "react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
+import SearchDropdown from "./SearchDropdown"
+import { DashboardSubmission } from "@/lib/dataMapper"
 
 interface HeaderProps {
   userData?: {
     name: string
     email: string
   } | null
+  searchQuery?: string
+  onSearchChange?: (query: string) => void
+  submissions?: DashboardSubmission[]
 }
 
-export default function Header({ userData }: HeaderProps) {
+export default function Header({ userData, searchQuery = "", onSearchChange, submissions = [] }: HeaderProps) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isFocused, setIsFocused] = useState(false)
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 })
+  const searchContainerRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchContainerRef.current && !searchContainerRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+        setIsFocused(false)
+      }
+    }
+
+    const handleResize = () => {
+      if (isDropdownOpen) {
+        updateDropdownPosition()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    window.addEventListener('resize', handleResize)
+    window.addEventListener('scroll', handleResize)
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('scroll', handleResize)
+    }
+  }, [isDropdownOpen])
+
+  const updateDropdownPosition = () => {
+    if (inputRef.current) {
+      const rect = inputRef.current.getBoundingClientRect()
+      setDropdownPosition({
+        top: rect.bottom + window.scrollY + 4,
+        left: rect.left + window.scrollX,
+        width: rect.width
+      })
+    }
+  }
+
+  const handleInputFocus = () => {
+    setIsFocused(true)
+    updateDropdownPosition()
+    setIsDropdownOpen(true)
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onSearchChange?.(e.target.value)
+    updateDropdownPosition()
+    setIsDropdownOpen(true)
+  }
+
+  const handleSuggestionSelect = (suggestion: string) => {
+    onSearchChange?.(suggestion)
+    setIsDropdownOpen(false)
+    setIsFocused(false)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsDropdownOpen(false)
+      setIsFocused(false)
+    }
+  }
   return (
     <header
       className="sticky top-0 z-50 relative shadow-lg border-b border-white/10 overflow-hidden"
@@ -46,9 +119,9 @@ export default function Header({ userData }: HeaderProps) {
           </div>
 
           <div className="flex items-center space-x-6">
-            <div className="relative">
+            <div ref={searchContainerRef} className="relative">
               <svg
-                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60"
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60 z-10"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -61,8 +134,23 @@ export default function Header({ userData }: HeaderProps) {
                 />
               </svg>
               <Input
+                ref={inputRef}
                 placeholder="Search submissions..."
-                className="w-80 pl-10 border-white/40 focus:bg-white/25 bg-white/20 text-white placeholder:text-white/60"
+                value={searchQuery}
+                onChange={handleInputChange}
+                onFocus={handleInputFocus}
+                onKeyDown={handleKeyDown}
+                className={`w-80 pl-10 border-white/40 focus:bg-white/25 bg-white/20 text-white placeholder:text-white/60 transition-all ${
+                  isFocused ? 'ring-2 ring-white/30' : ''
+                }`}
+              />
+              <SearchDropdown
+                isOpen={isDropdownOpen}
+                searchQuery={searchQuery}
+                submissions={submissions}
+                onSelect={handleSuggestionSelect}
+                onClose={() => setIsDropdownOpen(false)}
+                position={dropdownPosition}
               />
             </div>
             <Avatar className="h-12 w-12">
