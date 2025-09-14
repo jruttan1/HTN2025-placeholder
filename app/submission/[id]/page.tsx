@@ -199,390 +199,422 @@ export default function SubmissionDetailPage({ params }: { params: Promise<{ id:
         <SidebarPullTab />
         <SidebarInset>
           <div className="max-w-7xl mx-auto px-6 py-8 flex-1">
-        <div className="mb-8">
-          <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-              Back to Dashboard
-            </Link>
-          </div>
+            {/* Breadcrumb Navigation */}
+            <div className="mb-6">
+              <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Dashboard
+              </Link>
+            </div>
 
-          <div className="mb-8">
-            <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-5xl font-bold text-gray-900 mb-3 tracking-tight">{submission.client}</h1>
-                <div className="flex items-center space-x-4 text-xl text-gray-600">
-                  <span>Submission #{submission.id}</span>
-                  <span>•</span>
-                  <span>{submission.product}</span>
-                  <span>•</span>
-                  <span className="font-semibold">{submission.premium}</span>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="text-center">
-                  <div className="relative w-20 h-20 mx-auto mb-2">
-                    
+            {/* Header Section */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-4">
+                  <h1 className="text-3xl font-bold text-gray-900">{submission.client}</h1>
+                  <div className="flex items-center space-x-2">
+                    <Badge variant="secondary" className="text-sm">
+                      #{submission.id}
+                    </Badge>
+                    <Badge className={`text-sm ${
+                      submission.businessType === "Renewal" 
+                        ? "bg-green-100 text-green-800" 
+                        : "bg-purple-100 text-purple-800"
+                    }`}>
+                      {submission.businessType}
+                    </Badge>
+                    <Badge className={`text-sm ${
+                      submission.status === "Under Review"
+                        ? "bg-blue-100 text-blue-800"
+                        : "bg-red-100 text-red-800"
+                    }`}>
+                      {submission.status}
+                    </Badge>
                   </div>
                 </div>
+              </div>
+              
+              <div className="text-gray-600 space-y-1">
+                <p className="text-lg">{submission.product} • {submission.coverage}</p>
+                <p>{submission.broker} • {submission.state}</p>
               </div>
             </div>
-          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    />
-                  </svg>
-                  Key Metrics
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <p className="text-4xl font-bold text-blue-600">{submission.premium}</p>
-                    <p className="text-sm text-gray-600 mt-2 font-medium">Premium</p>
-                  </div>
-                  <div className="text-center p-4 bg-green-50 rounded-lg">
-                    <p className="text-4xl font-bold text-green-600">{submission.appetiteScore}%</p>
-                    <p className="text-sm text-gray-600 mt-2 font-medium">Appetite Score</p>
-                  </div>
-                  <div className="text-center p-4 bg-blue-50 rounded-lg">
-                    <p className="text-4xl font-bold text-blue-600">{submission.slaTimer}</p>
-                    <p className="text-sm text-gray-600 mt-2 font-medium">Time Remaining</p>
-                  </div>
-                  <div className="text-center p-4 bg-purple-50 rounded-lg">
-                    <p className="text-4xl font-bold text-purple-600">{submission.detailedInfo.employees}</p>
-                    <p className="text-sm text-gray-600 mt-2 font-medium">Employees</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                  Company Information
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Company Name</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.company}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Industry</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.detailedInfo.industry}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Annual Revenue</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.detailedInfo.revenue}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Location</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.detailedInfo.location}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Broker</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.broker}</p>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-500">Requested Coverage</p>
-                    <p className="text-xl font-semibold text-gray-900">{submission.coverage}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12h6m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
-                  </svg>
-                  Claims History
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-lg text-gray-800 font-medium">{submission.detailedInfo.previousClaims}</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* AI Assistant Card */}
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-                  </svg>
-                  AI Underwriting Assistant
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ChatBot
-                  compact={true}
-                  className="h-[500px]"
-                  disableAutoScroll={true}
-                  policyContext={{
-                    accountName: submission.client,
-                    lineOfBusiness: submission.product,
-                    premium: submission.premium,
-                    appetiteScore: submission.appetiteScore,
-                    state: submission.detailedInfo.location.split(', ')[1],
-                    businessType: submission.detailedInfo.submissionDate ? 'RENEWAL' : 'NEW_BUSINESS',
-                    constructionType: 'Fire Resistive',
-                    tiv: submission.premium === '$2.5M' ? 50000000 : submission.premium === '$1.8M' ? 25000000 : 10000000,
-                    status: submission.status,
-                    whySurfaced: submission.whySurfaced,
-                    detailedInfo: submission.detailedInfo
-                  }}
-                />
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-8">
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-                  </svg>
-                  AI Appetite Analysis
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center mb-6">
-                  <div className="relative w-24 h-24 mx-auto mb-4">
-                    <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 36 36">
-                      <path
-                        className="text-gray-200"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        fill="none"
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                      <path
-                        className={
-                          submission.appetiteStatus === "good"
-                            ? "text-green-500"
-                            : "text-red-500"
-                        }
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        fill="none"
-                        strokeDasharray={`${submission.appetiteScore}, 100`}
-                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                      />
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-gray-900">{submission.appetiteScore}%</span>
-                    </div>
-                  </div>
-                  <Badge
-                    className={`${getAppetiteColor(submission.appetiteStatus)} text-base font-semibold px-4 py-2 border`}
-                  >
-                    {submission.appetiteStatus === "good"
-                      ? "Strong Appetite Match"
-                      : "Outside Appetite"}
-                  </Badge>
-                </div>
-                <p className="text-gray-600 text-center">Based on historical data and risk parameters</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  Why This Was Prioritized
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {submission.whySurfaced.map((reason, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start space-x-4 p-4 bg-green-50 rounded-lg border border-green-200"
-                    >
-                      <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        {index + 1}
+            {/* Main Content Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+              {/* Left Column - Submission Details */}
+              <div className="lg:col-span-3 space-y-6">
+                
+                {/* Key Metrics */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Key Metrics</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="text-center p-4 bg-blue-50 rounded-lg">
+                        <p className="text-2xl font-bold text-blue-600">{submission.premium}</p>
+                        <p className="text-sm text-gray-600 mt-1">Premium</p>
                       </div>
-                      <p className="text-gray-800 leading-relaxed font-medium">{reason}</p>
+                      <div className="text-center p-4 bg-green-50 rounded-lg">
+                        <p className="text-2xl font-bold text-green-600">{submission.appetiteScore}%</p>
+                        <p className="text-sm text-gray-600 mt-1">Appetite Score</p>
+                      </div>
+                      <div className="text-center p-4 bg-amber-50 rounded-lg">
+                        <p className="text-2xl font-bold text-amber-600">{submission.slaTimer}</p>
+                        <p className="text-sm text-gray-600 mt-1">Time Remaining</p>
+                      </div>
+                      <div className="text-center p-4 bg-purple-50 rounded-lg">
+                        <p className="text-2xl font-bold text-purple-600">{submission.detailedInfo.employees}</p>
+                        <p className="text-sm text-gray-600 mt-1">Employees</p>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  </CardContent>
+                </Card>
 
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                {/* Company Information */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Company Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Company Name</p>
+                        <p className="text-lg font-semibold">{submission.company}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Industry</p>
+                        <p className="text-lg font-semibold">{submission.detailedInfo.industry}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Annual Revenue</p>
+                        <p className="text-lg font-semibold">{submission.detailedInfo.revenue}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Location</p>
+                        <p className="text-lg font-semibold">{submission.detailedInfo.location}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Broker</p>
+                        <p className="text-lg font-semibold">{submission.broker}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Business Type</p>
+                        <Badge className={`${submission.businessType === "Renewal" ? "bg-green-100 text-green-800" : "bg-purple-100 text-purple-800"}`}>
+                          {submission.businessType}
+                        </Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Policy Information */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Policy Information</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Line of Business</p>
+                        <p className="text-lg font-semibold">{submission.lineOfBusiness}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Coverage</p>
+                        <p className="text-lg font-semibold">{submission.coverage}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Submission Date</p>
+                        <p className="text-lg font-semibold">{submission.detailedInfo.submissionDate}</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-500">Expiration Date</p>
+                        <p className="text-lg font-semibold">{submission.detailedInfo.expirationDate}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Risk Assessment */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card className="shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">Claims History</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="p-4 bg-blue-50 rounded-lg">
+                        <p className="text-lg font-medium">{submission.detailedInfo.previousClaims}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">Risk Factors</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        {submission.detailedInfo.riskFactors.map((factor, index) => (
+                          <div key={index} className="flex items-start space-x-2 p-3 bg-amber-50 rounded-lg">
+                            <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                            <p className="text-sm font-medium">{factor}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Why Surfaced */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Why This Was Prioritized</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-3">
+                      {submission.whySurfaced.map((reason, index) => (
+                        <div key={index} className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
+                          <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                            {index + 1}
+                          </div>
+                          <p className="font-medium">{reason}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Competitor Quotes */}
+                {submission.detailedInfo.competitorQuotes && submission.detailedInfo.competitorQuotes.length > 0 && (
+                  <Card className="shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">Competitor Quotes</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        {submission.detailedInfo.competitorQuotes.map((quote, index) => (
+                          <div key={index} className="p-3 bg-gray-50 rounded-lg">
+                            <p className="font-medium">{quote}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* AI Assistant */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">AI Underwriting Assistant</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ChatBot
+                      compact={true}
+                      className="h-[400px]"
+                      disableAutoScroll={true}
+                      policyContext={{
+                        accountName: submission.client,
+                        lineOfBusiness: submission.product,
+                        premium: submission.premium,
+                        appetiteScore: submission.appetiteScore,
+                        state: submission.detailedInfo.location.split(', ')[1],
+                        businessType: submission.detailedInfo.submissionDate ? 'RENEWAL' : 'NEW_BUSINESS',
+                        constructionType: 'Fire Resistive',
+                        tiv: submission.premium === '$2.5M' ? 50000000 : submission.premium === '$1.8M' ? 25000000 : 10000000,
+                        status: submission.status,
+                        whySurfaced: submission.whySurfaced,
+                        detailedInfo: submission.detailedInfo
+                      }}
                     />
-                  </svg>
-                  Outstanding Requirements
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  {submission.missingInfo.map((item, index) => (
-                    <div key={index} className="p-3 bg-blue-50 rounded-lg border border-blue-200">
-                      <Badge className="text-blue-700 bg-blue-100 border-blue-300 text-sm font-semibold px-3 py-1">
-                        {item}
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Right Column - Decision Support */}
+              <div className="lg:col-span-2 space-y-6">
+                
+                {/* Appetite Score */}
+                <Card className="shadow-sm top-6">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Appetite Analysis</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="flex items-center space-x-6">
+                      <div className="relative w-20 h-20 flex-shrink-0">
+                        <svg className="w-20 h-20 transform -rotate-90" viewBox="0 0 36 36">
+                          <path
+                            className="text-gray-200"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            fill="none"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          />
+                          <path
+                            className={submission.appetiteStatus === "good" ? "text-green-500" : "text-red-500"}
+                            stroke="currentColor"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            fill="none"
+                            strokeDasharray={`${submission.appetiteScore}, 100`}
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                          />
+                        </svg>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-xl font-bold">{submission.appetiteScore}%</span>
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <Badge className={`${getAppetiteColor(submission.appetiteStatus)} text-base font-semibold px-4 py-2 mb-2`}>
+                          {submission.appetiteStatus === "good" ? "Strong Match" : "Poor Match"}
+                        </Badge>
+                        <p className="text-sm text-gray-600">
+                          Based on AI analysis of historical data, risk parameters, and carrier appetite guidelines.
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Priority Reasons */}
+                    <div className="space-y-3">
+                      <h4 className="font-semibold text-gray-900 flex items-center">
+                        <svg className="w-4 h-4 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Why This Was Prioritized
+                      </h4>
+                      <div className="space-y-2">
+                        {submission.whySurfaced.map((reason, index) => (
+                          <div key={index} className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                            <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                              {index + 1}
+                            </div>
+                            <p className="text-sm text-green-800 font-medium leading-relaxed">{reason}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* AI Recommendation */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">AI Recommendation</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="flex items-center space-x-4">
+                      <Badge className={`text-lg font-bold px-6 py-3 ${
+                        submission.recommendation === "Approve"
+                          ? "bg-green-600 text-white"
+                          : "bg-red-600 text-white"
+                      }`}>
+                        {submission.recommendation}
                       </Badge>
+                      <div className="flex-1">
+                        <p className="text-sm text-gray-600">
+                          AI confidence: <span className="font-semibold">{submission.appetiteScore >= 70 ? "High" : "Medium"}</span>
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Based on appetite score and risk assessment
+                        </p>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-                  </svg>
-                  AI Recommendation
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="text-center">
-                  <Badge
-                    className={`text-lg font-bold px-6 py-3 ${
-                      submission.recommendation === "Approve"
-                        ? "bg-green-600 text-white hover:bg-green-700"
-                        : "bg-red-600 text-white hover:bg-red-700"
-                    }`}
-                  >
-                    {submission.recommendation}
-                  </Badge>
-                  <p className="text-gray-600 mt-2 font-medium">Recommended next action</p>
-                </div>
-
-                <div className="space-y-3">
-                  <Button
-                    size="lg"
-                    className={`w-full ${
-                      submission.recommendation === "Approve"
-                        ? "bg-green-600 hover:bg-green-700"
-                        : "bg-red-600 hover:bg-red-700"
-                    } text-white font-semibold shadow-sm`}
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    {submission.recommendation}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full font-semibold bg-white hover:bg-gray-50 border-gray-300"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                    Draft Email
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full font-semibold bg-white hover:bg-gray-50 border-gray-300"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                      />
-                    </svg>
-                    Schedule Call
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-5 h-5 mr-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  Timeline
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-500">Submission Date</p>
-                      <p className="text-lg font-semibold text-gray-900">{submission.detailedInfo.submissionDate}</p>
+                    
+                    <div className="grid grid-cols-1 gap-3">
+                      <Button
+                        className={`w-full ${
+                          submission.recommendation === "Approve"
+                            ? "bg-green-600 hover:bg-green-700"
+                            : "bg-red-600 hover:bg-red-700"
+                        } text-white`}
+                      >
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {submission.recommendation}
+                      </Button>
+                      <div className="grid grid-cols-2 gap-2">
+                        <Button variant="outline" size="sm">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                          Email
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                          </svg>
+                          Call
+                        </Button>
+                      </div>
+                      <Button variant="outline" size="sm">
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Request Additional Info
+                      </Button>
                     </div>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <div>
-                      <p className="text-sm font-medium text-gray-500">Expiration Date</p>
-                      <p className="text-lg font-semibold text-gray-900">{submission.detailedInfo.expirationDate}</p>
+                  </CardContent>
+                </Card>
+
+                {/* Timeline & Dates */}
+                <Card className="shadow-sm">
+                  <CardHeader>
+                    <CardTitle className="text-xl font-semibold">Timeline</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                          <div>
+                            <p className="text-sm font-medium text-gray-900">Submitted</p>
+                            <p className="text-sm text-gray-600">{submission.detailedInfo.submissionDate}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                          <div>
+                            <p className="text-sm font-medium text-gray-900">Expires</p>
+                            <p className="text-sm text-gray-600">{submission.detailedInfo.expirationDate}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
+                          <div>
+                            <p className="text-sm font-medium text-gray-900">Time Remaining</p>
+                            <p className="text-sm font-semibold text-amber-600">{submission.slaTimer}</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                  </CardContent>
+                </Card>
+
+                {/* Outstanding Requirements */}
+                {submission.missingInfo.length > 0 && (
+                  <Card className="shadow-sm">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-semibold">Missing Information</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        {submission.missingInfo.map((item, index) => (
+                          <div key={index} className="p-2 bg-blue-50 rounded-lg">
+                            <Badge className="text-blue-700 bg-blue-100">{item}</Badge>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
         </div>
           </div>
         </SidebarInset>

@@ -118,7 +118,10 @@ function mapLineOfBusinessToProduct(lob: string): string {
 export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardSubmission[] {
   return realData.map((policy, index) => {
     const slaInfo = calculateSLATimer(policy.expiration_date);
-    const appetiteScore = policy.score ? Math.round(policy.score * 100) : 
+    // Use Cohere relevance score as appetite score, fallback to other scores if not available
+    const appetiteScore = (policy as EnhancedPolicy).cohere_relevance ? 
+                         Math.round((policy as EnhancedPolicy).cohere_relevance * 100) :
+                         policy.score ? Math.round(policy.score * 100) : 
                          policy.winnability > 1 ? policy.winnability : 
                          Math.round(policy.winnability * 100);
     

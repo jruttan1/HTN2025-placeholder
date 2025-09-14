@@ -45,7 +45,7 @@ Always be professional, accurate, and provide actionable insights based on the p
 
 ${contextInfo}
 
-Please provide helpful, accurate, and professional responses about insurance underwriting, risk assessment, and policy analysis based on the above context.`
+Please provide helpful, accurate, and professional responses about insurance underwriting, risk assessment, and policy analysis based on the above question from the user.`
 
     // Prepare messages for Cohere API
     const cohereMessages = [
