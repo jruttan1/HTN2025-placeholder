@@ -22,7 +22,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.694241,
+          "cohere_relevance": 0.8942410000000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insured Value (TIV) of $43,251,025 exceeds the desired threshold of $10M.",
@@ -63,7 +63,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.59655124,
+          "cohere_relevance": 0.7965512400000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $71,241,340 exceeds the desired threshold of $10M.",
@@ -104,7 +104,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.52685463,
+          "cohere_relevance": 0.7268546300000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $55,618,978 far exceeds the desired threshold of $10M.",
@@ -145,7 +145,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5142789,
+          "cohere_relevance": 0.7142789,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella).",
             "The Total Insured Value (TIV) of $10,175,563 exceeds the desired threshold of $10M.",
@@ -186,7 +186,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.51413256,
+          "cohere_relevance": 0.7141325599999999,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.41 (Loss Value/Premium) is well below the guideline of 0.7, indicating a profitable account.",
@@ -226,7 +226,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.468621,
+          "cohere_relevance": 0.668621,
           "justification_points": [
             "The TIV of $16,718,880 far exceeds the minimum requirement of $10M, which is favorable.",
             "The loss ratio of 0.7 is within the acceptable range of below 0.7.",
@@ -266,7 +266,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.43395805,
+          "cohere_relevance": 0.6339580499999999,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Commercial Property) and state (California).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -306,7 +306,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.42491361,
+          "cohere_relevance": 0.62491361,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $48,851,678 exceeds the guideline of $10M.",
@@ -347,7 +347,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.42048118,
+          "cohere_relevance": 0.6204811800000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) of $93,237,143, exceeding the $10M threshold.",
             "The stated loss ratio of 0.58 is well below the guideline of <0.7, indicating a profitable account.",
@@ -387,7 +387,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39803258,
+          "cohere_relevance": 0.59803258,
           "justification_points": [
             "The TIV of $95,331,531 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.73 (Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -427,7 +427,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.375043,
+          "cohere_relevance": 0.575043,
           "justification_points": [
             "The TIV of $94,798,134 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.72 (calculated as Loss Value / TIV) is within the acceptable range of below 0.7.",
@@ -467,7 +467,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3480693,
+          "cohere_relevance": 0.5480693000000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $55,839,670 far exceeds the desired threshold of $10M.",
@@ -508,7 +508,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2911476,
+          "cohere_relevance": 0.4911476,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.66 (Loss Value/TIV) is within the desired ratio of less than 0.7.",
@@ -548,7 +548,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26949155,
+          "cohere_relevance": 0.46949155000000004,
           "justification_points": [
             "The TIV of $37,467,695 exceeds the desired threshold of $10M, indicating a potential for significant premium income.",
             "The loss ratio of 0.74 (calculated as Loss Value / TIV) is slightly above the target of 0.7, but still within an acceptable range for profitability.",
@@ -588,7 +588,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26594228,
+          "cohere_relevance": 0.46594228,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $92,846,564 exceeds the minimum requirement of $10M.",
@@ -629,7 +629,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.25511903,
+          "cohere_relevance": 0.45511903000000004,
           "justification_points": [
             "The TIV of $54,824,214 far exceeds the minimum requirement of $10M, indicating a good fit.",
             "The loss ratio of 0.58 (Loss Value/TIV) is well below the guideline of <0.7, suggesting favorable loss experience.",
@@ -669,7 +669,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.23989247,
+          "cohere_relevance": 0.43989247,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $15,935,707 exceeds the guideline of $10M.",
@@ -709,7 +709,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.23986575,
+          "cohere_relevance": 0.43986575,
           "justification_points": [
             "The TIV of $86,336,751 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.59 is well below the guideline of <0.7, indicating a positive loss history.",
@@ -749,7 +749,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.23965217,
+          "cohere_relevance": 0.43965217,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insured Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 meets the carrier's guidelines.",
@@ -789,7 +789,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.22563875,
+          "cohere_relevance": 0.42563875,
           "justification_points": [
             "The TIV of $14,786,900 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.73 (calculated as Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -829,7 +829,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.22561316,
+          "cohere_relevance": 0.42561316000000005,
           "justification_points": [
             "The TIV of $18,811,678 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.68 is within the acceptable range, as it is below the 0.7 guideline.",
@@ -869,7 +869,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.21655817,
+          "cohere_relevance": 0.41655817,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of $18,841,054 exceeds the carrier's minimum requirement of $10M.",
@@ -909,7 +909,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20972891,
+          "cohere_relevance": 0.40972891,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL).",
             "The Total Insured Value (TIV) of $36,363,208 exceeds the desired threshold of $10M.",
@@ -950,7 +950,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20329636,
+          "cohere_relevance": 0.40329636,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $60,106,732 far exceeds the desired threshold of $10M.",
@@ -990,7 +990,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20244355,
+          "cohere_relevance": 0.40244355,
           "justification_points": [
             "The TIV of $39,189,942 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.14 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a favorable risk profile.",
@@ -1030,7 +1030,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1880856,
+          "cohere_relevance": 0.38808560000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -1070,7 +1070,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17021844,
+          "cohere_relevance": 0.37021844000000004,
           "justification_points": [
             "The TIV of $72,282,505 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.73 (Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -1110,7 +1110,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16289902,
+          "cohere_relevance": 0.36289902,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $81,672,242 far exceeds the guideline of $10M, indicating a potential significant premium for the carrier.",
@@ -1150,7 +1150,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15598944,
+          "cohere_relevance": 0.35598944,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL), as commercial property coverage is sought.",
             "The Total Insured Value (TIV) of the property exceeds the carrier's minimum requirement of >$10M, as the TIV for this policy is $40,007,522.",
@@ -1190,7 +1190,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15285267,
+          "cohere_relevance": 0.35285267,
           "justification_points": [
             "The TIV of $49,667,238 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.11 (calculated as Loss Value divided by TIV) is well below the target ratio of 0.7, indicating a profitable account.",
@@ -1230,7 +1230,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.139549,
+          "cohere_relevance": 0.339549,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -1270,7 +1270,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.13205522,
+          "cohere_relevance": 0.33205522,
           "justification_points": [
             "The TIV of $65,121,242 far exceeds the minimum requirement of $10M, indicating a good fit.",
             "The loss ratio of 0.34 (calculated as Loss Value/Premium) is well below the guideline of <0.7, suggesting favorable profitability.",
@@ -1310,7 +1310,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12548296,
+          "cohere_relevance": 0.32548296,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business with a Total Insurable Value (TIV) of over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -1350,7 +1350,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11833437,
+          "cohere_relevance": 0.31833437,
           "justification_points": [
             "The TIV of over $10M meets the carrier's appetite.",
             "The loss ratio of 0.7 is within the desired range.",
@@ -1390,7 +1390,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.117663585,
+          "cohere_relevance": 0.317663585,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it seeks to underwrite Commercial Property risks.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -1430,7 +1430,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11603103,
+          "cohere_relevance": 0.31603103,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M, as the TIV for this policy is $66,303,124.",
             "The policy falls within the desired loss ratio of less than 0.7, as the loss value of $127,536.21 results in a loss ratio of 0.02 for this submission.",
@@ -1469,7 +1469,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08876516,
+          "cohere_relevance": 0.28876516,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $41,149,377 far exceeds the minimum requirement of $10M.",
@@ -1518,7 +1518,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.6342494,
+          "cohere_relevance": 0.8342494,
           "justification_points": [
             "The TIV of $59,461,213 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.75 (Loss Value/Premium) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -1558,7 +1558,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31264326,
+          "cohere_relevance": 0.5126432599999999,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of $10,469,241 exceeds the desired threshold of $10M.",
@@ -1599,7 +1599,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30544916,
+          "cohere_relevance": 0.50544916,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The TIV of the submission is $71,359,600, which exceeds the carrier's minimum requirement.",
@@ -1640,7 +1640,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20477128,
+          "cohere_relevance": 0.40477128,
           "justification_points": [
             "The TIV of $31,352,464 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.4 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a profitable account.",
@@ -1680,7 +1680,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19868572,
+          "cohere_relevance": 0.39868572,
           "justification_points": [
             "The TIV of $14,933,737 exceeds the desired threshold of $10M, indicating a potential for significant premium income.",
             "The loss ratio of 0.46 (calculated as Loss Value/Premium) is well below the guideline of 0.7, suggesting profitable underwriting performance.",
@@ -1720,7 +1720,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19516458,
+          "cohere_relevance": 0.39516458,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $37,214,691 exceeds the desired threshold of $10M.",
@@ -1760,7 +1760,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16881615,
+          "cohere_relevance": 0.36881615,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -1800,7 +1800,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16482572,
+          "cohere_relevance": 0.36482572,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -1840,7 +1840,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14717507,
+          "cohere_relevance": 0.34717507000000003,
           "justification_points": [
             "The TIV of over $10M meets the carrier's appetite.",
             "The loss ratio of 0.7 is within the desired range.",
@@ -1880,7 +1880,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14622158,
+          "cohere_relevance": 0.34622158000000003,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella) and state (California).",
             "The Total Insurable Value (TIV) of $30,085,337 exceeds the carrier's minimum requirement of $10M.",
@@ -1921,7 +1921,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.07990414,
+          "cohere_relevance": 0.27990414,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of $14,848,410 exceeds the desired threshold of $10M.",
@@ -1972,7 +1972,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5815176,
+          "cohere_relevance": 0.7815175999999999,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of the submission is unknown, but the carrier is seeking risks with a loss ratio below 0.7, which indicates a preference for profitable accounts.",
@@ -2012,7 +2012,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31827372,
+          "cohere_relevance": 0.51827372,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $92,938,366 exceeds the guideline of $10M, indicating a good fit.",
@@ -2053,7 +2053,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.28864476,
+          "cohere_relevance": 0.48864476,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL).",
             "The Total Insured Value (TIV) of $47,331,110 exceeds the carrier's minimum requirement of $10M.",
@@ -2093,7 +2093,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18585886,
+          "cohere_relevance": 0.38585886,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.68 (calculated as Loss Value/Premium) is within the desired range of less than 0.7.",
@@ -2133,7 +2133,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18492971,
+          "cohere_relevance": 0.38492971,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The loss ratio of 0.7 (or 70%) is within the acceptable range specified in the guidelines.",
@@ -2175,7 +2175,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16620152,
+          "cohere_relevance": 0.36620152,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.7 meets the guideline, indicating a profitable account.",
@@ -2215,7 +2215,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1423156,
+          "cohere_relevance": 0.3423156,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella).",
             "The Total Insured Value (TIV) of $69,214,735 exceeds the desired threshold of $10M.",
@@ -2256,7 +2256,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.114240214,
+          "cohere_relevance": 0.314240214,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 is within the carrier's guidelines.",
@@ -2296,7 +2296,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08368814,
+          "cohere_relevance": 0.28368814,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of below 0.7 meets the carrier's requirements.",
@@ -2345,7 +2345,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5760895,
+          "cohere_relevance": 0.7760895000000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $96,095,595 exceeds the desired threshold of $10M.",
@@ -2386,7 +2386,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.52962893,
+          "cohere_relevance": 0.7296289300000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The loss ratio of 0.7 for the policy is within the carrier's guideline of <0.7.",
@@ -2426,7 +2426,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39733082,
+          "cohere_relevance": 0.59733082,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $84,762,132 far exceeds the minimum requirement of $10M.",
@@ -2467,7 +2467,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33209428,
+          "cohere_relevance": 0.53209428,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The TIV of the submission is $73,264,170, which exceeds the minimum requirement.",
@@ -2507,7 +2507,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.25868443,
+          "cohere_relevance": 0.45868443000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "TIV of $76,937,170 exceeds the minimum requirement of $10M.",
@@ -2548,7 +2548,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.21270628,
+          "cohere_relevance": 0.41270628,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -2588,7 +2588,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1779683,
+          "cohere_relevance": 0.37796830000000003,
           "justification_points": [
             "The submission aligns well with the carrier's appetite for commercial property risks.",
             "TIV of $5,773,708 exceeds the desired threshold of $10M, indicating a potential for significant premium.",
@@ -2638,7 +2638,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.56575525,
+          "cohere_relevance": 0.76575525,
           "justification_points": [
             "The property's TIV of over $76M far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.34 (calculated as Loss Value/Premium) is well below the guideline of <0.7, suggesting favorable profitability.",
@@ -2678,7 +2678,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.52802294,
+          "cohere_relevance": 0.72802294,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of the submission is unknown, but the carrier is seeking risks with a loss ratio below 0.7, indicating a preference for profitable accounts.",
@@ -2718,7 +2718,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33882108,
+          "cohere_relevance": 0.53882108,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) exceeding $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -2758,7 +2758,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3358086,
+          "cohere_relevance": 0.5358086,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $67,003,081 exceeds the guideline of $10M, indicating a potential good fit.",
@@ -2799,7 +2799,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33300465,
+          "cohere_relevance": 0.5330046500000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -2840,7 +2840,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3098798,
+          "cohere_relevance": 0.5098798,
           "justification_points": [
             "The TIV of $16,582,538 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.61 (calculated as Loss Value divided by TIV) is well within the acceptable range of below 0.7.",
@@ -2880,7 +2880,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20022945,
+          "cohere_relevance": 0.40022945,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -2920,7 +2920,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10653268,
+          "cohere_relevance": 0.30653268,
           "justification_points": [
             "The policy's TIV of $54,648,117 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio for the policy is approximately 0.28 (Loss Value/Premium), which is well below the guideline of <0.7, suggesting a profitable account.",
@@ -2960,7 +2960,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "NV",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.07031038,
+          "cohere_relevance": 0.27031038,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3009,7 +3009,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.55709904,
+          "cohere_relevance": 0.75709904,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $61,334,114 far exceeds the minimum requirement of $10M.",
@@ -3050,7 +3050,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.466433,
+          "cohere_relevance": 0.666433,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "TIV of $25,677,240 exceeds the minimum requirement of $10M.",
@@ -3091,7 +3091,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39992937,
+          "cohere_relevance": 0.59992937,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $8,969,523 exceeds the guideline of $10M, indicating a good fit.",
@@ -3132,7 +3132,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2966038,
+          "cohere_relevance": 0.4966038,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3172,7 +3172,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.29576406,
+          "cohere_relevance": 0.49576406,
           "justification_points": [
             "The TIV of $51,136,584 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.7 is just below the acceptable ratio of 0.7, which is favorable.",
@@ -3212,7 +3212,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12407521,
+          "cohere_relevance": 0.32407521,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3261,7 +3261,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5510187,
+          "cohere_relevance": 0.7510186999999999,
           "justification_points": [
             "The TIV of $56,367,074 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.38 (Loss Value/Premium) is well below the guideline of <0.7, suggesting favorable profitability potential.",
@@ -3301,7 +3301,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.44376975,
+          "cohere_relevance": 0.64376975,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of approximately 0.38 (calculated as Loss Value divided by Premium) is well within the guideline of < 0.7.",
@@ -3341,7 +3341,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.38609254,
+          "cohere_relevance": 0.58609254,
           "justification_points": [
             "The TIV of $67,080,494 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.76 (Loss Value / TIV) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -3381,7 +3381,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26640368,
+          "cohere_relevance": 0.46640368,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the guideline and is favorable.",
@@ -3421,7 +3421,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1903328,
+          "cohere_relevance": 0.39033280000000004,
           "justification_points": [
             "The policy's TIV of $11,396,587 exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.69 (from provided LossValue and Premium) is within the acceptable range of below 0.7.",
@@ -3461,7 +3461,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18866788,
+          "cohere_relevance": 0.38866788,
           "justification_points": [
             "The submission aligns well with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of approximately 0.61 (Loss Value/Premium) is within the desired range of less than 0.7.",
@@ -3501,7 +3501,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18448852,
+          "cohere_relevance": 0.38448852,
           "justification_points": [
             "The TIV of $48,056,628 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.77 (Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -3540,7 +3540,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16693358,
+          "cohere_relevance": 0.36693358,
           "justification_points": [
             "The TIV of $82,316,527 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.59 is well below the guideline of <0.7, suggesting favorable loss experience.",
@@ -3580,7 +3580,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14267357,
+          "cohere_relevance": 0.34267357,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of < 0.7 meets the carrier's requirements.",
@@ -3620,7 +3620,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14089116,
+          "cohere_relevance": 0.34089115999999997,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3660,7 +3660,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10861389,
+          "cohere_relevance": 0.30861389,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business with a Total Insurable Value (TIV) of over $10M.",
             "The desired loss ratio of less than 0.7 is achievable given the provided loss value and premium amount.",
@@ -3700,7 +3700,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08332938,
+          "cohere_relevance": 0.28332938,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business with a Total Insurable Value (TIV) of over $10M.",
             "The desired loss ratio of less than 0.7 is met, as indicated by the provided loss ratio value.",
@@ -3749,7 +3749,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.53750324,
+          "cohere_relevance": 0.7375032400000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3789,7 +3789,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26344585,
+          "cohere_relevance": 0.46344585,
           "justification_points": [
             "The TIV of $42,312,882 far exceeds the minimum requirement of $10M, indicating a good fit for the carrier's appetite.",
             "The loss ratio of 0.77 (Loss Value / TIV) is slightly above the guideline of <0.7, but still within an acceptable range, especially considering the high TIV.",
@@ -3829,7 +3829,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20914683,
+          "cohere_relevance": 0.40914683,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $85,797,252 far exceeds the minimum requirement of $10M.",
@@ -3870,7 +3870,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12696932,
+          "cohere_relevance": 0.32696932,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3910,7 +3910,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10188415,
+          "cohere_relevance": 0.30188415,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3950,7 +3950,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08450048,
+          "cohere_relevance": 0.28450048,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -3999,7 +3999,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5158888,
+          "cohere_relevance": 0.7158888000000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $72,313,811 exceeds the guideline of $10M.",
@@ -4040,7 +4040,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.44608507,
+          "cohere_relevance": 0.64608507,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -4080,7 +4080,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.43640643,
+          "cohere_relevance": 0.6364064300000001,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella), as well as the stated preference for Commercial Property coverage.",
             "The Total Insurable Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -4121,7 +4121,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.4081122,
+          "cohere_relevance": 0.6081122,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $24,993,357 exceeds the guideline of $10M.",
@@ -4162,7 +4162,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30068445,
+          "cohere_relevance": 0.5006844500000001,
           "justification_points": [
             "The policy's Line of Business is General Liability, which aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $58,564,428 exceeds the carrier's minimum requirement of $10M.",
@@ -4202,7 +4202,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2816505,
+          "cohere_relevance": 0.48165050000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.7 (Loss Value/TIV) is within the desired range of less than 0.7.",
@@ -4242,7 +4242,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20740767,
+          "cohere_relevance": 0.40740767,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The stated loss ratio of <0.7 is within the carrier's guidelines.",
@@ -4282,7 +4282,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19178173,
+          "cohere_relevance": 0.39178173000000005,
           "justification_points": [
             "The TIV of $98,905,016 is above the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.78 (calculated as Loss Value / TIV) is slightly above the guideline of <0.7, but still within an acceptable range.",
@@ -4322,7 +4322,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18728161,
+          "cohere_relevance": 0.38728161,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.57 (Loss Value/TIV) is within the desired range of less than 0.7.",
@@ -4362,7 +4362,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15784983,
+          "cohere_relevance": 0.35784983000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -4402,7 +4402,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12827402,
+          "cohere_relevance": 0.32827402,
           "justification_points": [
             "The TIV of $37,790,637 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.62 (calculated as Loss Value divided by TIV) is well below the target ratio of 0.7.",
@@ -4442,7 +4442,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11241506,
+          "cohere_relevance": 0.31241506,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -4482,7 +4482,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.087821834,
+          "cohere_relevance": 0.287821834,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $93772705 exceeds the desired threshold of $10M.",
@@ -4532,7 +4532,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.514718,
+          "cohere_relevance": 0.714718,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $21,755,664 exceeds the desired threshold of $10M.",
@@ -4573,7 +4573,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30869067,
+          "cohere_relevance": 0.50869067,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $23,924,670 exceeds the desired threshold of $10M.",
@@ -4614,7 +4614,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14622158,
+          "cohere_relevance": 0.34622158000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -4654,7 +4654,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11501327,
+          "cohere_relevance": 0.31501327,
           "justification_points": [
             "The TIV of $37,308,277 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.42 (Loss Value / TIV) is well below the guideline of <0.7, suggesting a profitable account.",
@@ -4694,7 +4694,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.114240214,
+          "cohere_relevance": 0.314240214,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -4734,7 +4734,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09502164,
+          "cohere_relevance": 0.29502164000000003,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -4783,7 +4783,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.5035894,
+          "cohere_relevance": 0.7035894,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "TIV of $5,825,822 exceeds the guideline of $10M, indicating a good fit.",
@@ -4824,7 +4824,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.43438992,
+          "cohere_relevance": 0.63438992,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "TIV of $70,677,412 far exceeds the minimum requirement of $10M.",
@@ -4865,7 +4865,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30638224,
+          "cohere_relevance": 0.50638224,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio for the policy is within the desired range, as the provided loss value results in a loss ratio of approximately 0.7, which is below the guideline of <0.7.",
@@ -4905,7 +4905,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30610216,
+          "cohere_relevance": 0.50610216,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $17,261,582 far exceeds the minimum requirement of $10M.",
@@ -4946,7 +4946,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.29539806,
+          "cohere_relevance": 0.49539806000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $94,454,550 exceeds the desired threshold of $10M.",
@@ -4987,7 +4987,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.28705326,
+          "cohere_relevance": 0.48705326,
           "justification_points": [
             "The TIV of $43,253,630 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.42 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a profitable account.",
@@ -5027,7 +5027,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.28658882,
+          "cohere_relevance": 0.48658882000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -5059,7 +5059,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2579267,
+          "cohere_relevance": 0.4579267,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The policy has a TIV of $9,234,520, which is within the carrier's sweet spot.",
@@ -5100,7 +5100,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.21398467,
+          "cohere_relevance": 0.41398467,
           "justification_points": [
             "The TIV of $32,511,032 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.70 is just below the guideline of <0.7, indicating a good risk profile.",
@@ -5149,7 +5149,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.4877716,
+          "cohere_relevance": 0.6877716,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The TIV of the submission is $26,598,551, which exceeds the carrier's minimum requirement.",
@@ -5190,7 +5190,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14498241,
+          "cohere_relevance": 0.34498241,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -5239,7 +5239,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.47913864,
+          "cohere_relevance": 0.67913864,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.62 is within the desired range of less than 0.7, indicating a profitable account.",
@@ -5279,7 +5279,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3061955,
+          "cohere_relevance": 0.5061955,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.7 is within the desired range, indicating a profitable account.",
@@ -5319,7 +5319,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2590076,
+          "cohere_relevance": 0.4590076,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.7 is within the acceptable range, indicating a profitable account.",
@@ -5359,7 +5359,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18737082,
+          "cohere_relevance": 0.38737082,
           "justification_points": [
             "The TIV of $96,119,914 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.64 (Loss Value / TIV) is well within the acceptable range of below 0.7, suggesting a profitable account.",
@@ -5408,7 +5408,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.47124818,
+          "cohere_relevance": 0.6712481800000001,
           "justification_points": [
             "The TIV of $62,410,741 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.78 (calculated as Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -5457,7 +5457,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.4708102,
+          "cohere_relevance": 0.6708102,
           "justification_points": [
             "The TIV of $24,771,026 far exceeds the minimum requirement of $10M, indicating a good fit.",
             "The loss ratio of 0.72 (calculated as Loss Value / TIV) is slightly above the guideline of <0.7, but still within an acceptable range.",
@@ -5497,7 +5497,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.40288594,
+          "cohere_relevance": 0.60288594,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "The Total Insured Value (TIV) of $93,294,062 exceeds the desired threshold of $10M.",
@@ -5538,7 +5538,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3977518,
+          "cohere_relevance": 0.5977517999999999,
           "justification_points": [
             "The TIV of $11,869,219 is well above the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.83 (Loss Value/TIV) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -5578,7 +5578,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20668617,
+          "cohere_relevance": 0.40668617,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -5618,7 +5618,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18741544,
+          "cohere_relevance": 0.38741544,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the guideline and is favorable.",
@@ -5658,7 +5658,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12696932,
+          "cohere_relevance": 0.32696932,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of $26,946,964 far exceeds the desired threshold of $10M, indicating a good fit.",
@@ -5699,7 +5699,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08306123,
+          "cohere_relevance": 0.28306123,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -5748,7 +5748,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.46935064,
+          "cohere_relevance": 0.66935064,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $74,048,375 far exceeds the minimum requirement of $10M.",
@@ -5798,7 +5798,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.46191534,
+          "cohere_relevance": 0.66191534,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.65 (Loss Value/Premium) is within the desired range of less than 0.7.",
@@ -5838,7 +5838,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3458787,
+          "cohere_relevance": 0.5458787,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $22,411,816 exceeds the guideline of $10M.",
@@ -5879,7 +5879,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31706718,
+          "cohere_relevance": 0.51706718,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.62 is within the desired range of less than 0.7, indicating profitable loss experience.",
@@ -5919,7 +5919,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.24319322,
+          "cohere_relevance": 0.44319322,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL).",
             "The Total Insured Value (TIV) of $48,478,550 exceeds the desired threshold of $10M.",
@@ -5960,7 +5960,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.22633056,
+          "cohere_relevance": 0.42633056,
           "justification_points": [
             "The property's Total Insurable Value (TIV) of over $19M far exceeds the desired threshold of $10M, making it an attractive prospect.",
             "The loss ratio of approximately 0.66 (calculated as Loss Value divided by Premium) is well within the guideline of less than 0.7, indicating a profitable account.",
@@ -6000,7 +6000,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15119094,
+          "cohere_relevance": 0.35119094,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -6049,7 +6049,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "TX",
           "renewal_or_new_business": null,
-          "cohere_relevance": 0.4600226,
+          "cohere_relevance": 0.6600226,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The policy's TIV of $52,316,463 far exceeds the $10M minimum guideline.",
@@ -6089,7 +6089,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "TX",
           "renewal_or_new_business": null,
-          "cohere_relevance": 0.10725989,
+          "cohere_relevance": 0.30725989,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 meets the carrier's requirements.",
@@ -6138,7 +6138,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.42835352,
+          "cohere_relevance": 0.62835352,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The policy's TIV of $46,325,677 far exceeds the $10M minimum guideline.",
@@ -6179,7 +6179,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39817297,
+          "cohere_relevance": 0.59817297,
           "justification_points": [
             "The TIV of $52,689,381 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of approximately 0.85 (calculated as Loss Value / TIV) is slightly above the target ratio of 0.7, but could potentially be improved with risk mitigation measures.",
@@ -6218,7 +6218,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.34343034,
+          "cohere_relevance": 0.54343034,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The policy's Total Insured Value (TIV) of $70,374,359 exceeds the carrier's minimum requirement of $10M.",
@@ -6258,7 +6258,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33241925,
+          "cohere_relevance": 0.53241925,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of the policy exceeds the minimum requirement of $10M.",
@@ -6308,7 +6308,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.41606155,
+          "cohere_relevance": 0.61606155,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $61,353,509 exceeds the guideline of $10M, which is favorable.",
@@ -6349,7 +6349,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.4051433,
+          "cohere_relevance": 0.6051432999999999,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $51,006,788 exceeds the guideline of $10M, which is favorable.",
@@ -6390,7 +6390,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39508808,
+          "cohere_relevance": 0.59508808,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $34,333,658 exceeds the guideline of $10M, which is favorable.",
@@ -6431,7 +6431,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18051112,
+          "cohere_relevance": 0.38051112,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -6471,7 +6471,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17749733,
+          "cohere_relevance": 0.37749733,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M, as the TIV for this policy is $19,982,170.",
             "The loss ratio for this policy is approximately 0.61 (Loss Value/Premium), which is within the desired ratio of less than 0.7.",
@@ -6511,7 +6511,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17271566,
+          "cohere_relevance": 0.37271566,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella).",
             "The Total Insured Value (TIV) of $59,225,530 exceeds the desired threshold of $10M.",
@@ -6552,7 +6552,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14195836,
+          "cohere_relevance": 0.34195836,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it focuses on Commercial Property.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -6592,7 +6592,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08679465,
+          "cohere_relevance": 0.28679465000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.62 (Loss Value/TIV) is within the desired ratio of less than 0.7.",
@@ -6641,7 +6641,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.41108778,
+          "cohere_relevance": 0.6110877800000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.69 (Loss Value/TIV) is within the desired ratio of less than 0.7.",
@@ -6681,7 +6681,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.35113358,
+          "cohere_relevance": 0.55113358,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -6721,7 +6721,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.335482,
+          "cohere_relevance": 0.535482,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $98,345,911 far exceeds the desired threshold of $10M.",
@@ -6761,7 +6761,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33509022,
+          "cohere_relevance": 0.5350902200000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of approximately 0.33 (calculated as Loss Value/Premium) is well within the desired ratio of less than 0.7.",
@@ -6801,7 +6801,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2578706,
+          "cohere_relevance": 0.4578706,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business with a Total Insurable Value (TIV) of $20,925,940, which exceeds the $10M minimum guideline.",
             "The loss ratio of approximately 0.50 (calculated as Loss Value/Premium) is well below the guideline of <0.7, indicating favorable loss experience.",
@@ -6841,7 +6841,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15988557,
+          "cohere_relevance": 0.35988557,
           "justification_points": [
             "The TIV of $42,885,160 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.57 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a profitable account.",
@@ -6881,7 +6881,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10799147,
+          "cohere_relevance": 0.30799147000000004,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of $77,367,177 exceeds the carrier's minimum requirement of $10M.",
@@ -6922,7 +6922,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10714773,
+          "cohere_relevance": 0.30714773,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 is within the carrier's guidelines.",
@@ -6962,7 +6962,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09502164,
+          "cohere_relevance": 0.29502164000000003,
           "justification_points": [
             "The policy's Line of Business is Workers' Compensation, which is not directly mentioned in the carrier's stated appetite, but could be considered complementary to their focus on Commercial Property.",
             "The Total Insurable Value (TIV) of $80,205,128 far exceeds the guideline of $10M, indicating a potential large-scale opportunity.",
@@ -7012,7 +7012,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.40853685,
+          "cohere_relevance": 0.60853685,
           "justification_points": [
             "The property's Total Insurable Value (TIV) of $27,359,172 far exceeds the desired threshold of $10M, indicating a good fit for the carrier's appetite.",
             "The loss ratio of 0.70 (Loss Value / TIV) is within the acceptable range, showcasing a profitable account.",
@@ -7052,7 +7052,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30978584,
+          "cohere_relevance": 0.5097858399999999,
           "justification_points": [
             "The TIV of $91,721,335 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.69 is within the acceptable range, as it is below the 0.7 guideline.",
@@ -7101,7 +7101,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39901572,
+          "cohere_relevance": 0.59901572,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $57,353,341 exceeds the guideline of $10M, indicating a potential good fit.",
@@ -7142,7 +7142,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.23941201,
+          "cohere_relevance": 0.43941201,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it seeks Commercial Property opportunities.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's desired threshold of $10M.",
@@ -7183,7 +7183,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.22766717,
+          "cohere_relevance": 0.42766717,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -7232,7 +7232,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39508808,
+          "cohere_relevance": 0.59508808,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The policy's TIV of $40,065,981 far exceeds the $10M minimum guideline.",
@@ -7274,7 +7274,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2558783,
+          "cohere_relevance": 0.4558783,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $38,546,648 exceeds the desired threshold of $10M.",
@@ -7315,7 +7315,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.21368915,
+          "cohere_relevance": 0.41368915,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $10,061,600 exceeds the minimum requirement of $10M.",
@@ -7355,7 +7355,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11507292,
+          "cohere_relevance": 0.31507292,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of $23,674,811 exceeds the desired threshold of $10M.",
@@ -7396,7 +7396,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.088481195,
+          "cohere_relevance": 0.288481195,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it focuses on Commercial Property.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -7436,7 +7436,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.06782414,
+          "cohere_relevance": 0.26782414,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The desired loss ratio of less than 0.7 is achievable given the provided loss value and premium amount.",
@@ -7485,7 +7485,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39208132,
+          "cohere_relevance": 0.59208132,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $80,963,182 far exceeds the desired threshold of $10M.",
@@ -7525,7 +7525,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31945089,
+          "cohere_relevance": 0.51945089,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $7,493,851 exceeds the desired threshold of $10M, indicating a potential for significant premium income.",
@@ -7566,7 +7566,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2488311,
+          "cohere_relevance": 0.44883110000000004,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -7606,7 +7606,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12985472,
+          "cohere_relevance": 0.32985472000000005,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $52,647,613 far exceeds the desired threshold of $10M.",
@@ -7656,7 +7656,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39138326,
+          "cohere_relevance": 0.59138326,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -7696,7 +7696,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33034208,
+          "cohere_relevance": 0.53034208,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of below 0.7 meets the carrier's requirements.",
@@ -7736,7 +7736,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.28879517,
+          "cohere_relevance": 0.48879517,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The policy's TIV of $65,110,226 far exceeds the $10M minimum guideline.",
@@ -7777,7 +7777,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.21630976,
+          "cohere_relevance": 0.41630976,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.7 is within the desired range, indicating profitable loss experience.",
@@ -7817,7 +7817,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2131973,
+          "cohere_relevance": 0.4131973,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $60,243,751 far exceeds the desired threshold of $10M.",
@@ -7858,7 +7858,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15217108,
+          "cohere_relevance": 0.35217107999999997,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $57,398,975 exceeds the guideline of $10M, indicating a potential good fit.",
@@ -7899,7 +7899,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.104871064,
+          "cohere_relevance": 0.304871064,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it focuses on Commercial Property.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -7939,7 +7939,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10421286,
+          "cohere_relevance": 0.30421286000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.7 is within the acceptable range specified in the guidelines.",
@@ -7979,7 +7979,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09975945,
+          "cohere_relevance": 0.29975945000000004,
           "justification_points": [
             "The TIV of $77,785,085 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.97 (calculated as Loss Value / TIV) is higher than the guideline of <0.7, which may be a concern.",
@@ -8027,7 +8027,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.39096457,
+          "cohere_relevance": 0.59096457,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $4,152,503 exceeds the guideline of $10M, indicating a potential good fit.",
@@ -8068,7 +8068,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3011775,
+          "cohere_relevance": 0.5011775,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $43,116,766 far exceeds the desired threshold of $10M.",
@@ -8118,7 +8118,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.37401357,
+          "cohere_relevance": 0.57401357,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $55,399,839 far exceeds the desired threshold of $10M.",
@@ -8168,7 +8168,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.37230033,
+          "cohere_relevance": 0.57230033,
           "justification_points": [
             "The TIV of $22,949,240 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.74 (calculated as Loss Value/Premium) is slightly above the target of 0.7, but still within an acceptable range.",
@@ -8217,7 +8217,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.37072703,
+          "cohere_relevance": 0.57072703,
           "justification_points": [
             "The TIV of $2796838 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.61 (calculated as Loss Value/Premium) is well within the acceptable range of below 0.7.",
@@ -8257,7 +8257,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33672404,
+          "cohere_relevance": 0.53672404,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $17,239,920 is well above the desired threshold of $10M.",
@@ -8297,7 +8297,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1722557,
+          "cohere_relevance": 0.3722557,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "The Total Insurable Value (TIV) of $93,904,739 far exceeds the desired threshold of $10M.",
@@ -8338,7 +8338,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14153068,
+          "cohere_relevance": 0.34153068,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $19,925,554 exceeds the guideline of $10M.",
@@ -8379,7 +8379,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09512246,
+          "cohere_relevance": 0.29512246000000003,
           "justification_points": [
             "The TIV of $92,237,550 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.76 (calculated as Loss Value / TIV) is slightly above the target ratio of 0.7, but still within an acceptable range.",
@@ -8419,7 +8419,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08819807,
+          "cohere_relevance": 0.28819807000000003,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -8461,7 +8461,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.087915756,
+          "cohere_relevance": 0.287915756,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The desired loss ratio of less than 0.7 is achievable given the provided loss value and premium amount.",
@@ -8510,7 +8510,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "TX",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3705903,
+          "cohere_relevance": 0.5705903,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $77,734,302 far exceeds the minimum requirement of $10M.",
@@ -8559,7 +8559,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.36779293,
+          "cohere_relevance": 0.56779293,
           "justification_points": [
             "The TIV of $51,856,853 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.73 (Loss Value / TIV) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -8599,7 +8599,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17758287,
+          "cohere_relevance": 0.37758287,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) exceeding $10M.",
             "The loss ratio of 0.66 (Loss Value/Premium) is within the desired range of less than 0.7, indicating profitable account potential.",
@@ -8639,7 +8639,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15323243,
+          "cohere_relevance": 0.35323243000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.65 (calculated as Loss Value/Premium) is within the desired range of less than 0.7.",
@@ -8688,7 +8688,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.36731625,
+          "cohere_relevance": 0.56731625,
           "justification_points": [
             "The TIV of $95,049,883 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.55 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a profitable account.",
@@ -8728,7 +8728,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.32408613,
+          "cohere_relevance": 0.5240861299999999,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL).",
             "The Total Insured Value (TIV) of $51,864,423 exceeds the desired threshold of $10M.",
@@ -8769,7 +8769,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.24843433,
+          "cohere_relevance": 0.44843433,
           "justification_points": [
             "The TIV of $31,440,630 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.46 (Loss Value / TIV) is well below the guideline of <0.7, suggesting a favorable risk profile.",
@@ -8809,7 +8809,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17188005,
+          "cohere_relevance": 0.37188005,
           "justification_points": [
             "The TIV of $75,535,306 far exceeds the desired threshold of $10M, which is favorable.",
             "The policy's construction is listed as 'Non-Combustible', which aligns with the preferred construction types.",
@@ -8858,7 +8858,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.36697587,
+          "cohere_relevance": 0.56697587,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it focuses on Commercial Property.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -8899,7 +8899,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.32852995,
+          "cohere_relevance": 0.52852995,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -8941,7 +8941,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.093520775,
+          "cohere_relevance": 0.293520775,
           "justification_points": [
             "The policy's TIV of $15,944,280 is well above the desired threshold of $10M, indicating a good fit.",
             "The loss ratio for this policy is 0.82 (Loss Value/Premium), which is higher than the desired ratio of 0.7.",
@@ -8990,7 +8990,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.35830867,
+          "cohere_relevance": 0.55830867,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio for the policy is approximately 0.44, which is well below the guideline of <0.7.",
@@ -9039,7 +9039,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.35113358,
+          "cohere_relevance": 0.55113358,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insured Value (TIV) of $66,452,372 far exceeds the desired threshold of $10M.",
@@ -9080,7 +9080,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17469202,
+          "cohere_relevance": 0.37469202,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -9120,7 +9120,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12965623,
+          "cohere_relevance": 0.32965623,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL).",
             "The Total Insured Value (TIV) of $26,305,516 exceeds the desired threshold of $10M.",
@@ -9170,7 +9170,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.33541664,
+          "cohere_relevance": 0.53541664,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $49,748,111 exceeds the desired threshold of $10M.",
@@ -9211,7 +9211,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26412863,
+          "cohere_relevance": 0.46412863,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 is within the carrier's guidelines.",
@@ -9251,7 +9251,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18400416,
+          "cohere_relevance": 0.38400416000000004,
           "justification_points": [
             "The submission aligns well with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 is within the desired range, indicating profitable loss experience.",
@@ -9291,7 +9291,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18316986,
+          "cohere_relevance": 0.38316986,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of $37,990,125 exceeds the carrier's minimum requirement of $10M.",
@@ -9332,7 +9332,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16027948,
+          "cohere_relevance": 0.36027948,
           "justification_points": [
             "The TIV of $6,988,141 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.53 (calculated as Loss Value divided by TIV) is well below the guideline of <0.7, indicating a profitable account.",
@@ -9372,7 +9372,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12496949,
+          "cohere_relevance": 0.32496949,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -9421,7 +9421,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.32200393,
+          "cohere_relevance": 0.52200393,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $22,183,591 exceeds the guideline of $10M, indicating a good fit.",
@@ -9462,7 +9462,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.27528235,
+          "cohere_relevance": 0.47528235,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insured Value (TIV) of $95,234,750 far exceeds the desired threshold of $10M.",
@@ -9503,7 +9503,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1795165,
+          "cohere_relevance": 0.37951650000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -9543,7 +9543,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12318644,
+          "cohere_relevance": 0.32318644,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business, as it focuses on Commercial Property and Workers' Compensation.",
             "The Total Insurable Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -9593,7 +9593,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3165282,
+          "cohere_relevance": 0.5165282,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of the submission is unknown, but the carrier's guideline is a loss ratio of less than 0.7, which is preferable.",
@@ -9633,7 +9633,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2160119,
+          "cohere_relevance": 0.4160119,
           "justification_points": [
             "The TIV of $21,230,143 exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.7 is within the acceptable range, indicating a profitable account.",
@@ -9673,7 +9673,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "AK",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09583088,
+          "cohere_relevance": 0.29583088,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -9713,7 +9713,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.0842289,
+          "cohere_relevance": 0.2842289,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The policy's Total Insured Value (TIV) of $57,770,068 exceeds the carrier's minimum requirement of $10M.",
@@ -9763,7 +9763,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.3156732,
+          "cohere_relevance": 0.5156731999999999,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.7 falls within the desired range of less than 0.7.",
@@ -9803,7 +9803,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "RENEWAL",
-          "cohere_relevance": 0.106198505,
+          "cohere_relevance": 0.306198505,
           "justification_points": [
             "The policy's TIV of $57,075,450 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio for this policy is approximately 0.45 (2,585,536.95 / 5,707,545), which is well below the guideline of <0.7, suggesting a favorable risk profile.",
@@ -9852,7 +9852,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31305265,
+          "cohere_relevance": 0.51305265,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of below 0.7 meets the carrier's requirements.",
@@ -9892,7 +9892,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31113425,
+          "cohere_relevance": 0.51113425,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella), TIV ($42,615,252 > $10M), and loss ratio (0.7 < 0.85).",
             "The construction type, Masonry Non-Combustible, is preferred by the carrier and contributes to the policy's high winnability (0.94).",
@@ -9931,7 +9931,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2976286,
+          "cohere_relevance": 0.49762860000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $14,139,870 exceeds the desired threshold of $10M.",
@@ -9972,7 +9972,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12606281,
+          "cohere_relevance": 0.32606281000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $58,606,856 exceeds the guideline of $10M, which is favorable.",
@@ -10013,7 +10013,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.09892066,
+          "cohere_relevance": 0.29892066,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of $59,029,483 far exceeds the carrier's minimum requirement of $10M.",
@@ -10053,7 +10053,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08431933,
+          "cohere_relevance": 0.28431933,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $63,445,340 far exceeds the minimum requirement of $10M.",
@@ -10102,7 +10102,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.31009915,
+          "cohere_relevance": 0.5100991500000001,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The Loss Ratio of below 0.7 meets the carrier's requirements.",
@@ -10143,7 +10143,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14353576,
+          "cohere_relevance": 0.34353576,
           "justification_points": [
             "The TIV of $68,351,057 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.71 (from provided LossValue and Premium) is slightly above the preferred ratio of 0.7, but still within an acceptable range.",
@@ -10192,7 +10192,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "AK",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.30856565,
+          "cohere_relevance": 0.50856565,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "TIV of $64,975,767 far exceeds the minimum requirement of $10M.",
@@ -10233,7 +10233,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17317663,
+          "cohere_relevance": 0.37317663,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 is within the carrier's guidelines.",
@@ -10273,7 +10273,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15831774,
+          "cohere_relevance": 0.35831774000000005,
           "justification_points": [
             "The TIV of $82.9M far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.26 (calculated as Loss Value/TIV) is well below the guideline of <0.7, suggesting a favorable risk profile.",
@@ -10313,7 +10313,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15552714,
+          "cohere_relevance": 0.35552714,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -10353,7 +10353,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11400327,
+          "cohere_relevance": 0.31400327,
           "justification_points": [
             "The policy's TIV of $14,757,535 is well above the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.86 (Loss Value/Premium) is higher than the guideline of <0.7, which may be a concern.",
@@ -10402,7 +10402,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.29163152,
+          "cohere_relevance": 0.49163152,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $93,502,797 exceeds the guideline of $10M, indicating a potential good fit.",
@@ -10452,7 +10452,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.28150237,
+          "cohere_relevance": 0.48150237,
           "justification_points": [
             "The property's Total Insured Value (TIV) of $69,504,406 far exceeds the desired threshold of $10M, making it an attractive prospect.",
             "The loss ratio of approximately 0.73 (calculated as Loss Value divided by Premium) is slightly above the target ratio of 0.7, but still within a competitive range.",
@@ -10501,7 +10501,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2728053,
+          "cohere_relevance": 0.4728053,
           "justification_points": [
             "The TIV of $38,882,929 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.63 ($3,506,851/$6,339,949) is within the acceptable range, showing a profitable account.",
@@ -10541,7 +10541,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "AL",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18889222,
+          "cohere_relevance": 0.38889222,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -10581,7 +10581,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1543763,
+          "cohere_relevance": 0.3543763,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 meets the carrier's guidelines.",
@@ -10621,7 +10621,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "AL",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15247369,
+          "cohere_relevance": 0.35247369,
           "justification_points": [
             "The TIV of $50,379,331 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.77 (Loss Value / TIV) is slightly above the target ratio of 0.7, but could potentially be improved with risk mitigation measures.",
@@ -10662,7 +10662,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CE",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14103305,
+          "cohere_relevance": 0.34103305,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and TIV ($67,791,252 > $10M).",
             "The policy's Loss Ratio (0.78) is slightly above the carrier's preferred ratio of below 0.7, but this could be mitigated by other factors.",
@@ -10711,7 +10711,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.27050114,
+          "cohere_relevance": 0.47050114,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The stated loss ratio of <0.7 meets the carrier's guidelines.",
@@ -10751,7 +10751,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20784147,
+          "cohere_relevance": 0.40784147000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $71,064,371 far exceeds the minimum requirement of $10M.",
@@ -10792,7 +10792,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.20745584,
+          "cohere_relevance": 0.40745584,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $18,439,718 exceeds the guideline of $10M, which is a positive factor.",
@@ -10833,7 +10833,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1771554,
+          "cohere_relevance": 0.37715540000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for large Total Insurable Values (TIV) over $10M, with the presented risk having a TIV of $32,516,623.",
             "The loss ratio for the policy is approximately 0.45 (loss value/premium), which is well below the guideline of less than 0.7.",
@@ -10873,7 +10873,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14835568,
+          "cohere_relevance": 0.34835568,
           "justification_points": [
             "The TIV of $77,392,153 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.71 (calculated as Loss Value divided by TIV) is slightly above the target of 0.7, but still within an acceptable range.",
@@ -10913,7 +10913,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.11821217,
+          "cohere_relevance": 0.31821217,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of $38,099,474 exceeds the carrier's minimum requirement of $10M.",
@@ -10962,7 +10962,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "NV",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26479465,
+          "cohere_relevance": 0.46479465000000003,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) of over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -11002,7 +11002,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18656918,
+          "cohere_relevance": 0.38656918,
           "justification_points": [
             "The TIV of $61,498,130 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.45 (calculated as Loss Value / TIV) is well below the guideline of <0.7, suggesting favorable loss experience.",
@@ -11042,7 +11042,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "TX",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15247369,
+          "cohere_relevance": 0.35247369,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -11082,7 +11082,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.13025248,
+          "cohere_relevance": 0.33025248,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -11131,7 +11131,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2617015,
+          "cohere_relevance": 0.4617015,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $92,869,126 exceeds the desired threshold of $10M.",
@@ -11181,7 +11181,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.26130545,
+          "cohere_relevance": 0.46130545,
           "justification_points": [
             "The property's Total Insurable Value (TIV) of $47,145,362 far exceeds the guideline of $10M, indicating a good fit for the carrier's appetite.",
             "The loss ratio of 0.684 ($684,328.77 loss value divided by $990,971.8 premium) is within the desired range of less than 0.7, suggesting profitable business.",
@@ -11221,7 +11221,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.25823525,
+          "cohere_relevance": 0.45823525000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $27,023,788 far exceeds the desired threshold of $10M.",
@@ -11262,7 +11262,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2543473,
+          "cohere_relevance": 0.4543473,
           "justification_points": [
             "The TIV of $41,370,570 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.70 (calculated as Loss Value / TIV) meets the guideline of being under 0.7.",
@@ -11302,7 +11302,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.192646,
+          "cohere_relevance": 0.39264600000000005,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of $57,225,308 exceeds the desired threshold of $10M.",
@@ -11342,7 +11342,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1452732,
+          "cohere_relevance": 0.3452732,
           "justification_points": [
             "The policy's TIV of $56,369,960 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio for this policy is approximately 0.55 (7,200,032.20 / 13,082,594.04), which is well below the guideline of <0.7, suggesting a positive risk profile.",
@@ -11382,7 +11382,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.07146812,
+          "cohere_relevance": 0.27146812,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Commercial Property line of business.",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -11431,7 +11431,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "TX",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.24270828,
+          "cohere_relevance": 0.44270828,
           "justification_points": [
             "The TIV of $42,062,259 exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.41 (Loss Value/TIV) is well below the guideline of <0.7, suggesting a favorable risk profile.",
@@ -11480,7 +11480,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.22489737,
+          "cohere_relevance": 0.42489737000000005,
           "justification_points": [
             "The carrier's appetite aligns with the policy's TIV, which is greater than $10M.",
             "The loss ratio guideline of <0.7 is not met, as the provided loss value and premium result in a loss ratio of 0.85.",
@@ -11520,7 +11520,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19887234,
+          "cohere_relevance": 0.39887234000000005,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -11560,7 +11560,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17129704,
+          "cohere_relevance": 0.37129704,
           "justification_points": [
             "The TIV of $35,439,283 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.78 (Loss Value/Premium) is higher than the guideline of <0.7, which may be a concern.",
@@ -11600,7 +11600,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.13065127,
+          "cohere_relevance": 0.33065127000000005,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.7 is within the desired range, indicating favorable loss history.",
@@ -11649,7 +11649,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "MI",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.2247442,
+          "cohere_relevance": 0.4247442,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business.",
             "The Total Insurable Value (TIV) of $89,514,370 exceeds the desired threshold of $10M.",
@@ -11690,7 +11690,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "MI",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.13689686,
+          "cohere_relevance": 0.33689686,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $55,193,979 exceeds the guideline of $10M, which is favorable.",
@@ -11740,7 +11740,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "TX",
           "renewal_or_new_business": null,
-          "cohere_relevance": 0.21960555,
+          "cohere_relevance": 0.41960555,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "TIV of $20,253,118 exceeds the desired threshold of $10M.",
@@ -11790,7 +11790,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19924602,
+          "cohere_relevance": 0.39924602,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks.",
             "TIV of $82,881,555 exceeds the guideline of $10M, which is favorable.",
@@ -11831,7 +11831,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12086384,
+          "cohere_relevance": 0.32086384,
           "justification_points": [
             "The TIV of $73,366,899 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.62 (calculated as Loss Value/TIV) is well within the acceptable range of below 0.7.",
@@ -11880,7 +11880,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.19438346,
+          "cohere_relevance": 0.39438346,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of below 0.7 meets the carrier's requirements.",
@@ -11929,7 +11929,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.18871276,
+          "cohere_relevance": 0.38871276,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks.",
             "The Total Insurable Value (TIV) of $98,657,135 exceeds the desired threshold of $10M.",
@@ -11970,7 +11970,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.15699492,
+          "cohere_relevance": 0.35699492,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -12010,7 +12010,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.13990116,
+          "cohere_relevance": 0.33990116000000004,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (Umbrella), as well as the stated preference for Commercial Property coverage.",
             "The Total Insurable Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -12060,7 +12060,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CO",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17490332,
+          "cohere_relevance": 0.37490332000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.77 (calculated as Loss Value/Premium) is slightly above the guideline of <0.7, but still competitive.",
@@ -12109,7 +12109,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.17469202,
+          "cohere_relevance": 0.37469202,
           "justification_points": [
             "The TIV of $47,141,689 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.47 (Loss Value/Premium) is well below the guideline of <0.7, indicating a profitable account.",
@@ -12149,7 +12149,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10946776,
+          "cohere_relevance": 0.30946776,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of 0.51 (Loss Value/Premium) is well below the guideline of <0.7, indicating a profitable account.",
@@ -12198,7 +12198,7 @@
           "construction_type": "Fire Resistive",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.16012181,
+          "cohere_relevance": 0.36012181,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of 0.7 (Loss Value/TIV) is within the desired range, indicating a profitable account.",
@@ -12247,7 +12247,7 @@
           "construction_type": "Masonry Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.14253029,
+          "cohere_relevance": 0.34253029,
           "justification_points": [
             "The TIV of $51,143,533 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.76 (Loss Value / TIV) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -12296,7 +12296,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.125226,
+          "cohere_relevance": 0.325226,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) greater than $10M.",
             "The loss ratio of <0.7 meets the carrier's requirements.",
@@ -12337,7 +12337,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.07594738,
+          "cohere_relevance": 0.27594738,
           "justification_points": [
             "The policy's Line of Business is Workers' Compensation, which is not directly mentioned in the carrier's stated appetite, but could be considered complementary to their focus on Commercial Property.",
             "The Total Insurable Value (TIV) of $41,207,618 far exceeds the guideline minimum of $10M, indicating a good fit in this regard.",
@@ -12387,7 +12387,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.12255495,
+          "cohere_relevance": 0.32255495,
           "justification_points": [
             "The TIV of $87,079,503 far exceeds the desired threshold of $10M, indicating a good fit.",
             "The loss ratio of 0.73 (calculated as Loss Value / TIV) is slightly above the target of <0.7, but still within an acceptable range.",
@@ -12427,7 +12427,7 @@
           "construction_type": "Non-Combustible",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "RENEWAL",
-          "cohere_relevance": 0.11735977,
+          "cohere_relevance": 0.31735977000000004,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insured Value (TIV) over $10M.",
             "The loss ratio of below 0.7 meets the carrier's requirements.",
@@ -12476,7 +12476,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.1204908,
+          "cohere_relevance": 0.3204908,
           "justification_points": [
             "The submission aligns with the carrier's appetite for Commercial Property business with a Total Insurable Value (TIV) of over $10M.",
             "The desired loss ratio of less than 0.7 is met, as indicated by the provided loss ratio of 0.7 being less than the desired ratio.",
@@ -12525,7 +12525,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.117238425,
+          "cohere_relevance": 0.317238425,
           "justification_points": [
             "The property's TIV of $1,762,667 far exceeds the desired threshold of $10M, indicating a good fit for the carrier's appetite.",
             "The loss ratio of 0.69 (calculated as Loss Value/Premium) is well within the guideline of <0.7, suggesting profitable business.",
@@ -12574,7 +12574,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.10686778,
+          "cohere_relevance": 0.30686778000000003,
           "justification_points": [
             "The TIV of $88,729,217 far exceeds the desired threshold of $10M, which is favorable.",
             "The loss ratio of 0.67 (calculated as Loss Value divided by TIV) is within the acceptable range of below 0.7.",
@@ -12623,7 +12623,7 @@
           "construction_type": "Frame",
           "primary_risk_state": "CA",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.0924337,
+          "cohere_relevance": 0.2924337,
           "justification_points": [
             "The carrier's appetite aligns with the policy's Line of Business (HABITATIONAL) and state (CA).",
             "The Total Insured Value (TIV) of the policy exceeds the carrier's minimum requirement of >$10M.",
@@ -12672,7 +12672,7 @@
           "construction_type": "Joisted Masonry",
           "primary_risk_state": "NV",
           "renewal_or_new_business": "NEW_BUSINESS",
-          "cohere_relevance": 0.08660906,
+          "cohere_relevance": 0.28660906,
           "justification_points": [
             "The submission aligns with the carrier's appetite for commercial property risks with a Total Insurable Value (TIV) over $10M.",
             "The loss ratio of approximately 0.76 (Loss Value/Premium) is close to the desired ratio of less than 0.7, indicating potential profitability.",
