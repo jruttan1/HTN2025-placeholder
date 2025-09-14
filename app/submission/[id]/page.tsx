@@ -3,10 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import AppSidebar from "@/components/AppSidebar"
+import Header from "@/components/Header"
+import SidebarPullTab from "@/components/SidebarPullTab"
 import Link from "next/link"
-import Image from "next/image"
-import { Input } from "@/components/ui/input"
 
 // Mock data for submissions (same as main page)
 const submissions = [
@@ -125,96 +126,43 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header 
-        className="relative shadow-lg border-b border-white/10 overflow-hidden"
-        style={{
-          backgroundImage: `url('/stacked-peaks-haikei.svg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          minHeight: '120px'
-        }}
-      >
-        <div className="px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-12">
-              <div className="flex items-center space-x-3">
-                <Image src="/logo-cropped.svg" alt="Optimate Logo" className="ml-4" width={60} height={60} />
-                <div>
-                  <h1 className="text-4xl font-bold tracking-tight text-white ml-3
-            ">
-                    {'Optimate'}
-                  </h1>
-                  <p className="text-lg text-blue-100 ml-3">
-          Giving underwriters the context and confidence to make faster, smarter decisions
-                    
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <div className="relative">
-                <svg
-                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <Input
-                  placeholder="Search submissions..."
-                  className="w-80 pl-10 border-white/40 focus:bg-white/25 bg-white/20 text-white placeholder:text-white/60"
-                />
-              </div>
-              <Avatar className="h-12 w-12">
-                <AvatarFallback className="font-semibold bg-white text-blue-700">
-                  NA
-                </AvatarFallback>
-              </Avatar>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <div className="max-w-7xl mx-auto px-6 py-8">
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header />
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarPullTab />
+        <SidebarInset>
+          <div className="max-w-7xl mx-auto px-6 py-8 flex-1">
         <div className="mb-8">
           <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium flex items-center">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Dashboard
-          </Link>
-        </div>
+              Back to Dashboard
+            </Link>
+          </div>
 
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-5xl font-bold text-gray-900 mb-3 tracking-tight">{submission.client}</h1>
-              <div className="flex items-center space-x-4 text-xl text-gray-600">
-                <span>Submission #{submission.id}</span>
-                <span>•</span>
-                <span>{submission.product}</span>
-                <span>•</span>
-                <span className="font-semibold">{submission.premium}</span>
+          <div className="mb-8">
+            <div className="flex items-center justify-between">
+              <div>
+                <h1 className="text-5xl font-bold text-gray-900 mb-3 tracking-tight">{submission.client}</h1>
+                <div className="flex items-center space-x-4 text-xl text-gray-600">
+                  <span>Submission #{submission.id}</span>
+                  <span>•</span>
+                  <span>{submission.product}</span>
+                  <span>•</span>
+                  <span className="font-semibold">{submission.premium}</span>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-center">
-                <div className="relative w-20 h-20 mx-auto mb-2">
-                  
+              <div className="flex items-center space-x-4">
+                <div className="text-center">
+                  <div className="relative w-20 h-20 mx-auto mb-2">
+                    
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
@@ -599,7 +547,10 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
             </Card>
           </div>
         </div>
-      </div>
+            </div>
+          </SidebarInset>
+        </div>
+      </SidebarProvider>
     </div>
   )
 }
