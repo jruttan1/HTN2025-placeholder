@@ -22,7 +22,8 @@ import {
   Target,
   TrendingUp,
   Filter,
-  Bell
+  Bell,
+  Map
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -42,6 +43,11 @@ const navigationItems = [
     title: "Analytics",
     url: "/analytics",
     icon: BarChart3,
+  },
+  {
+    title: "Heatmap",
+    url: "/heatmap",
+    icon: Map,
   },
   {
     title: "Appetite Rules",

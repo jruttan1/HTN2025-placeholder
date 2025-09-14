@@ -1,0 +1,404 @@
+{
+  "states": [
+    {
+      "id": "US-AK",
+      "state": "AK",
+      "name": "Alaska",
+      "avg_score": 0.17,
+      "avg_risk_score": 47.13,
+      "policy_count": 2
+    },
+    {
+      "id": "US-AL",
+      "state": "AL",
+      "name": "Alabama",
+      "avg_score": 0.176,
+      "avg_risk_score": 51.3,
+      "policy_count": 2
+    },
+    {
+      "id": "US-AR",
+      "state": "AR",
+      "name": "Arkansas",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-AZ",
+      "state": "AZ",
+      "name": "Arizona",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-CA",
+      "state": "CA",
+      "name": "California",
+      "avg_score": 0.248,
+      "avg_risk_score": 56.57,
+      "policy_count": 283
+    },
+    {
+      "id": "US-CO",
+      "state": "CO",
+      "name": "Colorado",
+      "avg_score": 0.175,
+      "avg_risk_score": 53.2,
+      "policy_count": 1
+    },
+    {
+      "id": "US-CT",
+      "state": "CT",
+      "name": "Connecticut",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-DE",
+      "state": "DE",
+      "name": "Delaware",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-FL",
+      "state": "FL",
+      "name": "Florida",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-GA",
+      "state": "GA",
+      "name": "Georgia",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-HI",
+      "state": "HI",
+      "name": "Hawaii",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-IA",
+      "state": "IA",
+      "name": "Iowa",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-ID",
+      "state": "ID",
+      "name": "Idaho",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-IL",
+      "state": "IL",
+      "name": "Illinois",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-IN",
+      "state": "IN",
+      "name": "Indiana",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-KS",
+      "state": "KS",
+      "name": "Kansas",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-KY",
+      "state": "KY",
+      "name": "Kentucky",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-LA",
+      "state": "LA",
+      "name": "Louisiana",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MA",
+      "state": "MA",
+      "name": "Massachusetts",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MD",
+      "state": "MD",
+      "name": "Maryland",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-ME",
+      "state": "ME",
+      "name": "Maine",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MI",
+      "state": "MI",
+      "name": "Michigan",
+      "avg_score": 0.189,
+      "avg_risk_score": 51.53,
+      "policy_count": 2
+    },
+    {
+      "id": "US-MN",
+      "state": "MN",
+      "name": "Minnesota",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MO",
+      "state": "MO",
+      "name": "Missouri",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MS",
+      "state": "MS",
+      "name": "Mississippi",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-MT",
+      "state": "MT",
+      "name": "Montana",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NC",
+      "state": "NC",
+      "name": "North Carolina",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-ND",
+      "state": "ND",
+      "name": "North Dakota",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NE",
+      "state": "NE",
+      "name": "Nebraska",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NH",
+      "state": "NH",
+      "name": "New Hampshire",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NJ",
+      "state": "NJ",
+      "name": "New Jersey",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NM",
+      "state": "NM",
+      "name": "New Mexico",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-NV",
+      "state": "NV",
+      "name": "Nevada",
+      "avg_score": 0.181,
+      "avg_risk_score": 40.95,
+      "policy_count": 3
+    },
+    {
+      "id": "US-NY",
+      "state": "NY",
+      "name": "New York",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-OH",
+      "state": "OH",
+      "name": "Ohio",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-OK",
+      "state": "OK",
+      "name": "Oklahoma",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-OR",
+      "state": "OR",
+      "name": "Oregon",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-PA",
+      "state": "PA",
+      "name": "Pennsylvania",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-RI",
+      "state": "RI",
+      "name": "Rhode Island",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-SC",
+      "state": "SC",
+      "name": "South Carolina",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-SD",
+      "state": "SD",
+      "name": "South Dakota",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-TN",
+      "state": "TN",
+      "name": "Tennessee",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-TX",
+      "state": "TX",
+      "name": "Texas",
+      "avg_score": 0.265,
+      "avg_risk_score": 58.08,
+      "policy_count": 6
+    },
+    {
+      "id": "US-UT",
+      "state": "UT",
+      "name": "Utah",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-VA",
+      "state": "VA",
+      "name": "Virginia",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-VT",
+      "state": "VT",
+      "name": "Vermont",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-WA",
+      "state": "WA",
+      "name": "Washington",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-WI",
+      "state": "WI",
+      "name": "Wisconsin",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-WV",
+      "state": "WV",
+      "name": "West Virginia",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    },
+    {
+      "id": "US-WY",
+      "state": "WY",
+      "name": "Wyoming",
+      "avg_score": 0,
+      "avg_risk_score": 0,
+      "policy_count": 0
+    }
+  ]
+}
