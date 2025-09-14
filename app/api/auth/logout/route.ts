@@ -4,12 +4,13 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const returnTo = searchParams.get('returnTo') || '/login';
   
-  const auth0Domain = process.env.AUTH0_DOMAIN;
-  const baseUrl = process.env.AUTH0_BASE_URL || 'http://localhost:3000';
+  // For now, just clear cookies and redirect to login
+  // This avoids Auth0 logout URL configuration issues
+  const response = NextResponse.redirect(new URL(returnTo, request.url));
   
-  const logoutUrl = `https://${auth0Domain}/v2/logout?` + new URLSearchParams({
-    returnTo: `${baseUrl}${returnTo}`
-  });
+  // Clear authentication cookies
+  response.cookies.delete('optimate_session');
+  response.cookies.delete('optimate_user');
   
-  return NextResponse.redirect(logoutUrl);
+  return response;
 }

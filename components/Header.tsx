@@ -9,7 +9,6 @@ import SearchDropdown from "./SearchDropdown"
 import { ThemeSwitcher } from "./theme-switcher"
 import { useSearch } from "@/contexts/SearchContext"
 import { DashboardSubmission } from "@/lib/dataMapper"
-import { useUser } from '@auth0/nextjs-auth0'
 
 interface HeaderProps {
   userData?: {
@@ -20,7 +19,6 @@ interface HeaderProps {
 
 export default function Header({ userData }: HeaderProps) {
   const { searchQuery, setSearchQuery, submissions } = useSearch()
-  const { user } = useUser()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 })
@@ -166,13 +164,7 @@ export default function Header({ userData }: HeaderProps) {
                 <Button variant="ghost" className="relative h-12 w-12 rounded-full p-0">
                   <Avatar className="h-12 w-12">
                     <AvatarFallback className="font-semibold bg-white text-blue-700">
-                      {user?.name
-                        ? user.name
-                            .split(" ")
-                            .map((n: string) => n[0])
-                            .join("")
-                            .toUpperCase()
-                        : userData
+                      {userData
                         ? userData.name
                             .split(" ")
                             .map((n: string) => n[0])
@@ -186,10 +178,10 @@ export default function Header({ userData }: HeaderProps) {
               <DropdownMenuContent className="w-56" align="end" forceMount>
                 <div className="flex flex-col space-y-1 p-2">
                   <p className="text-sm font-medium leading-none">
-                    {user?.name || userData?.name || "User"}
+                    {userData?.name || "User"}
                   </p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    {user?.email || userData?.email || "user@example.com"}
+                    {userData?.email || "user@example.com"}
                   </p>
                 </div>
                 <DropdownMenuItem asChild>

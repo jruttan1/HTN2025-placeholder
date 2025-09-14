@@ -1,7 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SearchProvider } from '@/contexts/SearchContext'
-import { Auth0Provider } from '@auth0/nextjs-auth0'
 import './globals.css'
 
 export default function RootLayout({
@@ -22,18 +21,16 @@ export default function RootLayout({
         />
       </head>
       <body className="font-satoshi">
-        <Auth0Provider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem={false}
-            disableTransitionOnChange
-          >
-            <SearchProvider>
-              {children}
-            </SearchProvider>
-          </ThemeProvider>
-        </Auth0Provider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <SearchProvider>
+            {children}
+          </SearchProvider>
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
