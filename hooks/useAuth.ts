@@ -16,6 +16,10 @@ export function useAuth() {
           cookie.trim().startsWith('optimate_session=authenticated')
         );
         
+        console.log('useAuth - Session cookie found:', !!sessionCookie);
+        console.log('useAuth - Auth0 user:', !!user);
+        console.log('useAuth - All cookies:', document.cookie);
+        
         setIsAuthenticated(!!sessionCookie || !!user);
       };
 
@@ -23,10 +27,13 @@ export function useAuth() {
     }
   }, [user]);
 
+  // If Auth0 user exists, consider authenticated
+  const finalAuthState = isAuthenticated || !!user;
+
   return {
     user,
     isLoading,
     error,
-    isAuthenticated: isAuthenticated || !!user
+    isAuthenticated: finalAuthState
   };
 }

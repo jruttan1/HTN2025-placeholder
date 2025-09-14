@@ -42,6 +42,8 @@ export async function GET(request: NextRequest) {
           path: '/',
         });
         
+        console.log('Setting optimate_session cookie for redirect to:', state);
+        
         // Store user info in a separate cookie
         if (tokens.id_token) {
           response.cookies.set('optimate_user', 'authenticated', {
