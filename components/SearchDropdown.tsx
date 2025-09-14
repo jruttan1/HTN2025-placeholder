@@ -215,7 +215,7 @@ const SearchDropdown: React.FC<SearchDropdownProps> = ({
           width: position.width || 320
         }}
       >
-        <Card className="shadow-2xl border border-gray-200 bg-white max-h-96 overflow-hidden">
+        <Card className="shadow-2xl border border-border bg-popover max-h-96 overflow-hidden">
         <CardContent className="p-0">
           {suggestions.length === 0 && searchQuery ? (
             <div className="p-4 text-center text-gray-500">

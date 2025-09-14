@@ -4,6 +4,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import SearchDropdown from "./SearchDropdown"
+import { ThemeSwitcher } from "./theme-switcher"
+import { useSearch } from "@/contexts/SearchContext"
 import { DashboardSubmission } from "@/lib/dataMapper"
 
 interface HeaderProps {
@@ -11,12 +13,10 @@ interface HeaderProps {
     name: string
     email: string
   } | null
-  searchQuery?: string
-  onSearchChange?: (query: string) => void
-  submissions?: DashboardSubmission[]
 }
 
-export default function Header({ userData, searchQuery = "", onSearchChange, submissions = [] }: HeaderProps) {
+export default function Header({ userData }: HeaderProps) {
+  const { searchQuery, setSearchQuery, submissions } = useSearch()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isFocused, setIsFocused] = useState(false)
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0, width: 0 })
@@ -50,11 +50,12 @@ export default function Header({ userData, searchQuery = "", onSearchChange, sub
   }, [isDropdownOpen])
 
   const updateDropdownPosition = () => {
-    if (inputRef.current) {
+    if (inputRef.current && searchContainerRef.current) {
       const rect = inputRef.current.getBoundingClientRect()
+      const containerRect = searchContainerRef.current.getBoundingClientRect()
       setDropdownPosition({
-        top: rect.bottom + window.scrollY + 4,
-        left: rect.left + window.scrollX,
+        top: rect.bottom + 4,
+        left: rect.left,
         width: rect.width
       })
     }
@@ -67,13 +68,13 @@ export default function Header({ userData, searchQuery = "", onSearchChange, sub
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onSearchChange?.(e.target.value)
+    setSearchQuery(e.target.value)
     updateDropdownPosition()
     setIsDropdownOpen(true)
   }
 
   const handleSuggestionSelect = (suggestion: string) => {
-    onSearchChange?.(suggestion)
+    setSearchQuery(suggestion)
     setIsDropdownOpen(false)
     setIsFocused(false)
   }
@@ -152,6 +153,9 @@ export default function Header({ userData, searchQuery = "", onSearchChange, sub
                 onClose={() => setIsDropdownOpen(false)}
                 position={dropdownPosition}
               />
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg">
+              <ThemeSwitcher />
             </div>
             <Avatar className="h-12 w-12">
               <AvatarFallback className="font-semibold bg-white text-blue-700">

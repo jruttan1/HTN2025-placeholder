@@ -1,6 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Header from "@/components/Header"
 import {
   ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid,
   BarChart, Bar,
@@ -54,14 +58,26 @@ export default function PlotsPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-6">
-      
+    <div className="min-h-screen flex flex-col">
+      <Header userData={null} />
+      <div className="flex-1 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-6">
+        
+        {/* Back to Dashboard Button */}
+        <div className="mb-6">
+          <Link href="/dashboard">
+            <Button variant="outline" className="flex items-center gap-2 hover:bg-white/80 dark:hover:bg-gray-800/80">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Dashboard
+            </Button>
+          </Link>
+        </div>
+
       {/* Title Header */}
       <header className="text-center mb-10">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight">
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
           📊 Portfolio Risk & Appetite Dashboard
         </h1>
-        <p className="text-gray-600 mt-2">
+        <p className="text-muted-foreground mt-2">
           Visualizing policy risk, performance, and appetite alignment
         </p>
       </header>
@@ -192,6 +208,7 @@ export default function PlotsPage() {
           </ResponsiveContainer>
         </div>
 
+      </div>
       </div>
     </div>
   )

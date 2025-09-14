@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import SlidingToggle from "@/helper/toggle"
 import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
+import { useSearch } from "@/contexts/SearchContext"
 // import { Toggle } from "@/components/ui/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
@@ -195,6 +196,7 @@ interface UserData {
 }
 
 export default function Dashboard() {
+  const { searchQuery, setSearchQuery, submissions: globalSubmissions } = useSearch()
   const [userData, setUserData] = useState<UserData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [showWelcome, setShowWelcome] = useState(false)
@@ -209,7 +211,6 @@ export default function Dashboard() {
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
   const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
   const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
-  const [searchQuery, setSearchQuery] = useState('')
   const [allSubmissions, setAllSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
 
   // Helper functions for filtering
@@ -339,48 +340,39 @@ export default function Dashboard() {
     setIsLoading(false)
   }, [])
 
-  // Load real submissions data from enhanced_data.json
+  // Use global submissions data
   useEffect(() => {
-    const loadSubmissions = async () => {
-      try {
-        setIsLoadingSubmissions(true)
-        const realSubmissions = await loadRealSubmissions()
-        if (realSubmissions.length > 0) {
-          setAllSubmissions(realSubmissions)
-          setSubmissions(realSubmissions)
-        }
-      } catch (error) {
-        console.error('Error loading submissions:', error)
-        // Keep using mock data if loading fails
-        setAllSubmissions(mockSubmissions)
-        setSubmissions(mockSubmissions)
-      } finally {
-        setIsLoadingSubmissions(false)
-      }
+    if (globalSubmissions.length > 0) {
+      setAllSubmissions(globalSubmissions)
+      setSubmissions(globalSubmissions)
+      setIsLoadingSubmissions(false)
+    } else {
+      // Fallback to mock data
+      setAllSubmissions(mockSubmissions)
+      setSubmissions(mockSubmissions)
+      setIsLoadingSubmissions(false)
     }
-
-    loadSubmissions()
-  }, [])
+  }, [globalSubmissions])
 
   const getAppetiteColor = (status: string) => {
     switch (status) {
       case "good":
-        return "text-green-700 bg-green-50 border-green-200"
+        return "text-green-700 bg-green-50 border-green-200 dark:text-green-400 dark:bg-green-950 dark:border-green-800"
       case "poor":
-        return "text-red-700 bg-red-50 border-red-200"
+        return "text-red-700 bg-red-50 border-red-200 dark:text-red-400 dark:bg-red-950 dark:border-red-800"
       default:
-        return "text-gray-600 bg-gray-50 border-gray-200"
+        return "text-muted-foreground bg-muted border-border"
     }
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Under Review":
-        return "text-blue-700 bg-blue-50 border-blue-200"
+        return "text-blue-700 bg-blue-50 border-blue-200 dark:text-blue-400 dark:bg-blue-950 dark:border-blue-800"
       case "Review Required":
-        return "text-red-700 bg-red-50 border-red-200"
+        return "text-red-700 bg-red-50 border-red-200 dark:text-red-400 dark:bg-red-950 dark:border-red-800"
       default:
-        return "text-gray-600 bg-gray-50 border-gray-200"
+        return "text-muted-foreground bg-muted border-border"
     }
   }
 
@@ -445,7 +437,7 @@ export default function Dashboard() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-bold text-gray-900">{score}%</span>
+          <span className="text-xs font-bold text-foreground">{score}%</span>
         </div>
       </div>
     )
@@ -453,14 +445,14 @@ export default function Dashboard() {
 
   if (isLoading) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <div className="text-center">
         <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg mb-6">
           <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
           </svg>
         </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">Setting up your dashboard...</h1>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent mb-4">Setting up your dashboard...</h1>
         <div className="mt-4">
           <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
         </div>
@@ -473,9 +465,6 @@ export default function Dashboard() {
 <div className="min-h-screen flex flex-col">
   <Header 
     userData={userData} 
-    searchQuery={searchQuery}
-    onSearchChange={setSearchQuery}
-    submissions={allSubmissions}
   />
   <SidebarProvider>
     <AppSidebar />
@@ -561,10 +550,10 @@ export default function Dashboard() {
           {/* Left Side - Pipeline Overview & Filters */}
           <div className="lg:col-span-2 space-y-6">
             {/* Pipeline Overview */}
-            <Card className="shadow-sm border-gray-200 bg-white">
+            <Card className="shadow-sm border-border bg-card">
               <CardContent className="p-6">
                 <div className="space-y-4">
-                  <h2 className="text-xl font-semibold text-gray-900">
+                  <h2 className="text-xl font-semibold text-foreground">
                     Pipeline Overview
                   </h2>
 
@@ -575,7 +564,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "in-appetite"
                           ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -588,7 +577,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "sla-risk"
                           ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
@@ -599,7 +588,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "top-premium"
                           ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -612,7 +601,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "total-contracts"
                           ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105"
-                          : "bg-gray-50 text-gray-700 hover:bg-gray-100 hover:shadow-md"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -627,10 +616,10 @@ export default function Dashboard() {
 
             {/* Filters Section */}
 
-            <Card className="shadow-sm border-gray-200 bg-white justify-center pb-12">
+            <Card className="shadow-sm border-border bg-card justify-center pb-12">
               <div className="flex items-bottom justify-between">
                 <CardHeader className="pb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-foreground">
                     Filters
                   </h3>
                 </CardHeader>
@@ -665,7 +654,7 @@ export default function Dashboard() {
                           value={appetiteFilter || "all"}
                           onValueChange={setAppetiteFilter}
                         >
-                          <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
                             <SelectValue placeholder="Appetite Fit" />
                           </SelectTrigger>
                           <SelectContent>
@@ -698,7 +687,7 @@ export default function Dashboard() {
                           value={regionFilter || "all"}
                           onValueChange={setRegionFilter}
                         >
-                          <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
                             <SelectValue placeholder="Region" />
                           </SelectTrigger>
                           <SelectContent>
@@ -728,7 +717,7 @@ export default function Dashboard() {
                           value={brokerFilter || "all"}
                           onValueChange={setBrokerFilter}
                         >
-                          <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
                             <SelectValue placeholder="Broker" />
                           </SelectTrigger>
                           <SelectContent>
@@ -764,7 +753,7 @@ export default function Dashboard() {
                           value={premiumSizeFilter || "all"}
                           onValueChange={setPremiumSizeFilter}
                         >
-                          <SelectTrigger className="w-full bg-white border-gray-300 text-gray-700 data-[placeholder]:text-gray-600">
+                          <SelectTrigger className="w-full bg-background border-border text-foreground data-[placeholder]:text-muted-foreground">
                             <SelectValue placeholder="Premium Size" />
                           </SelectTrigger>
                           <SelectContent>
@@ -786,7 +775,7 @@ export default function Dashboard() {
           <div className="lg:col-span-1">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold text-gray-900">
+                <h2 className="text-xl font-semibold text-foreground">
                   Top Priority
                 </h2>
                 <div className="flex items-center space-x-2">
@@ -853,17 +842,17 @@ export default function Dashboard() {
                 const cardColors = [
                   {
                     accent: "bg-indigo-600",
-                    text: "text-gray-900",
+                    text: "text-foreground",
                     chip: "bg-indigo-100 text-indigo-800",
                   },
                   {
                     accent: "bg-purple-600",
-                    text: "text-gray-900",
+                    text: "text-foreground",
                     chip: "bg-purple-100 text-purple-800",
                   },
                   {
                     accent: "bg-emerald-600",
-                    text: "text-gray-900",
+                    text: "text-foreground",
                     chip: "bg-emerald-100 text-emerald-800",
                   },
                 ];
@@ -873,7 +862,7 @@ export default function Dashboard() {
                 return submission ? (
                   <Card
                     key={submission.id}
-                    className="shadow-lg bg-white cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-gray-200 relative"
+                    className="shadow-lg bg-card cursor-pointer hover:scale-[1.02] transition-all duration-300 hover:shadow-xl rounded-lg border border-border relative"
                   >
                     <CardContent className="p-6">
                       <div className="absolute top-4 right-4 z-10">
@@ -977,9 +966,9 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <Card className="shadow-sm border-gray-200 bg-white">
+        <Card className="shadow-sm border-border bg-card">
           <CardHeader className="pb-4">
-            <CardTitle className="text-2xl font-semibold text-gray-900">
+            <CardTitle className="text-2xl font-semibold text-foreground">
               All Submissions
             </CardTitle>
             <p className="text-gray-600">
@@ -1006,7 +995,7 @@ export default function Dashboard() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
                     No submissions found
                   </h3>
                   <p className="text-gray-500 mb-4">
@@ -1045,7 +1034,7 @@ export default function Dashboard() {
                                 {index + 1}
                               </div>
                               <div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-1">
+                                <h3 className="text-xl font-bold text-foreground mb-1">
                                   {submission.client}
                                 </h3>
                                 <p className="text-gray-500 font-medium mb-2">
@@ -1073,7 +1062,7 @@ export default function Dashboard() {
 
                             {/* Premium */}
                             <div className="text-center min-w-[120px]">
-                              <p className="text-3xl font-bold text-gray-900">
+                              <p className="text-3xl font-bold text-foreground">
                                 {submission.premium}
                               </p>
                               <p className="text-sm text-gray-500 font-medium">
@@ -1171,8 +1160,8 @@ export default function Dashboard() {
 
                     {/* Hover Popover */}
                     {hoveredRow === submission.id && (
-                      <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-lg shadow-lg p-4 w-80">
-                        <h4 className="font-semibold text-gray-900 mb-2">
+                      <div className="absolute right-8 top-1/2 transform -translate-y-1/2 z-10 bg-popover border border-border rounded-lg shadow-lg p-4 w-80">
+                        <h4 className="font-semibold text-popover-foreground mb-2">
                           Why This Surfaced
                         </h4>
                         <ul className="space-y-1">
