@@ -166,7 +166,7 @@ export interface EnhancedData {
 export async function loadEnhancedPolicies(): Promise<{policies: EnhancedPolicy[], accounts: {[key: string]: EnhancedAccount}}> {
   try {
     // Load the enhanced data
-    const response = await fetch('/results/enhanced_data.json');
+    const response = await fetch("/api/policies");
     const enhancedData: EnhancedData = await response.json();
     
     // Flatten the enhanced data into a single array with account info
@@ -179,6 +179,8 @@ export async function loadEnhancedPolicies(): Promise<{policies: EnhancedPolicy[
         });
       });
     });
+    
+    allPolicies.sort((a, b) => (b.cohere_relevance ?? 0) - (a.cohere_relevance ?? 0));
     
     return {
       policies: allPolicies,

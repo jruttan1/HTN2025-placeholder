@@ -558,7 +558,7 @@ export default function Dashboard() {
                     value={advancedFilterToggled}
                     onChange={setAdvancedFilterToggled}
                     leftLabel="Basic"
-                    rightLabel="Advance"
+                    rightLabel="Advanced"
                   />
                 </div>
               </div>
