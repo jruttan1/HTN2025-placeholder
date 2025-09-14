@@ -15,9 +15,8 @@ export async function GET(request: NextRequest) {
   const response = NextResponse.redirect(logoutUrl);
   
   // Clear authentication cookies
-  response.cookies.delete('auth0.access_token');
-  response.cookies.delete('auth0.id_token');
-  response.cookies.delete('auth0.is.authenticated');
+  response.cookies.delete('optimate_session');
+  response.cookies.delete('optimate_user');
   
   return response;
 }

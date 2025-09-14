@@ -15,12 +15,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check for authentication token in cookies
-  const authToken = request.cookies.get('auth0.session.token') || 
-                   request.cookies.get('auth0.is.authenticated');
+  // Check for authentication session cookie
+  const sessionCookie = request.cookies.get('optimate_session');
   
-  // If no auth token and trying to access protected route, redirect to login
-  if (!authToken) {
+  // If no session cookie and trying to access protected route, redirect to login
+  if (!sessionCookie || sessionCookie.value !== 'authenticated') {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 

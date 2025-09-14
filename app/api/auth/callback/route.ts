@@ -33,27 +33,25 @@ export async function GET(request: NextRequest) {
         // Create response with redirect
         const response = NextResponse.redirect(new URL(state, request.url));
         
-        // Set authentication cookies
-        response.cookies.set('auth0.access_token', tokens.access_token, {
-          httpOnly: true,
+        // Set a simple session cookie
+        response.cookies.set('optimate_session', 'authenticated', {
+          httpOnly: false,
           secure: process.env.NODE_ENV === 'production',
           sameSite: 'lax',
           maxAge: 86400, // 24 hours
+          path: '/',
         });
         
-        response.cookies.set('auth0.id_token', tokens.id_token, {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'lax',
-          maxAge: 86400, // 24 hours
-        });
-        
-        response.cookies.set('auth0.is.authenticated', 'true', {
-          httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
-          sameSite: 'lax',
-          maxAge: 86400, // 24 hours
-        });
+        // Store user info in a separate cookie
+        if (tokens.id_token) {
+          response.cookies.set('optimate_user', 'authenticated', {
+            httpOnly: false,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'lax',
+            maxAge: 86400, // 24 hours
+            path: '/',
+          });
+        }
         
         return response;
       } else {

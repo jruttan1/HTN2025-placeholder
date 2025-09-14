@@ -12,11 +12,11 @@ export function useAuth() {
     if (typeof window !== 'undefined') {
       const checkAuth = () => {
         const cookies = document.cookie.split(';');
-        const authCookie = cookies.find(cookie => 
-          cookie.trim().startsWith('auth0.is.authenticated=')
+        const sessionCookie = cookies.find(cookie => 
+          cookie.trim().startsWith('optimate_session=authenticated')
         );
         
-        setIsAuthenticated(!!authCookie || !!user);
+        setIsAuthenticated(!!sessionCookie || !!user);
       };
 
       checkAuth();
