@@ -21,6 +21,11 @@
       "static/chunks/main-app.js",
       "static/chunks/app/auth/page.js"
     ],
+    "/dashboard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/auth/page.js"
+    ],
     "/api/auth/[...auth0]/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -35,6 +40,7 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/policies/route.js"
+      "static/chunks/app/submission/[id]/page.js"
     ]
   }
 }
