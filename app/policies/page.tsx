@@ -1,16 +1,22 @@
-"use client"
-import { useEffect, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import Link from "next/link"
-import Image from "next/image"
-import { X } from "lucide-react"
-import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
-import SlidingToggle from "@/helper/toggle"
+"use client";
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Link from "next/link";
+import Image from "next/image";
+import { X } from "lucide-react";
+import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper";
+import SlidingToggle from "@/helper/toggle";
 // import { Toggle } from "@/components/ui/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
@@ -58,7 +64,11 @@ const mockSubmissions = [
     lineOfBusiness: "Property",
     state: "TX",
     businessType: "New",
-    whySurfaced: ["Manufacturing sector target", "Geographic preference match", "Strong financial profile"],
+    whySurfaced: [
+      "Manufacturing sector target",
+      "Geographic preference match",
+      "Strong financial profile",
+    ],
     missingInfo: [],
     recommendation: "Approve",
   },
@@ -79,7 +89,11 @@ const mockSubmissions = [
     lineOfBusiness: "D&O",
     state: "NY",
     businessType: "New",
-    whySurfaced: ["New business opportunity", "Broker relationship priority", "Sector diversification"],
+    whySurfaced: [
+      "New business opportunity",
+      "Broker relationship priority",
+      "Sector diversification",
+    ],
     missingInfo: ["Business plan", "Revenue projections"],
     recommendation: "Decline",
   },
@@ -100,7 +114,11 @@ const mockSubmissions = [
     lineOfBusiness: "Financial",
     state: "FL",
     businessType: "Renewal",
-    whySurfaced: ["Perfect appetite match", "Excellent loss history", "Long-term relationship"],
+    whySurfaced: [
+      "Perfect appetite match",
+      "Excellent loss history",
+      "Long-term relationship",
+    ],
     missingInfo: [],
     recommendation: "Approve",
   },
@@ -121,191 +139,279 @@ const mockSubmissions = [
     lineOfBusiness: "Tech E&O",
     state: "WA",
     businessType: "New",
-    whySurfaced: ["Growing tech sector", "Strong financials", "Good risk profile"],
+    whySurfaced: [
+      "Growing tech sector",
+      "Strong financials",
+      "Good risk profile",
+    ],
     missingInfo: ["Security audit"],
     recommendation: "Approve",
   },
-]
+];
 // const submissions = getSubmission()
 
 interface UserData {
-  name: string
-  email: string
-  rulePreferences: string
-  signedUpAt: string
+  name: string;
+  email: string;
+  rulePreferences: string;
+  signedUpAt: string;
 }
 
 export default function Dashboard() {
-  const [userData, setUserData] = useState<UserData | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [showWelcome, setShowWelcome] = useState(false)
-  const [hoveredRow, setHoveredRow] = useState<number | null>(null)
-  const [selectedFilter, setSelectedFilter] = useState<string | null>(null)
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
+  const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
   const [appetiteFilter, setAppetiteFilter] = useState<string | null>(null);
   const [regionFilter, setRegionFilter] = useState<string | null>(null);
   const [brokerFilter, setBrokerFilter] = useState<string | null>(null);
-  const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(null);
-  const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
-  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
-  const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
-  const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
-  const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
+  const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(
+    null
+  );
+  const [currentTopSubmission, setCurrentTopSubmission] = useState(0);
+  const [riskLevelRange, setRiskLevelRange] = useState([0, 100]);
+  const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false);
+  const [submissions, setSubmissions] =
+    useState<DashboardSubmission[]>(mockSubmissions);
+  const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true);
 
   // Helper functions for filtering
   const getRegionFromState = (state: string) => {
     // Simple mapping - in a real app, this would be more comprehensive
-    const naStates = ['CA', 'NY', 'TX', 'FL', 'IL', 'PA', 'OH', 'GA', 'NC', 'MI', 'NJ', 'VA', 'WA', 'AZ', 'MA', 'TN', 'IN', 'MO', 'MD', 'WI', 'CO', 'MN', 'SC', 'AL', 'LA', 'KY', 'OR', 'OK', 'CT', 'UT', 'IA', 'NV', 'AR', 'MS', 'KS', 'NM', 'NE', 'WV', 'ID', 'HI', 'NH', 'ME', 'RI', 'MT', 'DE', 'SD', 'ND', 'AK', 'VT', 'WY']
-    return naStates.includes(state) ? 'na' : 'other'
-  }
+    const naStates = [
+      "CA",
+      "NY",
+      "TX",
+      "FL",
+      "IL",
+      "PA",
+      "OH",
+      "GA",
+      "NC",
+      "MI",
+      "NJ",
+      "VA",
+      "WA",
+      "AZ",
+      "MA",
+      "TN",
+      "IN",
+      "MO",
+      "MD",
+      "WI",
+      "CO",
+      "MN",
+      "SC",
+      "AL",
+      "LA",
+      "KY",
+      "OR",
+      "OK",
+      "CT",
+      "UT",
+      "IA",
+      "NV",
+      "AR",
+      "MS",
+      "KS",
+      "NM",
+      "NE",
+      "WV",
+      "ID",
+      "HI",
+      "NH",
+      "ME",
+      "RI",
+      "MT",
+      "DE",
+      "SD",
+      "ND",
+      "AK",
+      "VT",
+      "WY",
+    ];
+    return naStates.includes(state) ? "na" : "other";
+  };
 
   const getPremiumSize = (premiumValue: number) => {
-    if (premiumValue < 1000000) return 'small'
-    if (premiumValue <= 5000000) return 'medium'
-    return 'large'
-  }
+    if (premiumValue < 1000000) return "small";
+    if (premiumValue <= 5000000) return "medium";
+    return "large";
+  };
 
   const getBrokerKey = (broker: string) => {
-    if (broker.includes('Marsh')) return 'marsh'
-    if (broker.includes('Aon')) return 'aon'
-    if (broker.includes('Willis')) return 'willis'
-    return 'other'
-  }
+    if (broker.includes("Marsh")) return "marsh";
+    if (broker.includes("Aon")) return "aon";
+    if (broker.includes("Willis")) return "willis";
+    return "other";
+  };
 
   // Filter submissions based on all filters
-  const filteredSubmissions = submissions.filter(submission => {
+  const filteredSubmissions = submissions.filter((submission) => {
     // Appetite filter
-    if (appetiteFilter && appetiteFilter !== "all" && submission.appetiteStatus !== appetiteFilter) {
-      return false
+    if (
+      appetiteFilter &&
+      appetiteFilter !== "all" &&
+      submission.appetiteStatus !== appetiteFilter
+    ) {
+      return false;
     }
-    
+
     // Region filter
-    if (regionFilter && regionFilter !== "all" && getRegionFromState(submission.state) !== regionFilter) {
-      return false
+    if (
+      regionFilter &&
+      regionFilter !== "all" &&
+      getRegionFromState(submission.state) !== regionFilter
+    ) {
+      return false;
     }
-    
+
     // Broker filter
-    if (brokerFilter && brokerFilter !== "all" && getBrokerKey(submission.broker) !== brokerFilter) {
-      return false
+    if (
+      brokerFilter &&
+      brokerFilter !== "all" &&
+      getBrokerKey(submission.broker) !== brokerFilter
+    ) {
+      return false;
     }
-    
+
     // Premium size filter
-    if (premiumSizeFilter && premiumSizeFilter !== "all" && getPremiumSize(submission.premiumValue) !== premiumSizeFilter) {
-      return false
+    if (
+      premiumSizeFilter &&
+      premiumSizeFilter !== "all" &&
+      getPremiumSize(submission.premiumValue) !== premiumSizeFilter
+    ) {
+      return false;
     }
-    
-    return true
-  })
+
+    return true;
+  });
 
   // Calculate summary metrics
-  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
-  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
-  const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
-  console.log(filteredSubmissions)
-  const top3Submissions = filteredSubmissions.slice(0, 3)
+  const inAppetite = submissions.filter((s) => s.appetiteScore >= 80).length;
+  const atSlaRisk = submissions.filter((s) => s.slaProgress >= 70).length;
+  const totalPremiumTop10 = submissions
+    .slice(0, 10)
+    .reduce((sum, s) => sum + s.premiumValue, 0);
+  console.log(filteredSubmissions);
+  const top3Submissions = filteredSubmissions.slice(0, 3);
 
   useEffect(() => {
     // Process pending user data from sign up
-    const pendingData = localStorage.getItem('pendingUserData')
+    const pendingData = localStorage.getItem("pendingUserData");
     if (pendingData) {
       try {
-        const parsedData = JSON.parse(pendingData) as UserData
-        setUserData(parsedData)
-        setShowWelcome(true) // Show welcome message for new users
+        const parsedData = JSON.parse(pendingData) as UserData;
+        setUserData(parsedData);
+        setShowWelcome(true); // Show welcome message for new users
         // Clear the pending data as it's now processed
-        localStorage.removeItem('pendingUserData')
+        localStorage.removeItem("pendingUserData");
         // In a real app, you'd save this to your backend/database here
-        console.log('User data processed:', parsedData)
+        console.log("User data processed:", parsedData);
       } catch (error) {
-        console.error('Error processing user data:', error)
+        console.error("Error processing user data:", error);
       }
     }
-    setIsLoading(false)
-  }, [])
+    setIsLoading(false);
+  }, []);
 
   // Load real submissions data from enhanced_data.json
   useEffect(() => {
     const loadSubmissions = async () => {
       try {
-        setIsLoadingSubmissions(true)
-        const realSubmissions = await loadRealSubmissions()
+        setIsLoadingSubmissions(true);
+        const realSubmissions = await loadRealSubmissions();
         if (realSubmissions.length > 0) {
-          setSubmissions(realSubmissions)
+          setSubmissions(realSubmissions);
         }
       } catch (error) {
-        console.error('Error loading submissions:', error)
+        console.error("Error loading submissions:", error);
         // Keep using mock data if loading fails
       } finally {
-        setIsLoadingSubmissions(false)
+        setIsLoadingSubmissions(false);
       }
-    }
+    };
 
-    loadSubmissions()
-  }, [])
+    loadSubmissions();
+  }, []);
 
   const getAppetiteColor = (status: string) => {
     switch (status) {
       case "good":
-        return "text-green-700 bg-green-50 border-green-200"
+        return "text-green-700 bg-green-50 border-green-200";
       case "poor":
-        return "text-red-700 bg-red-50 border-red-200"
+        return "text-red-700 bg-red-50 border-red-200";
       default:
-        return "text-gray-600 bg-gray-50 border-gray-200"
+        return "text-gray-600 bg-gray-50 border-gray-200";
     }
-  }
+  };
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Under Review":
-        return "text-blue-700 bg-blue-50 border-blue-200"
+        return "text-blue-700 bg-blue-50 border-blue-200";
       case "Review Required":
-        return "text-red-700 bg-red-50 border-red-200"
+        return "text-red-700 bg-red-50 border-red-200";
       default:
-        return "text-gray-600 bg-gray-50 border-gray-200"
+        return "text-gray-600 bg-gray-50 border-gray-200";
     }
-  }
+  };
 
   const getSLAColor = (progress: number) => {
-    if (progress >= 80) return "text-red-600"
-    if (progress >= 60) return "text-amber-600"
-    return "text-green-600"
-  }
+    if (progress >= 80) return "text-red-600";
+    if (progress >= 60) return "text-amber-600";
+    return "text-green-600";
+  };
 
   const getAppetiteRingColor = (score: number) => {
-    if (score >= 80) return "text-green-500"
-    if (score >= 50) return "text-amber-500"
-    return "text-red-500"
-  }
+    if (score >= 80) return "text-green-500";
+    if (score >= 50) return "text-amber-500";
+    return "text-red-500";
+  };
 
   const getSLABarColor = (progress: number) => {
-    if (progress >= 80) return "bg-red-500"
-    if (progress >= 60) return "bg-amber-500"
-    return "bg-green-500"
-  }
+    if (progress >= 80) return "bg-red-500";
+    if (progress >= 60) return "bg-amber-500";
+    return "bg-green-500";
+  };
 
   const formatPremium = (value: number) => {
     if (value >= 1000000) {
-      return `$${(value / 1000000).toFixed(1)}M`
+      return `$${(value / 1000000).toFixed(1)}M`;
     }
-    return `$${(value / 1000).toFixed(0)}K`
-  }
+    return `$${(value / 1000).toFixed(0)}K`;
+  };
 
   const handleAction = (submissionId: number, action: string) => {
-    console.log(`${action} action for submission ${submissionId}`)
+    console.log(`${action} action for submission ${submissionId}`);
     // In a real app, this would trigger API calls
-  }
+  };
 
   // Placeholder function for when risk level data is implemented
   const handleRiskLevelFilter = (submissionList: any[]) => {
     // TODO: When risk level data is added to submissions, filter based on riskLevelRange
     // Example: return submissionList.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
-    console.log(`Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`)
-    return submissionList // Return unfiltered for now
-  }
-  const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
-    const sizeClass = size === 16 ? 'w-16 h-16' : size === 12 ? 'w-12 h-12' : 'w-14 h-14'
+    console.log(
+      `Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`
+    );
+    return submissionList; // Return unfiltered for now
+  };
+  const ProgressRing = ({
+    score,
+    size = 16,
+  }: {
+    score: number;
+    size?: number;
+  }) => {
+    const sizeClass =
+      size === 16 ? "w-16 h-16" : size === 12 ? "w-12 h-12" : "w-14 h-14";
     return (
       <div className={`relative ${sizeClass}`}>
-        <svg className={`${sizeClass} transform -rotate-90`} viewBox="0 0 36 36">
+        <svg
+          className={`${sizeClass} transform -rotate-90`}
+          viewBox="0 0 36 36"
+        >
           <path
             className="text-gray-200"
             stroke="currentColor"
@@ -327,25 +433,31 @@ export default function Dashboard() {
           <span className="text-xs font-bold text-gray-900">{score}%</span>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   if (isLoading) {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      <div className="text-center">
-        <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg mb-6">
-          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-          </svg>
-        </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">Setting up your dashboard...</h1>
-        <div className="mt-4">
-          <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg mb-6">
+            <svg
+              className="w-8 h-8 text-white"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
+            </svg>
+          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-4">
+            Setting up your dashboard...
+          </h1>
+          <div className="mt-4">
+            <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
+          </div>
         </div>
       </div>
-      </div>
-    )
+    );
   }
 
   return (
@@ -388,7 +500,10 @@ export default function Dashboard() {
 
             <div className="flex items-center space-x-6">
               <Link href="/policies">
-                <Button variant="outline" className="text-white border-white/20 hover:bg-white/10">
+                <Button
+                  variant="outline"
+                  className="text-white border-white/20 hover:bg-white/10"
+                >
                   Live Policies
                 </Button>
               </Link>
@@ -1079,7 +1194,7 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </div>
-                  </Link>
+                    </Link>
 
                     {/* Hover Popover */}
                     {hoveredRow === submission.id && (
@@ -1112,4 +1227,3 @@ export default function Dashboard() {
     </div>
   );
 }
-

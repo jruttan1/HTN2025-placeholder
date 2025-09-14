@@ -139,24 +139,94 @@ export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardS
   });
 }
 
-// Function to load and transform data from JSON files
-export async function loadRealSubmissions(): Promise<DashboardSubmission[]> {
+// Enhanced data structure from enhanced_data.json
+export interface EnhancedAccount {
+  avg_score: number;
+  max_score: number;
+  weighted_score: number;
+  avg_risk_score: number;
+  weighted_risk_score: number;
+  policies: { [key: string]: EnhancedPolicy };
+}
+
+export interface EnhancedPolicy extends RealPolicyData {
+  cohere_relevance: number;
+  justification_points: string[];
+  references: Array<{
+    point: string;
+    link: string;
+  }>;
+}
+
+export interface EnhancedData {
+  accounts: { [accountName: string]: EnhancedAccount };
+}
+
+// Function to load enhanced data with full policy objects
+export async function loadEnhancedPolicies(): Promise<{policies: EnhancedPolicy[], accounts: {[key: string]: EnhancedAccount}}> {
   try {
-    // In a real app, you'd fetch this from an API
-    // For now, we'll import the JSON files directly
-    const response = await fetch('/test_results/test_grouped_policies.json');
-    const data = await response.json();
+    // Load the enhanced data
+    const response = await fetch('/results/enhanced_data.json');
+    const enhancedData: EnhancedData = await response.json();
     
-    // Flatten the grouped data into a single array
-    const allPolicies: RealPolicyData[] = [];
-    data.grouped_accounts.forEach((account: any) => {
-      allPolicies.push(...account.records);
+    // Flatten the enhanced data into a single array with account info
+    const allPolicies: EnhancedPolicy[] = [];
+    Object.entries(enhancedData.accounts).forEach(([accountName, account]) => {
+      Object.values(account.policies).forEach(policy => {
+        allPolicies.push({
+          ...policy,
+          account_name: accountName // Ensure account name is set
+        });
+      });
     });
     
-    // Transform and return
-    return mapRealDataToSubmissions(allPolicies);
+    return {
+      policies: allPolicies,
+      accounts: enhancedData.accounts
+    };
   } catch (error) {
-    console.error('Error loading real data:', error);
+    console.error('Error loading enhanced data:', error);
+    return { policies: [], accounts: {} };
+  }
+}
+
+// Function to load and transform enhanced data (backwards compatibility)
+export async function loadRealSubmissions(): Promise<DashboardSubmission[]> {
+  try {
+    const { policies } = await loadEnhancedPolicies();
+    return mapRealDataToSubmissions(policies);
+  } catch (error) {
+    console.error('Error loading enhanced data:', error);
     return []; // Return empty array if loading fails
   }
+}
+
+// Function to simulate live data updates
+export function createLiveDataStream(callback: (data: {policies: EnhancedPolicy[], accounts: {[key: string]: EnhancedAccount}}) => void) {
+  // Initial load
+  loadEnhancedPolicies().then(callback);
+  
+  // Simulate periodic updates (in a real app, this would be WebSocket or polling)
+  const interval = setInterval(async () => {
+    try {
+      const data = await loadEnhancedPolicies();
+      // Add some randomization to simulate live updates
+      const updatedPolicies = data.policies.map(policy => ({
+        ...policy,
+        // Simulate small score fluctuations
+        score: policy.score ? Math.max(0, Math.min(1, policy.score + (Math.random() - 0.5) * 0.02)) : policy.score,
+        risk_score: policy.risk_score ? Math.max(0, Math.min(100, policy.risk_score + (Math.random() - 0.5) * 2)) : policy.risk_score
+      }));
+      
+      callback({
+        policies: updatedPolicies,
+        accounts: data.accounts
+      });
+    } catch (error) {
+      console.error('Error in live data update:', error);
+    }
+  }, 30000); // Update every 30 seconds
+  
+  // Return cleanup function
+  return () => clearInterval(interval);
 }

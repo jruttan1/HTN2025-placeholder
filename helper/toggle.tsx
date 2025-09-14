@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 /**
  * SegmentedToggle (Hotels / Apartments)
@@ -31,12 +30,10 @@ export default function SlidingToggle({
         aria-label={`${leftLabel} or ${rightLabel}`}
       >
         {/* Sliding pill */}
-        <motion.div
-          layout
-          className="absolute top-0.5 left-0.5 h-7 w-[98px] rounded-full bg-white shadow"
-          initial={false}
-          animate={{ x: isRight ? 100 : 0 }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        <div
+          className={`absolute top-0.5 left-0.5 h-7 w-[98px] rounded-full bg-white shadow transition-transform duration-300 ease-in-out ${
+            isRight ? 'translate-x-[100px]' : 'translate-x-0'
+          }`}
         />
 
         {/* Left Option */}
