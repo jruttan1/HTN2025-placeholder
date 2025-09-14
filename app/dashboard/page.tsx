@@ -1,16 +1,17 @@
 "use client"
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import AppSidebar from "@/components/AppSidebar"
+import Header from "@/components/Header"
+import SidebarPullTab from "@/components/SidebarPullTab"
 import Link from "next/link"
-import Image from "next/image"
 import { X } from "lucide-react"
-import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
 import SlidingToggle from "@/helper/toggle"
+import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
 // import { Toggle } from "@/components/ui/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
@@ -349,17 +350,23 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header
-        className="relative shadow-lg border-b border-white/10 overflow-hidden"
-        style={{
-          backgroundImage: `url('/stacked-peaks-haikei.svg')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          minHeight: "120px",
-        }}
-      >
+<div className="min-h-screen flex flex-col">
+  <Header userData={userData} />
+  <SidebarProvider>
+    <AppSidebar />
+    <SidebarPullTab />
+    <SidebarInset>
+      <main className="p-8 font-inter flex-1">
+        <header
+          className="relative shadow-lg border-b border-white/10 overflow-hidden"
+          style={{
+            backgroundImage: `url('/stacked-peaks-haikei.svg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            minHeight: "120px",
+          }}
+        >
         <div className="px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-12">
@@ -1108,7 +1115,9 @@ export default function Dashboard() {
             </div>
           </CardContent>
         </Card>
-      </main>
+          </main>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 }

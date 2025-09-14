@@ -43,6 +43,7 @@
   --sidebar-accent-foreground: oklch(0.3 0.02 240);
   --sidebar-border: oklch(0.9 0.01 240);
   --sidebar-ring: oklch(0.45 0.15 240);
+  --header-height: 120px;
 }
 
 .dark {
@@ -185,5 +186,14 @@
       radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0);
     background-size: 24px 24px;
     background-attachment: fixed;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
