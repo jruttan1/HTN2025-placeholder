@@ -6,24 +6,22 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-  useSidebar,
 } from "@/components/ui/sidebar"
 import { 
   Home, 
   FileText, 
-  BarChart3, 
   Settings, 
   Users,
   Target,
   TrendingUp,
   Filter,
   Bell,
-  Map
+  Map,
+  PieChart
 } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -31,28 +29,23 @@ import { usePathname } from "next/navigation"
 const navigationItems = [
   {
     title: "Dashboard",
-    url: "/dashboard",
+    url: "/",
     icon: Home,
   },
   {
-    title: "Submissions",
-    url: "/submissions",
+    title: "Policies",
+    url: "/policies",
     icon: FileText,
   },
   {
-    title: "Analytics",
-    url: "/analytics",
-    icon: BarChart3,
+    title: "Plots",
+    url: "/plot",
+    icon: PieChart,
   },
   {
     title: "Heatmap",
     url: "/heatmap",
     icon: Map,
-  },
-  {
-    title: "Appetite Rules",
-    url: "/appetite",
-    icon: Target,
   },
 ]
 
@@ -92,19 +85,6 @@ export default function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader className="border-b border-sidebar-border">
-        <div className="flex items-center gap-2 px-4 py-2 transition-all duration-200 group-data-[state=collapsed]:px-2 group-data-[state=collapsed]:justify-center">
-          <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <Target className="size-4" />
-          </div>
-          <div className="grid flex-1 text-left text-sm leading-tight transition-all duration-200 group-data-[state=collapsed]:w-0 group-data-[state=collapsed]:opacity-0">
-            <span className="truncate font-semibold">Optimate</span>
-            <span className="truncate text-xs text-sidebar-foreground/70">
-              Underwriting Platform
-            </span>
-          </div>
-        </div>
-      </SidebarHeader>
 
       <SidebarContent>
         {/* Main Navigation */}
@@ -116,7 +96,7 @@ export default function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     asChild
-                    isActive={pathname === item.url}
+                    isActive={pathname === item.url || (item.url === "/" && pathname === "/dashboard")}
                   >
                     <Link href={item.url}>
                       <item.icon />

@@ -13,7 +13,7 @@ interface HeaderProps {
 export default function Header({ userData }: HeaderProps) {
   return (
     <header
-      className="relative shadow-lg border-b border-white/10 overflow-hidden"
+      className="sticky top-0 z-50 relative shadow-lg border-b border-white/10 overflow-hidden"
       style={{
         backgroundImage: `url('/stacked-peaks-haikei.svg')`,
         backgroundSize: "cover",

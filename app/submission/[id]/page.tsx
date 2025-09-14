@@ -520,11 +520,9 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
             </Card>
           </div>
         </div>
-            </div>
-          </SidebarInset>
-        </div>
+          </div>
+        </SidebarInset>
       </SidebarProvider>
-      </div>
     </div>
   )
 }
