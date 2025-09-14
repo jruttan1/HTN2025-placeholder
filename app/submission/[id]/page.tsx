@@ -264,7 +264,7 @@ export default function SubmissionDetailPage({ params }: { params: Promise<{ id:
                       </div>
                       <div className="text-center p-4 bg-amber-50 rounded-lg">
                         <p className="text-2xl font-bold text-amber-600">{submission.slaTimer}</p>
-                        <p className="text-sm text-gray-600 mt-1">Time Remaining</p>
+                        <p className="text-sm text-gray-600 mt-1">Days Since Created</p>
                       </div>
                       <div className="text-center p-4 bg-purple-50 rounded-lg">
                         <p className="text-2xl font-bold text-purple-600">{submission.detailedInfo.employees}</p>
@@ -588,7 +588,7 @@ export default function SubmissionDetailPage({ params }: { params: Promise<{ id:
                         <div className="flex items-center space-x-3">
                           <div className="w-3 h-3 bg-amber-500 rounded-full"></div>
                           <div>
-                            <p className="text-sm font-medium text-gray-900">Time Remaining</p>
+                            <p className="text-sm font-medium text-gray-900">Days Since Created</p>
                             <p className="text-sm font-semibold text-amber-600">{submission.slaTimer}</p>
                           </div>
                         </div>

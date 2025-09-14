@@ -329,8 +329,7 @@ export default function Dashboard() {
   }, [searchQuery, appetiteFilter, regionFilter, brokerFilter, premiumSizeFilter])
 
   // Calculate summary metrics
-  const inAppetite = submissions.filter(s => s.appetiteScore >= 80).length
-  const atSlaRisk = submissions.filter(s => s.slaProgress >= 70).length
+  const inAppetite = submissions.filter(s => s.appetiteScore >= 65).length
   const totalPremiumTop10 = submissions.slice(0, 10).reduce((sum, s) => sum + s.premiumValue, 0)
   console.log(filteredSubmissions)
   const topSubmission = filteredSubmissions.slice(0, 1)
@@ -390,7 +389,7 @@ export default function Dashboard() {
     }
   }
 
-  const getSLAColor = (progress: number) => {
+  const getAgeColor = (progress: number) => {
     if (progress >= 80) return "text-red-600"
     if (progress >= 60) return "text-amber-600"
     return "text-green-600"
@@ -402,7 +401,7 @@ export default function Dashboard() {
     return "text-red-500"
   }
 
-  const getSLABarColor = (progress: number) => {
+  const getAgeBarColor = (progress: number) => {
     if (progress >= 80) return "bg-red-500"
     if (progress >= 60) return "bg-amber-500"
     return "bg-green-500"
@@ -592,8 +591,8 @@ export default function Dashboard() {
                           : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
-                      <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
-                      <div className="text-sm font-medium">At SLA Risk</div>
+                      <div className="text-3xl font-bold mb-1">50</div>
+                      <div className="text-sm font-medium">Older Submissions</div>
                     </button>
                     <button
                       onClick={() => setSelectedFilter("top-premium")}
@@ -774,10 +773,10 @@ export default function Dashboard() {
           </div>
 
           {/* Right Side - Top Priority */}
-          <div className="lg:col-span-1 mt-10">
+          <div className="lg:col-span-1 mt-8">
             <div className="space-y-4">
               <div>
-                <h2 className="text-xl font-semibold text-foreground">
+                <h2 className="text-3xl text-center font-semibold text-foreground">
                   Top Priority
                 </h2>
               </div>
@@ -799,10 +798,10 @@ export default function Dashboard() {
                     >
                       <CardContent className="p-6">
                       <div className="absolute top-4 right-4 z-10">
-                        <div
-                          className={`${cardColor.accent} text-white w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold`}
-                        >
-                          1
+                        <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-lg">
+                          <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
                         </div>
                       </div>
 
@@ -838,14 +837,14 @@ export default function Dashboard() {
                             </p>
                             <div className="w-full bg-gray-200 rounded-full h-2">
                               <div
-                                className={`h-2 rounded-full transition-all ${getSLABarColor(
+                                className={`h-2 rounded-full transition-all ${getAgeBarColor(
                                   submission.slaProgress
                                 )}`}
                                 style={{ width: `${submission.slaProgress}%` }}
                               />
                             </div>
                             <p className={`text-xs mt-2 ${cardColor.text}`}>
-                              SLA Progress
+                              Since Submission
                             </p>
                           </div>
                         </div>
@@ -1010,10 +1009,10 @@ export default function Dashboard() {
                               </Badge>
                             </div>
 
-                            {/* SLA Timer */}
+                            {/* Age Display */}
                             <div className="text-center min-w-[120px]">
                               <p
-                                className={`text-2xl font-bold ${getSLAColor(
+                                className={`text-2xl font-bold ${getAgeColor(
                                   submission.slaProgress
                                 )} mb-1`}
                               >
@@ -1021,7 +1020,7 @@ export default function Dashboard() {
                               </p>
                               <div className="w-20 bg-gray-200 rounded-full h-2 mx-auto">
                                 <div
-                                  className={`h-2 rounded-full transition-all ${getSLABarColor(
+                                  className={`h-2 rounded-full transition-all ${getAgeBarColor(
                                     submission.slaProgress
                                   )}`}
                                   style={{
@@ -1030,7 +1029,7 @@ export default function Dashboard() {
                                 />
                               </div>
                               <p className="text-sm text-gray-500 font-medium mt-1">
-                                Time Remaining
+                                Since Created
                               </p>
                             </div>
 
