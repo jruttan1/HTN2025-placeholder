@@ -24,9 +24,13 @@ export function useAuth() {
         setIsLoading(false);
       };
 
-      // Check immediately first, then with a small delay as fallback
+      // Check immediately
       checkAuth();
-      setTimeout(checkAuth, 100);
+      
+      // Also check after a short delay to catch any timing issues
+      const timeoutId = setTimeout(checkAuth, 50);
+      
+      return () => clearTimeout(timeoutId);
     } else {
       // On server side, assume not authenticated
       setIsAuthenticated(false);

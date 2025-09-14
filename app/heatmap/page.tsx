@@ -45,18 +45,6 @@ const HeatmapPage = () => {
     }
   }, [authLoading, isAuthenticated, router]);
 
-  // Show loading state while auth is being checked
-  if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
-          <p className="mt-2 text-gray-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   // Load heatmap data
   useEffect(() => {
     const loadHeatmapData = async () => {
@@ -92,11 +80,13 @@ const HeatmapPage = () => {
     }
   };
 
+  // Show loading state while auth is being checked or data is loading
   if (authLoading || loading) {
     return (
-      <div className="container mx-auto p-6">
-        <div className="flex items-center justify-center h-64">
-          <div className="text-lg">Loading heatmap data...</div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+          <p className="mt-2 text-gray-600">Loading...</p>
         </div>
       </div>
     );
