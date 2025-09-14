@@ -116,7 +116,7 @@ export default function AppSidebar() {
 
       <SidebarFooter className="border-t border-sidebar-border">
         <div className="p-4 text-xs text-sidebar-foreground/70 group-data-[state=collapsed]:hidden">
-          © 2024 Optimate. All rights reserved.
+          © 2025 Optimate. All rights reserved.
         </div>
       </SidebarFooter>
     </Sidebar>

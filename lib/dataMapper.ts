@@ -40,8 +40,10 @@ export interface DashboardSubmission {
   premiumValue: number;
   appetiteScore: number;
   appetiteStatus: string;
+  riskScore: number;
   slaTimer: string;
   slaProgress: number;
+  contractLengthDays: number;
   status: string;
   company: string;
   product: string;
@@ -64,45 +66,50 @@ const BROKER_MAPPING = [
   "Brown & Brown"
 ];
 
-// Calculate days since creation date
-function calculateDaysSinceCreated(createdAt: string): { timer: string; progress: number } {
+// Calculate policy term period (effective date to expiration date)
+function calculatePolicyPeriod(effectiveDate: string, expirationDate: string): { timer: string; progress: number; totalDays: number } {
   // Handle null or undefined dates
-  if (!createdAt) {
-    return { timer: "Unknown", progress: 0 };
+  if (!effectiveDate || !expirationDate) {
+    return { timer: "Unknown", progress: 0, totalDays: 0 };
   }
   
-  const created = new Date(createdAt);
+  const effective = new Date(effectiveDate);
+  const expiration = new Date(expirationDate);
   const now = new Date();
   
-  // Check if the date is valid
-  if (isNaN(created.getTime())) {
-    return { timer: "Invalid Date", progress: 0 };
+  // Check if dates are valid
+  if (isNaN(effective.getTime()) || isNaN(expiration.getTime())) {
+    return { timer: "Invalid Date", progress: 0, totalDays: 0 };
   }
   
-  const diffTime = now.getTime() - created.getTime();
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  // Calculate total policy period (contract length)
+  const totalPeriodTime = expiration.getTime() - effective.getTime();
+  const totalDays = Math.floor(totalPeriodTime / (1000 * 60 * 60 * 24));
   
-  // Handle negative days (future dates)
-  if (diffDays < 0) {
-    return { timer: "Future", progress: 0 };
-  }
+  // Calculate progress based on how much time has elapsed in the contract
+  const elapsedTime = now.getTime() - effective.getTime();
+  const progress = totalDays > 0 ? Math.min(100, Math.max(0, (elapsedTime / totalPeriodTime) * 100)) : 0;
   
-  if (diffDays === 0) {
-    return { timer: "Today", progress: 0 };
-  } else if (diffDays === 1) {
-    return { timer: "1 day ago", progress: 10 };
-  } else if (diffDays <= 7) {
-    return { timer: `${diffDays} days ago`, progress: Math.min(30, diffDays * 5) };
-  } else if (diffDays <= 30) {
-    return { timer: `${diffDays} days ago`, progress: Math.min(60, 30 + (diffDays - 7) * 2) };
+  // Format the total contract period display
+  let timer: string;
+  if (totalDays < 30) {
+    timer = `${totalDays}d`;
+  } else if (totalDays < 365) {
+    const months = Math.floor(totalDays / 30);
+    const days = totalDays % 30;
+    timer = days > 0 ? `${months}m ${days}d` : `${months}m`;
   } else {
-    const months = Math.floor(diffDays / 30);
-    const remainingDays = diffDays % 30;
-    return { 
-      timer: months > 0 ? `${months}m ${remainingDays}d ago` : `${diffDays} days ago`, 
-      progress: Math.min(100, 60 + (diffDays - 30) * 1.5) 
-    };
+    const years = Math.floor(totalDays / 365);
+    const remainingDays = totalDays % 365;
+    const months = Math.floor(remainingDays / 30);
+    if (months > 0) {
+      timer = `${years}y ${months}m`;
+    } else {
+      timer = `${years}y`;
+    }
   }
+  
+  return { timer, progress: Math.round(progress), totalDays };
 }
 
 // Convert appetite score to status
@@ -134,7 +141,7 @@ function mapLineOfBusinessToProduct(lob: string): string {
 // Main mapper function
 export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardSubmission[] {
   return realData.map((policy, index) => {
-    const slaInfo = calculateDaysSinceCreated(policy.created_at);
+    const slaInfo = calculatePolicyPeriod(policy.effective_date, policy.expiration_date);
     // Use Cohere relevance score as appetite score, fallback to other scores if not available
     const appetiteScore = (policy as EnhancedPolicy).cohere_relevance ? 
                          Math.round((policy as EnhancedPolicy).cohere_relevance * 100) :
@@ -150,8 +157,10 @@ export function mapRealDataToSubmissions(realData: RealPolicyData[]): DashboardS
       premiumValue: policy.total_premium,
       appetiteScore: appetiteScore,
       appetiteStatus: getAppetiteStatus(appetiteScore / 100),
+      riskScore: policy.risk_score || 0,
       slaTimer: slaInfo.timer,
       slaProgress: slaInfo.progress,
+      contractLengthDays: slaInfo.totalDays,
       status: policy.renewal_or_new_business === "RENEWAL" ? "Under Review" : "Review Required",
       company: policy.account_name,
       product: mapLineOfBusinessToProduct(policy.line_of_business),

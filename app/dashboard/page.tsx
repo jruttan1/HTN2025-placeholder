@@ -29,8 +29,10 @@ const mockSubmissions = [
     premiumValue: 2500000,
     appetiteScore: 85,
     appetiteStatus: "good",
+    riskScore: 25,
     slaTimer: "2h 15m",
     slaProgress: 75,
+    contractLengthDays: 365,
     status: "Under Review",
     company: "TechCorp Industries",
     product: "Cyber Liability",
@@ -65,8 +67,10 @@ const mockSubmissions = [
     premiumValue: 1800000,
     appetiteScore: 85,
     appetiteStatus: "good",
+    riskScore: 45,
     slaTimer: "4h 32m",
     slaProgress: 45,
+    contractLengthDays: 730,
     status: "Under Review",
     company: "Global Manufacturing Co",
     product: "Property Insurance",
@@ -97,8 +101,10 @@ const mockSubmissions = [
     premiumValue: 500000,
     appetiteScore: 25,
     appetiteStatus: "poor",
+    riskScore: 85,
     slaTimer: "1h 45m",
     slaProgress: 85,
+    contractLengthDays: 90,
     status: "Review Required",
     company: "StartupXYZ",
     product: "D&O Insurance",
@@ -129,8 +135,10 @@ const mockSubmissions = [
     premiumValue: 3200000,
     appetiteScore: 92,
     appetiteStatus: "good",
+    riskScore: 15,
     slaTimer: "5h 30m",
     slaProgress: 25,
+    contractLengthDays: 548,
     status: "Under Review",
     company: "Regional Bank Corp",
     product: "Financial Lines",
@@ -161,8 +169,10 @@ const mockSubmissions = [
     premiumValue: 750000,
     appetiteScore: 78,
     appetiteStatus: "good",
+    riskScore: 35,
     slaTimer: "3h 20m",
     slaProgress: 60,
+    contractLengthDays: 180,
     status: "Under Review",
     company: "HealthTech Solutions",
     product: "E&O Insurance",
@@ -389,10 +399,11 @@ export default function Dashboard() {
     }
   }
 
-  const getAgeColor = (progress: number) => {
-    if (progress >= 80) return "text-red-600"
-    if (progress >= 60) return "text-amber-600"
-    return "text-green-600"
+  const getAgeColor = (contractLengthDays: number) => {
+    // Short contracts are green, long contracts are red
+    if (contractLengthDays <= 90) return "text-green-600"      // ≤3 months = green (short/good)
+    if (contractLengthDays <= 365) return "text-amber-600"     // 3-12 months = amber  
+    return "text-red-600"                                      // >1 year = red (long/bad)
   }
 
   const getAppetiteRingColor = (score: number) => {
@@ -401,10 +412,18 @@ export default function Dashboard() {
     return "text-red-500"
   }
 
-  const getAgeBarColor = (progress: number) => {
-    if (progress >= 80) return "bg-red-500"
-    if (progress >= 60) return "bg-amber-500"
-    return "bg-green-500"
+  const getRiskScoreColor = (riskScore: number) => {
+    // High risk = red, medium risk = yellow/orange, low risk = green
+    if (riskScore <= 30) return "text-green-500"      // Low risk = green
+    if (riskScore <= 70) return "text-amber-500"      // Medium risk = yellow/orange
+    return "text-red-500"                             // High risk = red
+  }
+
+  const getAgeBarColor = (contractLengthDays: number) => {
+    // Short contracts are green, long contracts are red
+    if (contractLengthDays <= 90) return "bg-green-500"        // ≤3 months = green (short/good)
+    if (contractLengthDays <= 365) return "bg-amber-500"       // 3-12 months = amber
+    return "bg-red-500"                                        // >1 year = red (long/bad)
   }
 
   const formatPremium = (value: number) => {
@@ -829,6 +848,34 @@ export default function Dashboard() {
                               Appetite Fit
                             </p>
                           </div>
+                          <div className="text-center">
+                            <div className="relative w-12 h-12">
+                              <svg className="w-12 h-12 transform -rotate-90" viewBox="0 0 36 36">
+                                <path
+                                  className="text-gray-200"
+                                  stroke="currentColor"
+                                  strokeWidth="3"
+                                  fill="none"
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                                <path
+                                  className={getRiskScoreColor(submission.riskScore)}
+                                  stroke="currentColor"
+                                  strokeWidth="3"
+                                  strokeLinecap="round"
+                                  fill="none"
+                                  strokeDasharray={`${submission.riskScore}, 100`}
+                                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                />
+                              </svg>
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <span className="text-xs font-bold text-foreground">{Math.round(submission.riskScore)}%</span>
+                              </div>
+                            </div>
+                            <p className={`text-xs mt-2 ${cardColor.text}`}>
+                              Risk Score
+                            </p>
+                          </div>
                           <div className="text-center flex-1 mx-4">
                             <p
                               className={`text-lg font-bold mb-2 ${cardColor.text}`}
@@ -838,13 +885,13 @@ export default function Dashboard() {
                             <div className="w-full bg-gray-200 rounded-full h-2">
                               <div
                                 className={`h-2 rounded-full transition-all ${getAgeBarColor(
-                                  submission.slaProgress
+                                  submission.contractLengthDays
                                 )}`}
                                 style={{ width: `${submission.slaProgress}%` }}
                               />
                             </div>
                             <p className={`text-xs mt-2 ${cardColor.text}`}>
-                              Since Submission
+                              Contract Length
                             </p>
                           </div>
                         </div>
@@ -935,7 +982,58 @@ export default function Dashboard() {
                   </div>
                 </div>
               ) : (
-                paginatedSubmissions.map((submission, index) => {
+                <>
+                  {/* Column Headers */}
+                  <div className="px-6 py-3 bg-gray-50 dark:bg-gray-800/50 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center space-x-6 flex-1">
+                        {/* Rank and Client Header */}
+                        <div className="min-w-[280px] pl-1">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Client & Details
+                          </h4>
+                        </div>
+
+                        {/* Premium Header */}
+                        <div className="text-center min-w-[120px]">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Premium
+                          </h4>
+                        </div>
+
+                        {/* Appetite Fit Header */}
+                        <div className="text-center min-w-[110px]">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Appetite Fit
+                          </h4>
+                        </div>
+
+                        {/* Risk Score Header */}
+                        <div className="text-center min-w-[110px]">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Risk Score
+                          </h4>
+                        </div>
+
+                        {/* Contract Length Header */}
+                        <div className="text-center min-w-[130px]">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Contract Length
+                          </h4>
+                        </div>
+
+                        {/* Status Header */}
+                        <div className="min-w-[140px]">
+                          <h4 className="text-xs font-semibold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                            Status
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submissions List */}
+                  {paginatedSubmissions.map((submission, index) => {
                   const continuousIndex = startIndex + index;
                   return (
                   <div
@@ -945,30 +1043,30 @@ export default function Dashboard() {
                     onMouseLeave={() => setHoveredRow(null)}
                   >
                     <Link href={`/submission/${submission.id}`}>
-                      <div className="p-6 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-transparent hover:border-gradient-to-b hover:border-blue-500 min-h-[120px] flex items-center">
+                      <div className="px-6 py-4 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-indigo-50/30 cursor-pointer transition-all duration-200 hover:shadow-md border-l-4 border-l-transparent hover:border-l-blue-500 flex items-center border-b border-b-gray-100 dark:border-b-gray-700/50">
                         <div className="flex items-center justify-between w-full">
-                          <div className="flex items-center space-x-8 flex-1">
+                          <div className="flex items-center space-x-6 flex-1">
                             {/* Rank and Client */}
-                            <div className="flex items-center space-x-4 min-w-[280px]">
-                               <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                                 {continuousIndex + 1}
-                               </div>
-                              <div>
-                                <h3 className="text-xl font-bold text-foreground mb-1">
+                            <div className="flex items-center justify-start min-w-[280px] h-20">
+                              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg mr-4 flex-shrink-0">
+                                {continuousIndex + 1}
+                              </div>
+                              <div className="flex flex-col justify-center min-h-full">
+                                <h3 className="text-lg font-bold text-foreground mb-1 leading-tight">
                                   {submission.client}
                                 </h3>
-                                <p className="text-gray-500 font-medium mb-2">
+                                <p className="text-sm text-gray-500 font-medium mb-2 leading-tight">
                                   {submission.broker}
                                 </p>
-                                <div className="flex items-center space-x-2">
-                                  <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
+                                <div className="flex items-center space-x-1.5">
+                                  <span className="px-2 py-0.5 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">
                                     {submission.lineOfBusiness}
                                   </span>
-                                  <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
+                                  <span className="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-full text-xs font-medium">
                                     {submission.state}
                                   </span>
                                   <span
-                                    className={`px-2 py-1 rounded-full text-xs font-medium ${
+                                    className={`px-2 py-0.5 rounded-full text-xs font-medium ${
                                       submission.businessType === "Renewal"
                                         ? "bg-green-100 text-green-800"
                                         : "bg-purple-100 text-purple-800"
@@ -981,27 +1079,27 @@ export default function Dashboard() {
                             </div>
 
                             {/* Premium */}
-                            <div className="text-center min-w-[120px]">
-                              <p className="text-3xl font-bold text-foreground">
+                            <div className="flex flex-col items-center justify-center min-w-[120px] h-20">
+                              <p className="text-2xl font-bold text-foreground mb-1">
                                 {submission.premium}
                               </p>
-                              <p className="text-sm text-gray-500 font-medium">
+                              <p className="text-xs text-gray-500 font-medium">
                                 Premium
                               </p>
                             </div>
 
                             {/* Appetite Fit */}
-                            <div className="text-center min-w-[100px]">
-                              <div className="flex justify-center mb-2">
+                            <div className="flex flex-col items-center justify-center min-w-[110px] h-20">
+                              <div className="mb-2">
                                 <ProgressRing
                                   score={submission.appetiteScore}
-                                  size={16}
+                                  size={14}
                                 />
                               </div>
                               <Badge
                                 className={`${getAppetiteColor(
                                   submission.appetiteStatus
-                                )} text-xs font-semibold px-3 py-1 rounded-full border-0`}
+                                )} text-xs font-semibold px-2 py-1 rounded-full border-0`}
                               >
                                 {submission.appetiteStatus === "good"
                                   ? "In Appetite"
@@ -1009,32 +1107,64 @@ export default function Dashboard() {
                               </Badge>
                             </div>
 
-                            {/* Age Display */}
-                            <div className="text-center min-w-[120px]">
+                            {/* Risk Score */}
+                            <div className="flex flex-col items-center justify-center min-w-[110px] h-20">
+                              <div className="mb-2">
+                                <div className="relative w-14 h-14">
+                                  <svg className="w-14 h-14 transform -rotate-90" viewBox="0 0 36 36">
+                                    <path
+                                      className="text-gray-200"
+                                      stroke="currentColor"
+                                      strokeWidth="3"
+                                      fill="none"
+                                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    />
+                                    <path
+                                      className={getRiskScoreColor(submission.riskScore)}
+                                      stroke="currentColor"
+                                      strokeWidth="3"
+                                      strokeLinecap="round"
+                                      fill="none"
+                                      strokeDasharray={`${submission.riskScore}, 100`}
+                                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    />
+                                  </svg>
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <span className="text-xs font-bold text-foreground">{Math.round(submission.riskScore)}%</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <p className="text-xs text-gray-500 font-medium">
+                                Risk Score
+                              </p>
+                            </div>
+
+                            {/* Contract Length */}
+                            <div className="flex flex-col items-center justify-center min-w-[130px] h-20">
                               <p
-                                className={`text-2xl font-bold ${getAgeColor(
-                                  submission.slaProgress
+                                className={`text-lg font-bold ${getAgeColor(
+                                  submission.contractLengthDays
                                 )} mb-1`}
                               >
                                 {submission.slaTimer}
                               </p>
-                              <div className="w-20 bg-gray-200 rounded-full h-2 mx-auto">
+                              <div className="w-16 bg-gray-200 rounded-full h-1.5 mb-1">
                                 <div
-                                  className={`h-2 rounded-full transition-all ${getAgeBarColor(
-                                    submission.slaProgress
+                                  className={`h-1.5 rounded-full transition-all ${getAgeBarColor(
+                                    submission.contractLengthDays
                                   )}`}
                                   style={{
                                     width: `${submission.slaProgress}%`,
                                   }}
                                 />
                               </div>
-                              <p className="text-sm text-gray-500 font-medium mt-1">
-                                Since Created
+                              <p className="text-xs text-gray-500 font-medium">
+                                Contract Length
                               </p>
                             </div>
 
                             {/* Status */}
-                            <div className="min-w-[140px]">
+                            <div className="flex flex-col items-center justify-center min-w-[140px] h-20">
                               <Badge
                                 className={`${getStatusColor(
                                   submission.status
@@ -1101,7 +1231,8 @@ export default function Dashboard() {
                     )}
                   </div>
                   );
-                })
+                })}
+                </>
               )}
             </div>
             
