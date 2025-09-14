@@ -1,6 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Label } from '@/components/ui/label';
+import { ZoomIn } from 'lucide-react';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodata_usaLow from "@amcharts/amcharts4-geodata/usaLow";
@@ -20,19 +24,25 @@ interface ChoroplethMapProps {
   valueField?: 'avg_score' | 'avg_risk_score' | 'policy_count';
   title?: string;
   colorSensitivity?: number;
+  disableZoom?: boolean;
+  onValueFieldChange?: (value: 'avg_score' | 'avg_risk_score' | 'policy_count') => void;
 }
 
 const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
   data,
   valueField = 'avg_risk_score',
   title = 'US States Heatmap',
-  colorSensitivity = 1.0
+  colorSensitivity = 1.0,
+  disableZoom = false,
+  onValueFieldChange
 }) => {
   // Fixed green scientific colors
   const minColor = '#AFCB86'; // Light green
   const maxColor = '#00441B';  // Dark green
   const chartRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<am5.Root | null>(null);
+  const chartInstanceRef = useRef<am5map.MapChart | null>(null);
+  const [isZoomEnabled, setIsZoomEnabled] = useState(false);
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -53,11 +63,16 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
 
     // Create chart
     const chart = root.container.children.push(am5map.MapChart.new(root, {
-      panX: "rotateX",
+      panX: disableZoom ? "none" : "rotateX",
       panY: "none",
       projection: am5map.geoAlbersUsa(),
-      layout: root.horizontalLayout
+      layout: root.horizontalLayout,
+      wheelX: disableZoom ? "none" : "zoom",
+      wheelY: disableZoom ? "none" : "zoom"
     }));
+
+    // Store chart reference
+    chartInstanceRef.current = chart;
 
     // Create polygon series
     const polygonSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -234,7 +249,22 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
         rootRef.current = null;
       }
     };
-  }, [data, valueField, colorSensitivity]);
+  }, [data, valueField, colorSensitivity, disableZoom]);
+
+  // Update zoom settings when isZoomEnabled changes
+  useEffect(() => {
+    if (chartInstanceRef.current && disableZoom) {
+      chartInstanceRef.current.set("panX", isZoomEnabled ? "rotateX" : "none");
+      chartInstanceRef.current.set("wheelX", isZoomEnabled ? "zoom" : "none");
+      chartInstanceRef.current.set("wheelY", isZoomEnabled ? "zoom" : "none");
+    }
+  }, [isZoomEnabled, disableZoom]);
+
+  // Toggle zoom functionality
+  const toggleZoom = () => {
+    const newZoomState = !isZoomEnabled;
+    setIsZoomEnabled(newZoomState);
+  };
 
   // Clean up on unmount
   useEffect(() => {
@@ -246,13 +276,47 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
   }, []);
 
   return (
-    <div className="w-full h-full">
-      <h2 className="text-2xl font-bold mb-4 text-center">{title}</h2>
+    <div className="w-full h-full relative">
+      <h2 className="text-2xl font-bold mb-4 text-center text-foreground">{title}</h2>
       <div 
         ref={chartRef} 
-        className="w-full h-[600px] border border-gray-200 rounded-lg"
+        className="w-full h-[600px] border border-border rounded-lg"
         style={{ minHeight: '600px' }}
       />
+      
+      {/* Bottom Right Controls */}
+      <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-3">
+        {/* Data Field Selector */}
+        {onValueFieldChange && (
+          <div className="bg-background/90 backdrop-blur-sm border border-border rounded-lg p-3 shadow-lg">
+            <Label htmlFor="value-field" className="text-xs font-medium text-foreground mb-2 block">
+              Data Field
+            </Label>
+            <Select value={valueField} onValueChange={onValueFieldChange}>
+              <SelectTrigger className="w-40 h-8 text-xs">
+                <SelectValue placeholder="Select data field" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="avg_score">Average Score (%)</SelectItem>
+                <SelectItem value="avg_risk_score">Average Risk Score</SelectItem>
+                <SelectItem value="policy_count">Policy Count</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+        
+        {/* Zoom Button - only show if zoom is disabled by default */}
+        {disableZoom && (
+          <Button
+            onClick={toggleZoom}
+            variant={isZoomEnabled ? "default" : "outline"}
+            size="icon"
+            className="shadow-lg"
+          >
+            <ZoomIn className="h-4 w-4" />
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

@@ -221,7 +221,7 @@ export default function PoliciesPage() {
                 placeholder="Search by account, policy ID, line of business, or state..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 placeholder:text-muted-foreground"
               />
             </div>
           </div>
