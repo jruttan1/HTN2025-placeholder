@@ -564,7 +564,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "in-appetite"
                           ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
-                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -577,7 +577,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "sla-risk"
                           ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
-                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">{atSlaRisk}</div>
@@ -588,7 +588,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "top-premium"
                           ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
-                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">
@@ -601,7 +601,7 @@ export default function Dashboard() {
                       className={`p-4 rounded-xl transition-all text-left ${
                         selectedFilter === "total-contracts"
                           ? "bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg transform scale-105"
-                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-muted-foreground hover:bg-muted/80 hover:shadow-md"
+                          : "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:bg-muted/80 hover:shadow-md"
                       }`}
                     >
                       <div className="text-3xl font-bold mb-1">

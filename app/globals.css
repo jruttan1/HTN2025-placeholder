@@ -20,8 +20,8 @@
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.45 0.15 160); /* Green for in-appetite (#059669) */
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.65 0.15 60); /* Orange for missing info (#f97316) */
-  --muted-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.96 0.005 45); /* Light gray for muted backgrounds */
+  --muted-foreground: oklch(0.45 0.02 240); /* Dark gray for muted text */
   --accent: oklch(0.5 0.2 350); /* Red for out-of-appetite (#be123c) */
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.55 0.25 25);

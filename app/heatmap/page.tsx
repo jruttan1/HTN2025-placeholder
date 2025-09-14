@@ -9,10 +9,7 @@ import Header from "@/components/Header";
 import SidebarPullTab from "@/components/SidebarPullTab";
 import ChoroplethMap from '@/components/ChoroplethMap';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Card, CardContent } from '@/components/ui/card';
 
 interface StateData {
   id: string;
@@ -54,16 +51,6 @@ const HeatmapPage = () => {
     loadHeatmapData();
   }, []);
 
-  // Function to update individual state values
-  const updateStateValue = (stateId: string, field: keyof StateData, value: number) => {
-    setHeatmapData(prevData => 
-      prevData.map(state => 
-        state.id === stateId 
-          ? { ...state, [field]: value }
-          : state
-      )
-    );
-  };
 
   // Get field display name
   const getFieldDisplayName = (field: string) => {
@@ -107,115 +94,37 @@ const HeatmapPage = () => {
         <SidebarPullTab />
         <SidebarInset>
           <div className="flex-1 container mx-auto p-6 space-y-6">
-        {/* Back to Dashboard Button */}
-        <div className="mb-6">
+        {/* Header with Back Button and Title */}
+        <div className="flex items-center justify-between mb-6">
           <Link href="/dashboard">
             <Button variant="outline" className="flex items-center gap-2">
               <ArrowLeft className="h-4 w-4" />
               Back to Dashboard
             </Button>
           </Link>
-        </div>
-
-      <div className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">US States Choropleth Heatmap</h1>
-        <p className="text-muted-foreground mt-2">
-          Interactive visualization of state-level data with customizable parameters
-        </p>
-      </div>
-
-      {/* Controls */}
-      <Card>
-        <CardHeader className="pb-3">
-          <CardTitle>Map Controls</CardTitle>
-          <CardDescription className="text-muted-foreground">
-            Select the data field to visualize on the map
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="pt-0 pb-4">
-          <div className="flex justify-center">
-            <div className="w-full max-w-sm">
-              <Label htmlFor="value-field">Data Field</Label>
-              <Select value={valueField} onValueChange={(value: 'avg_score' | 'avg_risk_score' | 'policy_count') => setValueField(value)}>
-                <SelectTrigger className="mt-1">
-                  <SelectValue placeholder="Select data field" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="avg_score">Average Score (%)</SelectItem>
-                  <SelectItem value="avg_risk_score">Average Risk Score</SelectItem>
-                  <SelectItem value="policy_count">Policy Count</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+          <div className="text-center flex-1">
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">US States Choropleth Heatmap</h1>
+            <p className="text-muted-foreground mt-2">
+              Interactive visualization of state-level data with customizable parameters
+            </p>
           </div>
-        </CardContent>
-      </Card>
+          <div className="w-32"></div> {/* Spacer to center the title */}
+        </div>
 
       {/* Map */}
       <Card>
-        <CardContent className="p-6">
+        <CardContent className="p-6 relative">
           <ChoroplethMap
             data={heatmapData}
             valueField={valueField}
             title={`US States by ${getFieldDisplayName(valueField)}`}
             colorSensitivity={colorSensitivity}
+            disableZoom={true}
+            onValueFieldChange={setValueField}
           />
         </CardContent>
       </Card>
 
-      {/* Data Editor */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Edit State Values</CardTitle>
-          <CardDescription className="text-muted-foreground">
-            Click on any value to edit it. Changes will be reflected in the map immediately.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-96 overflow-y-auto">
-            {heatmapData
-              .filter(state => state.policy_count > 0 || state.avg_score > 0 || state.avg_risk_score > 0)
-              .sort((a, b) => a.name.localeCompare(b.name))
-              .map((state) => (
-                <div key={state.id} className="border rounded-lg p-3 space-y-2">
-                  <h4 className="font-medium">{state.name} ({state.state})</h4>
-                  
-                  <div className="space-y-1">
-                    <Label className="text-xs">Average Score (%)</Label>
-                    <Input
-                      type="number"
-                      step="0.1"
-                      value={(state.avg_score * 100).toFixed(1)}
-                      onChange={(e) => updateStateValue(state.id, 'avg_score', (parseFloat(e.target.value) || 0) / 100)}
-                      className="h-8 text-xs"
-                    />
-                  </div>
-                  
-                  <div className="space-y-1">
-                    <Label className="text-xs">Risk Score</Label>
-                    <Input
-                      type="number"
-                      step="0.01"
-                      value={state.avg_risk_score}
-                      onChange={(e) => updateStateValue(state.id, 'avg_risk_score', parseFloat(e.target.value) || 0)}
-                      className="h-8 text-xs"
-                    />
-                  </div>
-                  
-                  <div className="space-y-1">
-                    <Label className="text-xs">Policy Count</Label>
-                    <Input
-                      type="number"
-                      value={state.policy_count}
-                      onChange={(e) => updateStateValue(state.id, 'policy_count', parseInt(e.target.value) || 0)}
-                      className="h-8 text-xs"
-                    />
-                  </div>
-                </div>
-              ))}
-          </div>
-        </CardContent>
-      </Card>
           </div>
         </SidebarInset>
       </SidebarProvider>
