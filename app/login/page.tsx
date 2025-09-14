@@ -3,8 +3,22 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { useState } from "react"
 
 export default function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleLogin = async () => {
+    setIsLoading(true)
+    try {
+      // Redirect to Auth0 login with custom return URL
+      window.location.href = '/api/auth/login?returnTo=' + encodeURIComponent('/dashboard')
+    } catch (error) {
+      console.error('Login error:', error)
+      setIsLoading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Animated background gradient */}
@@ -101,14 +115,25 @@ export default function LoginPage() {
                 
                 {/* Sign in button */}
                 <div className="space-y-4">
-                  <a href="/api/auth/login" className="block">
-                    <Button className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                      <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14" />
-                      </svg>
-                      Sign In Securely
-                    </Button>
-                  </a>
+                  <Button 
+                    onClick={handleLogin}
+                    disabled={isLoading}
+                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? (
+                      <div className="flex items-center space-x-2">
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Signing In...</span>
+                      </div>
+                    ) : (
+                      <>
+                        <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14" />
+                        </svg>
+                        Sign In Securely
+                      </>
+                    )}
+                  </Button>
                 </div>
                 
                 {/* Features grid */}
