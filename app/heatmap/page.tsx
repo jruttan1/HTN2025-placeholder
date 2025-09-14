@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
@@ -10,6 +11,7 @@ import SidebarPullTab from "@/components/SidebarPullTab";
 import ChoroplethMap from '@/components/ChoroplethMap';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useAuth } from '@/hooks/useAuth';
 
 interface StateData {
   id: string;
@@ -25,11 +27,21 @@ interface HeatmapData {
 }
 
 const HeatmapPage = () => {
+  const router = useRouter();
+  const { user, isLoading: authLoading, isAuthenticated } = useAuth();
   const [heatmapData, setHeatmapData] = useState<StateData[]>([]);
   const [valueField, setValueField] = useState<'avg_score' | 'avg_risk_score' | 'policy_count'>('avg_risk_score');
   const [colorSensitivity] = useState(1.0); // Fixed to standard sensitivity
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Authentication check
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+  }, [authLoading, isAuthenticated, router]);
 
   // Load heatmap data
   useEffect(() => {
@@ -66,7 +78,7 @@ const HeatmapPage = () => {
     }
   };
 
-  if (loading) {
+  if (authLoading || loading) {
     return (
       <div className="container mx-auto p-6">
         <div className="flex items-center justify-center h-64">
@@ -74,6 +86,10 @@ const HeatmapPage = () => {
         </div>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect to login via useEffect
   }
 
   if (error) {

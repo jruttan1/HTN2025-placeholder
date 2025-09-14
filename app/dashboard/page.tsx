@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState, useMemo } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -16,6 +17,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import SlidingToggle from "@/helper/toggle"
 import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
 import { useSearch } from "@/contexts/SearchContext"
+import { useAuth } from "@/hooks/useAuth"
 // import { Toggle } from "@/components/ui/toggle"
 // import { getSubmission } from "@/controller/dashboard"
 
@@ -196,6 +198,8 @@ interface UserData {
 }
 
 export default function Dashboard() {
+  const router = useRouter()
+  const { user, isLoading: authLoading, isAuthenticated } = useAuth()
   const { searchQuery, setSearchQuery, submissions: globalSubmissions } = useSearch()
   const [userData, setUserData] = useState<UserData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -335,10 +339,28 @@ export default function Dashboard() {
   console.log(filteredSubmissions)
   const topSubmission = filteredSubmissions.slice(0, 1)
 
+  // Authentication check
   useEffect(() => {
-    // Process pending user data from sign up
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login')
+      return
+    }
+  }, [authLoading, isAuthenticated, router])
+
+  useEffect(() => {
+    // Set user data from Auth0 user if available
+    if (user) {
+      setUserData({
+        name: user.name || 'User',
+        email: user.email || '',
+        rulePreferences: '',
+        signedUpAt: new Date().toISOString()
+      })
+    }
+
+    // Process pending user data from sign up (fallback)
     const pendingData = localStorage.getItem('pendingUserData')
-    if (pendingData) {
+    if (pendingData && !user) {
       try {
         const parsedData = JSON.parse(pendingData) as UserData
         setUserData(parsedData)
@@ -352,7 +374,7 @@ export default function Dashboard() {
       }
     }
     setIsLoading(false)
-  }, [])
+  }, [user])
 
   // Use global submissions data
   useEffect(() => {
@@ -457,7 +479,7 @@ export default function Dashboard() {
     )
   }
 
-  if (isLoading) {
+  if (authLoading || isLoading) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900">
       <div className="text-center">
@@ -468,9 +490,13 @@ export default function Dashboard() {
         <div className="mt-4">
           <div className="w-8 h-8 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
         </div>
-      </div>
+        </div>
       </div>
     )
+  }
+
+  if (!isAuthenticated) {
+    return null // Will redirect to login via useEffect
   }
 
   return (

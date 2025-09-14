@@ -11,5 +11,13 @@ export async function GET(request: NextRequest) {
     returnTo: `${baseUrl}${returnTo}`
   });
   
-  return NextResponse.redirect(logoutUrl);
+  // Create response with redirect
+  const response = NextResponse.redirect(logoutUrl);
+  
+  // Clear authentication cookies
+  response.cookies.delete('auth0.access_token');
+  response.cookies.delete('auth0.id_token');
+  response.cookies.delete('auth0.is.authenticated');
+  
+  return response;
 }

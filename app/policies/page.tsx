@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,8 +15,11 @@ import SidebarPullTab from "@/components/SidebarPullTab"
 import { PolicyCard } from "@/components/PolicyCard"
 import { loadEnhancedPolicies, createLiveDataStream, EnhancedPolicy, EnhancedAccount } from "@/lib/dataMapper"
 import { Search, Filter, RefreshCw, Activity, TrendingUp, AlertCircle } from "lucide-react"
+import { useAuth } from "@/hooks/useAuth"
 
 export default function PoliciesPage() {
+  const router = useRouter();
+  const { user, isLoading: authLoading, isAuthenticated } = useAuth();
   const [policies, setPolicies] = useState<EnhancedPolicy[]>([])
   const [accounts, setAccounts] = useState<{[key: string]: EnhancedAccount}>({})
   const [isLoading, setIsLoading] = useState(true)
@@ -26,6 +30,14 @@ export default function PoliciesPage() {
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date())
 
   // Live data stream
+  // Authentication check
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+  }, [authLoading, isAuthenticated, router]);
+
   useEffect(() => {
     let cleanup: (() => void) | undefined
 
@@ -98,7 +110,7 @@ export default function PoliciesPage() {
     }).format(amount)
   }
 
-  if (isLoading) {
+  if (authLoading || isLoading) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header userData={null} />
@@ -116,6 +128,10 @@ export default function PoliciesPage() {
         </SidebarProvider>
       </div>
     )
+  }
+
+  if (!isAuthenticated) {
+    return null; // Will redirect to login via useEffect
   }
 
   return (
