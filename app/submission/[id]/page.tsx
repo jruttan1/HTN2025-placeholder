@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,7 +9,9 @@ import AppSidebar from "@/components/AppSidebar"
 import Header from "@/components/Header"
 import SidebarPullTab from "@/components/SidebarPullTab"
 import Link from "next/link"
-
+import Image from "next/image"
+import { Input } from "@/components/ui/input"
+import ChatBot from "@/components/ChatBot"
 // Mock data for submissions (same as main page)
 const submissions = [
   {
@@ -247,36 +250,6 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
               </CardContent>
             </Card>
 
-            <Card className="border-gray-200 bg-white shadow-sm">
-              <CardHeader>
-                <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                    />
-                  </svg>
-                  Risk Factors
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {submission.detailedInfo.riskFactors.map((factor, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start space-x-4 p-4 bg-red-50 rounded-lg border border-red-200"
-                    >
-                      <div className="w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                        !
-                      </div>
-                      <p className="text-gray-800 leading-relaxed font-medium">{factor}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
 
             <Card className="border-gray-200 bg-white shadow-sm">
               <CardHeader>
@@ -299,34 +272,34 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
               </CardContent>
             </Card>
 
+            {/* AI Assistant Card */}
             <Card className="border-gray-200 bg-white shadow-sm">
               <CardHeader>
                 <CardTitle className="text-2xl font-semibold text-gray-900 flex items-center">
-                  <svg className="w-6 h-6 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                    />
+                  <svg className="w-6 h-6 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
                   </svg>
-                  Market Competition
+                  AI Underwriting Assistant
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {submission.detailedInfo.competitorQuotes.map((quote, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200"
-                    >
-                      <p className="text-lg font-semibold text-gray-800">{quote}</p>
-                      <Badge variant="outline" className="text-purple-700 border-purple-300">
-                        Competitor
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
+                <ChatBot
+                  compact={true}
+                  className="h-[500px]"
+                  policyContext={{
+                    accountName: submission.client,
+                    lineOfBusiness: submission.product,
+                    premium: submission.premium,
+                    appetiteScore: submission.appetiteScore,
+                    state: submission.detailedInfo.location.split(', ')[1],
+                    businessType: submission.detailedInfo.submissionDate ? 'RENEWAL' : 'NEW_BUSINESS',
+                    constructionType: 'Fire Resistive',
+                    tiv: submission.premium === '$2.5M' ? 50000000 : submission.premium === '$1.8M' ? 25000000 : 10000000,
+                    status: submission.status,
+                    whySurfaced: submission.whySurfaced,
+                    detailedInfo: submission.detailedInfo
+                  }}
+                />
               </CardContent>
             </Card>
           </div>
@@ -551,6 +524,7 @@ export default function SubmissionDetailPage({ params }: { params: { id: string 
           </SidebarInset>
         </div>
       </SidebarProvider>
+      </div>
     </div>
   )
 }

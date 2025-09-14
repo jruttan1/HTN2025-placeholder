@@ -11,8 +11,12 @@ import SidebarPullTab from "@/components/SidebarPullTab"
 import Link from "next/link"
 import { X } from "lucide-react"
 import SlidingToggle from "@/helper/toggle"
+import { loadRealSubmissions, DashboardSubmission } from "@/lib/dataMapper"
+// import { Toggle } from "@/components/ui/toggle"
+// import { getSubmission } from "@/controller/dashboard"
 
-const submissions = [
+// This will be replaced with real data loaded from enhanced_data.json
+const mockSubmissions = [
   {
     id: 1,
     client: "TechCorp Industries",
@@ -143,7 +147,10 @@ export default function Dashboard() {
   const [brokerFilter, setBrokerFilter] = useState<string | null>(null);
   const [premiumSizeFilter, setPremiumSizeFilter] = useState<string | null>(null);
   const [currentTopSubmission, setCurrentTopSubmission] = useState(0)
+  const [riskLevelRange, setRiskLevelRange] = useState([0, 100])
   const [advancedFilterToggled, setAdvancedFilterToggled] = useState(false)
+  const [submissions, setSubmissions] = useState<DashboardSubmission[]>(mockSubmissions)
+  const [isLoadingSubmissions, setIsLoadingSubmissions] = useState(true)
 
   // Helper functions for filtering
   const getRegionFromState = (state: string) => {
@@ -216,6 +223,26 @@ export default function Dashboard() {
     setIsLoading(false)
   }, [])
 
+  // Load real submissions data from enhanced_data.json
+  useEffect(() => {
+    const loadSubmissions = async () => {
+      try {
+        setIsLoadingSubmissions(true)
+        const realSubmissions = await loadRealSubmissions()
+        if (realSubmissions.length > 0) {
+          setSubmissions(realSubmissions)
+        }
+      } catch (error) {
+        console.error('Error loading submissions:', error)
+        // Keep using mock data if loading fails
+      } finally {
+        setIsLoadingSubmissions(false)
+      }
+    }
+
+    loadSubmissions()
+  }, [])
+
   const getAppetiteColor = (status: string) => {
     switch (status) {
       case "good":
@@ -268,6 +295,13 @@ export default function Dashboard() {
     // In a real app, this would trigger API calls
   }
 
+  // Placeholder function for when risk level data is implemented
+  const handleRiskLevelFilter = (submissionList: any[]) => {
+    // TODO: When risk level data is added to submissions, filter based on riskLevelRange
+    // Example: return submissionList.filter(s => s.riskLevel >= riskLevelRange[0] && s.riskLevel <= riskLevelRange[1])
+    console.log(`Risk level filter: ${riskLevelRange[0]} - ${riskLevelRange[1]}`)
+    return submissionList // Return unfiltered for now
+  }
   const ProgressRing = ({ score, size = 16 }: { score: number; size?: number }) => {
     const sizeClass = size === 16 ? 'w-16 h-16' : size === 12 ? 'w-12 h-12' : 'w-14 h-14'
     return (
@@ -316,13 +350,91 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header userData={userData} />
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarPullTab />
-        <SidebarInset>
-          <main className="p-8 font-inter flex-1">
+<div className="min-h-screen flex flex-col">
+  <Header userData={userData} />
+  <SidebarProvider>
+    <AppSidebar />
+    <SidebarPullTab />
+    <SidebarInset>
+      <main className="p-8 font-inter flex-1">
+        <header
+          className="relative shadow-lg border-b border-white/10 overflow-hidden"
+          style={{
+            backgroundImage: `url('/stacked-peaks-haikei.svg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            minHeight: "120px",
+          }}
+        >
+        <div className="px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-12">
+              <div className="flex items-center space-x-3">
+                <Image
+                  src="/logo-cropped.svg"
+                  alt="Optimate Logo"
+                  className="ml-4"
+                  width={60}
+                  height={60}
+                />
+                <div>
+                  <h1
+                    className="text-4xl font-bold tracking-tight text-white ml-3
+            "
+                  >
+                    {"Optimate"}
+                  </h1>
+                  <p className="text-lg text-blue-100 ml-3">
+                    Giving underwriters the context and confidence to make
+                    faster, smarter decisions
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center space-x-6">
+              <Link href="/policies">
+                <Button variant="outline" className="text-white border-white/20 hover:bg-white/10">
+                  Live Policies
+                </Button>
+              </Link>
+              <div className="relative">
+                <svg
+                  className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/60"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <Input
+                  placeholder="Search submissions..."
+                  className="w-80 pl-10 border-white/40 focus:bg-white/25 bg-white/20 text-white placeholder:text-white/60"
+                />
+              </div>
+              <Avatar className="h-12 w-12">
+                <AvatarFallback className="font-semibold bg-white text-blue-700">
+                  {userData
+                    ? userData.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .toUpperCase()
+                    : "NA"}
+                </AvatarFallback>
+              </Avatar>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="p-8 font-inter">
         {userData && showWelcome && (
           <Card className="mb-8 shadow-sm border-green-200 bg-green-50 relative">
             <CardContent className="p-6">
@@ -974,7 +1086,7 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </div>
-                    </Link>
+                  </Link>
 
                     {/* Hover Popover */}
                     {hoveredRow === submission.id && (
@@ -1009,3 +1121,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
