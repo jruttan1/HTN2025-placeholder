@@ -203,7 +203,7 @@ export default function PoliciesPage() {
               <SelectItem value="all">All Policies</SelectItem>
               <SelectItem value="high-score">High Score (60%+)</SelectItem>
               <SelectItem value="medium-score">Medium Score (30-60%)</SelectItem>
-              <SelectItem value="low-score">Low Score (<30%)</SelectItem>
+              <SelectItem value="low-score">Low Score (&lt;30%)</SelectItem>
               <SelectItem value="new-business">New Business</SelectItem>
               <SelectItem value="renewal">Renewals</SelectItem>
             </SelectContent>
