@@ -4,7 +4,10 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import AppSidebar from "@/components/AppSidebar"
 import Header from "@/components/Header"
+import SidebarPullTab from "@/components/SidebarPullTab"
 import {
   ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid,
   BarChart, Bar,
@@ -60,7 +63,11 @@ export default function PlotsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header userData={null} />
-      <div className="flex-1 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-6">
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarPullTab />
+        <SidebarInset>
+          <div className="flex-1 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900 dark:to-purple-900 p-6">
         
         {/* Back to Dashboard Button */}
         <div className="mb-6">
@@ -85,8 +92,8 @@ export default function PlotsPage() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         
         {/* 1. TIV vs Loss Ratio */}
-        <div className="bg-white/90 rounded-xl shadow-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-2 text-center">
+        <div className="bg-card/90 rounded-xl shadow-lg p-4 border border-border">
+          <h2 className="text-lg font-semibold text-card-foreground mb-2 text-center">
             TIV vs Loss Ratio
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -126,8 +133,8 @@ export default function PlotsPage() {
         </div>
 
         {/* 2. Risk Score Distribution */}
-        <div className="bg-white/90 rounded-xl shadow-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-2 text-center">
+        <div className="bg-card/90 rounded-xl shadow-lg p-4 border border-border">
+          <h2 className="text-lg font-semibold text-card-foreground mb-2 text-center">
             Risk Score Distribution
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -150,8 +157,8 @@ export default function PlotsPage() {
         </div>
 
         {/* 3. Winnability vs Risk */}
-        <div className="bg-white/90 rounded-xl shadow-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-2 text-center">
+        <div className="bg-card/90 rounded-xl shadow-lg p-4 border border-border">
+          <h2 className="text-lg font-semibold text-card-foreground mb-2 text-center">
             Winnability vs Risk
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -187,8 +194,8 @@ export default function PlotsPage() {
         </div>
 
         {/* 4. Appetite Alignment Radar */}
-        <div className="bg-white/90 rounded-xl shadow-lg p-4">
-          <h2 className="text-lg font-semibold text-gray-800 mb-2 text-center">
+        <div className="bg-card/90 rounded-xl shadow-lg p-4 border border-border">
+          <h2 className="text-lg font-semibold text-card-foreground mb-2 text-center">
             Appetite Alignment
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -209,7 +216,9 @@ export default function PlotsPage() {
         </div>
 
       </div>
-      </div>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   )
 }

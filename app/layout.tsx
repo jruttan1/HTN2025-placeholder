@@ -23,8 +23,8 @@ export default function RootLayout({
       <body className="font-satoshi">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <SearchProvider>

@@ -1,10 +1,16 @@
 "use client"
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar"
+import AppSidebar from "@/components/AppSidebar"
+import Header from "@/components/Header"
+import SidebarPullTab from "@/components/SidebarPullTab"
 import { PolicyCard } from "@/components/PolicyCard"
 import { loadEnhancedPolicies, createLiveDataStream, EnhancedPolicy, EnhancedAccount } from "@/lib/dataMapper"
 import { Search, Filter, RefreshCw, Activity, TrendingUp, AlertCircle } from "lucide-react"
@@ -94,23 +100,48 @@ export default function PoliciesPage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4" />
-          <p className="text-lg">Loading policy data...</p>
-        </div>
+      <div className="min-h-screen flex flex-col">
+        <Header userData={null} />
+        <SidebarProvider>
+          <AppSidebar />
+          <SidebarPullTab />
+          <SidebarInset>
+            <div className="flex items-center justify-center min-h-screen">
+              <div className="text-center">
+                <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4 text-muted-foreground" />
+                <p className="text-lg text-foreground">Loading policy data...</p>
+              </div>
+            </div>
+          </SidebarInset>
+        </SidebarProvider>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-7xl">
+    <div className="min-h-screen flex flex-col">
+      <Header userData={null} />
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarPullTab />
+        <SidebarInset>
+          <div className="container mx-auto px-4 py-8 max-w-7xl">
+      {/* Back to Dashboard Button */}
+      <div className="mb-6">
+        <Link href="/dashboard">
+          <Button variant="outline" className="flex items-center gap-2">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Dashboard
+          </Button>
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Live Policy Dashboard</h1>
-            <p className="text-gray-600 mt-2">Real-time insurance policy analysis and scoring</p>
+            <h1 className="text-3xl font-bold text-foreground">Live Policy Dashboard</h1>
+            <p className="text-muted-foreground mt-2">Real-time insurance policy analysis and scoring</p>
           </div>
           <div className="flex items-center gap-4">
             <Button
@@ -122,7 +153,7 @@ export default function PoliciesPage() {
               {isLiveMode ? "Live Mode ON" : "Enable Live Mode"}
             </Button>
             {isLiveMode && (
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-muted-foreground">
                 Last update: {lastUpdate.toLocaleTimeString()}
               </div>
             )}
@@ -135,8 +166,8 @@ export default function PoliciesPage() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Total Policies</p>
-                  <p className="text-2xl font-bold">{totalPolicies}</p>
+                  <p className="text-sm text-muted-foreground">Total Policies</p>
+                  <p className="text-2xl font-bold text-foreground">{totalPolicies}</p>
                 </div>
                 <AlertCircle className="h-8 w-8 text-blue-500" />
               </div>
@@ -147,8 +178,8 @@ export default function PoliciesPage() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Avg Score</p>
-                  <p className="text-2xl font-bold">{(avgScore * 100).toFixed(1)}%</p>
+                  <p className="text-sm text-muted-foreground">Avg Score</p>
+                  <p className="text-2xl font-bold text-foreground">{(avgScore * 100).toFixed(1)}%</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-green-500" />
               </div>
@@ -159,8 +190,8 @@ export default function PoliciesPage() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Total Premium</p>
-                  <p className="text-2xl font-bold">{formatCurrency(totalPremium / 1000000)}M</p>
+                  <p className="text-sm text-muted-foreground">Total Premium</p>
+                  <p className="text-2xl font-bold text-foreground">{formatCurrency(totalPremium / 1000000)}M</p>
                 </div>
                 <TrendingUp className="h-8 w-8 text-purple-500" />
               </div>
@@ -171,9 +202,9 @@ export default function PoliciesPage() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">High Score</p>
-                  <p className="text-2xl font-bold">{highScorePolicies}</p>
-                  <p className="text-xs text-gray-500">({((highScorePolicies / totalPolicies) * 100).toFixed(1)}%)</p>
+                  <p className="text-sm text-muted-foreground">High Score</p>
+                  <p className="text-2xl font-bold text-foreground">{highScorePolicies}</p>
+                  <p className="text-xs text-muted-foreground">({((highScorePolicies / totalPolicies) * 100).toFixed(1)}%)</p>
                 </div>
                 <AlertCircle className="h-8 w-8 text-green-500" />
               </div>
@@ -185,7 +216,7 @@ export default function PoliciesPage() {
         <div className="flex flex-col md:flex-row gap-4 mb-6">
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
                 placeholder="Search by account, policy ID, line of business, or state..."
                 value={searchTerm}
@@ -225,7 +256,7 @@ export default function PoliciesPage() {
 
         {/* Results Count */}
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-muted-foreground">
             Showing {filteredAndSortedPolicies.length} of {totalPolicies} policies
           </p>
           {filterBy !== "all" && (
@@ -241,7 +272,7 @@ export default function PoliciesPage() {
       <div className="space-y-6">
         {filteredAndSortedPolicies.length === 0 ? (
           <Card className="p-8 text-center">
-            <p className="text-gray-500">No policies match your current filters.</p>
+            <p className="text-muted-foreground">No policies match your current filters.</p>
             <Button 
               variant="outline" 
               onClick={() => {
@@ -264,6 +295,9 @@ export default function PoliciesPage() {
           ))
         )}
       </div>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   )
 }

@@ -3,7 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import AppSidebar from "@/components/AppSidebar";
 import Header from "@/components/Header";
+import SidebarPullTab from "@/components/SidebarPullTab";
 import ChoroplethMap from '@/components/ChoroplethMap';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -99,7 +102,11 @@ const HeatmapPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header userData={null} />
-      <div className="flex-1 container mx-auto p-6 space-y-6">
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarPullTab />
+        <SidebarInset>
+          <div className="flex-1 container mx-auto p-6 space-y-6">
         {/* Back to Dashboard Button */}
         <div className="mb-6">
           <Link href="/dashboard">
@@ -121,7 +128,7 @@ const HeatmapPage = () => {
       <Card>
         <CardHeader className="pb-3">
           <CardTitle>Map Controls</CardTitle>
-          <CardDescription className="text-black">
+          <CardDescription className="text-muted-foreground">
             Select the data field to visualize on the map
           </CardDescription>
         </CardHeader>
@@ -160,7 +167,7 @@ const HeatmapPage = () => {
       <Card>
         <CardHeader>
           <CardTitle>Edit State Values</CardTitle>
-          <CardDescription className="text-black">
+          <CardDescription className="text-muted-foreground">
             Click on any value to edit it. Changes will be reflected in the map immediately.
           </CardDescription>
         </CardHeader>
@@ -209,7 +216,9 @@ const HeatmapPage = () => {
           </div>
         </CardContent>
       </Card>
-      </div>
+          </div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 };
