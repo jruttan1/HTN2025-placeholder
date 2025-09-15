@@ -36,9 +36,9 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
   disableZoom = false,
   onValueFieldChange
 }) => {
-  // Fixed green scientific colors
-  const minColor = '#AFCB86'; // Light green
-  const maxColor = '#00441B';  // Dark green
+  // Blue gradient colors
+  const minColor = '#BFDBFE'; // Light blue
+  const maxColor = '#1E3A8A';  // Dark blue
   const chartRef = useRef<HTMLDivElement>(null);
   const rootRef = useRef<am5.Root | null>(null);
   const chartInstanceRef = useRef<am5map.MapChart | null>(null);
@@ -88,7 +88,7 @@ const ChoroplethMap: React.FC<ChoroplethMapProps> = ({
       strokeWidth: 0.5
     });
 
-    // Set heat rules with green scientific colors
+    // Set heat rules with scientific colors
     polygonSeries.set("heatRules", [{
       target: polygonSeries.mapPolygons.template,
       dataField: "value",

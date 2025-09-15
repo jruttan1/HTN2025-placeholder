@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { useState } from "react"
+import Image from "next/image"
+import { ChartSpline, Brain, Lock, Zap, Rocket } from "lucide-react"
 
 export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -42,19 +44,19 @@ export default function LoginPage() {
           <div className="hidden lg:block space-y-8 text-center lg:text-left">
             <div className="space-y-4">
               <Badge variant="secondary" className="px-4 py-2 text-sm font-medium bg-blue-100 text-blue-700 border-0">
-                🚀 Powered by AI
+               <Rocket className="w-6 h-6 text-purple-600" /> Powered by AI
               </Badge>
-              <h1 className="text-5xl xl:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-5xl xl:text-6xl font-bold bg-indigo-600 bg-clip-text text-transparent leading-tight">
                 Optimate
               </h1>
               <p className="text-xl text-gray-600 max-w-lg">
                 Revolutionizing underwriting with AI-powered insights and intelligent automation
               </p>
-            </div>
+            </div> 
             
             <div className="space-y-6">
               <div className="flex items-center space-x-4 justify-center lg:justify-start">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
@@ -66,7 +68,7 @@ export default function LoginPage() {
               </div>
               
               <div className="flex items-center space-x-4 justify-center lg:justify-start">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -78,7 +80,7 @@ export default function LoginPage() {
               </div>
               
               <div className="flex items-center space-x-4 justify-center lg:justify-start">
-                <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
@@ -97,10 +99,8 @@ export default function LoginPage() {
               <CardContent className="p-8 space-y-8">
                 {/* Logo and branding */}
                 <div className="text-center space-y-4">
-                  <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-                    <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-                    </svg>
+                  <div className="mx-auto w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <Image src="/logo-cropped.svg" alt="Optimate" width={36} height={36} />
                   </div>
                   
                   <div>
@@ -118,7 +118,7 @@ export default function LoginPage() {
                   <Button 
                     onClick={handleLogin}
                     disabled={isLoading}
-                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full h-12 bg-blue-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <div className="flex items-center space-x-2">
@@ -137,21 +137,21 @@ export default function LoginPage() {
                 </div>
                 
                 {/* Features grid */}
-                <div className="grid grid-cols-2 gap-3 text-center">
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <div className="text-2xl mb-1">⚡</div>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 bg-gray-50 rounded-lg flex flex-col items-center justify-center text-center">
+                    <Zap className="w-6 h-6 text-blue-600 mb-2" />
                     <div className="text-xs font-medium text-gray-700">Fast Processing</div>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <div className="text-2xl mb-1">🎯</div>
+                  <div className="p-3 bg-gray-50 rounded-lg flex flex-col items-center justify-center text-center">
+                    <Brain className="w-6 h-6 text-purple-600 mb-2" />
                     <div className="text-xs font-medium text-gray-700">Smart Matching</div>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <div className="text-2xl mb-1">📊</div>
+                  <div className="p-3 bg-gray-50 rounded-lg flex flex-col items-center justify-center text-center">
+                    <ChartSpline className="w-6 h-6 text-green-600 mb-2" />
                     <div className="text-xs font-medium text-gray-700">Real-time Analytics</div>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-lg">
-                    <div className="text-2xl mb-1">🔒</div>
+                  <div className="p-3 bg-gray-50 rounded-lg flex flex-col items-center justify-center text-center">
+                    <Lock className="w-6 h-6 text-amber-600 mb-2" />
                     <div className="text-xs font-medium text-gray-700">Secure Access</div>
                   </div>
                 </div>
