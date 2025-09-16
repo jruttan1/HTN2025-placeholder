@@ -368,25 +368,6 @@ export default function SubmissionDetailPage({ params }: { params: Promise<{ id:
                   </Card>
                 </div>
 
-                {/* Why Surfaced */}
-                <Card className="shadow-sm">
-                  <CardHeader>
-                    <CardTitle className="text-xl font-semibold">Why This Was Prioritized</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3">
-                      {submission.whySurfaced.map((reason, index) => (
-                        <div key={index} className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
-                          <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                            {index + 1}
-                          </div>
-                          <p className="font-medium">{reason}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
                 {/* Competitor Quotes */}
                 {submission.detailedInfo.competitorQuotes && submission.detailedInfo.competitorQuotes.length > 0 && (
                   <Card className="shadow-sm">
